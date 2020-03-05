@@ -1,0 +1,87 @@
+{
+  "Day": {
+    "Sunday": {
+      "Name": "Sun",
+      "Hours": [
+        {
+          "from": "10:00",
+          "to": "13:30"
+        },
+        {
+          "from": "18:00",
+          "to": "22:00"
+        }
+      ]
+    },
+    "Monday": {
+      "Name": "Sun",
+      "Hours": [
+        {
+          "from": "10:00",
+          "to": "13:30"
+        },
+        {
+          "from": "18:00",
+          "to": "22:00"
+        }
+      ]
+    },
+    "Tuesday": {
+      "Name": "Sun",
+      "Hours": [
+        {
+          "from": "10:00",
+          "to": "13:30"
+        },
+        {
+          "from": "18:00",
+          "to": "22:00"
+        }
+      ]
+    },
+    "Wednesday": {
+      "Name": "Sun",
+      "Hours": [
+        {
+          "from": "10:00",
+          "to": "13:30"
+        },
+        {
+          "from": "18:00",
+          "to": "22:00"
+        }
+      ]
+    },
+    "Thursday": {
+      "Name": "Sun",
+      "Hours": [
+        {
+          "from": "10:00",
+          "to": "13:30"
+        },
+        {
+          "from": "18:00",
+          "to": "22:00"
+        }
+      ]
+    },
+    "Friday": {
+      "Name": "Sun",
+      "Hours": [
+        {
+          "from": "10:00",
+          "to": "13:30"
+        },
+        {
+          "from": "18:00",
+          "to": "22:00"
+        }
+      ]
+    },
+    "Saturday": {
+      "Name": "Sun",
+      "Hours": []
+    }
+  },
+  "Options": { "ClosedMsg": "Closed", "OpenMsg": "Open", "timeZone": "EST" }
+}
