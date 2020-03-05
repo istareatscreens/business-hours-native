@@ -1,0 +1,97 @@
+{
+  "Day": {
+    "Monday": [
+      { "name": "Mon" },
+      {
+        "Hours": [
+          {
+            "from": "10:00",
+            "to": "13:30"
+          }
+        ]
+      }
+    ],
+    "Tuesday": [
+      { "name": "Tue" },
+      {
+        "Hours": []
+      }
+    ],
+    "Wednesday": [
+      { "name": "Wed" },
+      {
+        "Hours": [
+          {
+            "from": "10:00",
+            "to": "13:30"
+          },
+          {
+            "from": "18:00",
+            "to": "22:00"
+          }
+        ]
+      }
+    ],
+    "Thursday": [
+      { "name": "Thu" },
+      {
+        "Hours": [
+          {
+            "from": "10:00",
+            "to": "13:30"
+          },
+          {
+            "from": "18:00",
+            "to": "22:00"
+          }
+        ]
+      }
+    ],
+    "Friday": [
+      { "name": "Fri" },
+      {
+        "Hours": [
+          {
+            "from": "10:00",
+            "to": "13:30"
+          },
+          {
+            "from": "18:00",
+            "to": "22:00"
+          }
+        ]
+      }
+    ],
+    "Saturday": [
+      { "name": "Sat" },
+      {
+        "Hours": [
+          {
+            "from": "10:00",
+            "to": "13:30"
+          },
+          {
+            "from": "18:00",
+            "to": "22:00"
+          }
+        ]
+      }
+    ],
+    "Sunday": [
+      { "name": "Sun" },
+      {
+        "Hours": [
+          {
+            "from": "10:00",
+            "to": "13:30"
+          },
+          {
+            "from": "18:00",
+            "to": "22:00"
+          }
+        ]
+      }
+    ]
+  },
+  "Options": { "ClosedMsg": "Closed", "OpenMsg": "Open", "timeZone": "EST" }
+}

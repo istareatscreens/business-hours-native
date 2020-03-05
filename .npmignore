@@ -1,0 +1,31 @@
+#node_modules
+node_modules
+
+#linting config
+.eslintrc.js
+
+#documentation
+docs
+
+#Bot Files
+codecov.yml
+renovate.json
+
+#IDE config files 
+.vscode
+coverage.lcov
+.gitignore
+tsconfig.json
+
+#Testing Reports
+report*
+coverage.lcov
+.nyc_output
+nyc
+*.lcov
+test
+.travis.yml
+coverage
+
+#source code
+src

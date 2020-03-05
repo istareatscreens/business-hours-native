@@ -1,0 +1,28 @@
+{
+  "extends": ["config:base"],
+  "packageRules": [
+    {
+      "packagePatterns": [
+        "@types/chai",
+        "@types/mocha",
+        "@typescript-eslint/eslint-plugin",
+        "@typescript-eslint/parser",
+        "chai",
+        "codecov",
+        "eslint",
+        "istanbul",
+        "mocha",
+        "mocha-lcov-reporter",
+        "nyc",
+        "prettier",
+        "source-map-support",
+        "ts-node",
+        "typescript"
+      ],
+      "groupName": "devDependencies",
+      "schedule": ["before 2am on monday"],
+      "automerge": true,
+      "automergeType": "branch"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+sudo: false
+
+language: node_js
+
+node_js:
+  - node
+
+script:
+  - npm run lint
+  - npm run test
+  - npm run coverage
+
+branches:
+  only:
+    - master
+    - /^renovate.*$/
+
+notifications:
+  email: false
