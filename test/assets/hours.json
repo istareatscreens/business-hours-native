@@ -1,18 +1,5 @@
 {
   "Day": {
-    "Sunday": {
-      "Name": "Sun",
-      "Hours": [
-        {
-          "from": "10:00",
-          "to": "13:30"
-        },
-        {
-          "from": "18:00",
-          "to": "22:00"
-        }
-      ]
-    },
     "Monday": {
       "Name": "Sun",
       "Hours": [
@@ -80,17 +67,15 @@
     },
     "Saturday": {
       "Name": "Sun",
-      "Hours": [
-        {
-          "from": "10:00",
-          "to": "13:30"
-        },
-        {
-          "from": "18:00",
-          "to": "22:00"
-        }
-      ]
+      "Hours": []
+    },
+    "Sunday": {
+      "Name": "Sun",
+      "Hours": []
     }
   },
-  "Options": { "ClosedMsg": "Closed", "OpenMsg": "Open", "timeZone": "EST" }
+  "Options": { "ClosedMsg": "Closed", "OpenMsg": "Open", "TimeZone": "EST" },
+  "Holidays": [
+    { "Month": 12, "Day": 25, "Hours": [{ "from": "10:00", "to": "22:00" }] }
+  ]
 }
