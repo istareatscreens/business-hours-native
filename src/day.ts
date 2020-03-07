@@ -48,16 +48,22 @@ export default class Day {
     if (possibleHolidays !== undefined && possibleHolidays.length !== 0) {
       for (const holiday of possibleHolidays) {
         //Account for day of the year holiday
-        if (holiday.WeekNo == -1 && holiday.Year == -1) {
-          if (day == holiday.Day) return this.adjustDayForHoliday(holiday);
+        if (holiday.WeekNo == -1 && holiday.Year == -1 && day == holiday.Day) {
+          return this.adjustDayForHoliday(holiday);
           //Account for fixed Week and day holidays (i.e. first Monday of the month)
-        } else if (holiday.WeekNo != -1) {
-          if (weekOfMonth == holiday.WeekNo && this.dayName == holiday.Day)
-            return this.adjustDayForHoliday(holiday);
+        } else if (
+          holiday.WeekNo != -1 &&
+          weekOfMonth == holiday.WeekNo &&
+          this.dayName == holiday.Day
+        ) {
+          return this.adjustDayForHoliday(holiday);
           //Account for holiday with fixed year
-        } else if (holiday.Year != -1) {
-          if (holiday.Year == year && day == holiday.Day)
-            return this.adjustDayForHoliday(holiday);
+        } else if (
+          holiday.Year != -1 &&
+          holiday.Year == year &&
+          day == holiday.Day
+        ) {
+          return this.adjustDayForHoliday(holiday);
         }
       }
     }

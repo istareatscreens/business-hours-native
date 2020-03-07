@@ -76,13 +76,47 @@
   },
   "Options": { "ClosedMsg": "Closed", "OpenMsg": "Open", "UTCoffset": -5 },
   "Holidays": {
+    "4": [
+      {
+        "Name": "Easter",
+        "WeekNo": -1,
+        "Day": 12,
+        "Year": 2020,
+        "Hours": [
+          { "from": "1:00", "to": "10:50" },
+          { "from": "11:00", "to": "18:00" }
+        ]
+      },
+      {
+        "Name": "Easter",
+        "WeekNo": -1,
+        "Day": 21,
+        "Year": 2019,
+        "Hours": [
+          { "from": "1:50", "to": "10:50" },
+          { "from": "11:00", "to": "18:00" }
+        ]
+      }
+    ],
+    "9": [
+      {
+        "Name": "Labour Day",
+        "WeekNo": 1,
+        "Day": "Monday",
+        "Year": -1,
+        "Hours": [
+          { "from": "4:50", "to": "09:50" },
+          { "from": "11:00", "to": "18:00" }
+        ]
+      }
+    ],
     "12": [
       {
         "Name": "Christmas",
         "WeekNo": -1,
         "Day": 25,
         "Year": -1,
-        "Hours": [{ "from": "10:00", "to": "22:00" }]
+        "Hours": [{ "from": "03:00", "to": "05:00" }]
       }
     ]
   }

@@ -2,7 +2,7 @@ import { expect } from "chai";
 import "mocha";
 import { buisnessHours } from "../src/index";
 
-let jsondata = require("./assets/hours.json");
+let jsondata = require("./assets/hours_testtemplate.json");
 
 describe("#buisnessHours", function() {
   //init class
