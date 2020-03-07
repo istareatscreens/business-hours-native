@@ -22,7 +22,7 @@ interface WeekdayData {
 type HolidayDay = WeekdayName | number;
 
 interface DayData {
-  Sunday: WeekdayData;
+  [Sunday: string]: WeekdayData;
   Monday: WeekdayData;
   Tuesday: WeekdayData;
   Wednesday: WeekdayData;
@@ -31,7 +31,9 @@ interface DayData {
   Saturday: WeekdayData;
 }
 
-interface HolidayMonth {
+type MonthNumber = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+
+interface HolidayMonthsData {
   1: HolidayData[];
   2: HolidayData[];
   3: HolidayData[];
@@ -47,6 +49,7 @@ interface HolidayMonth {
 }
 
 interface HolidayData {
+  Name: string;
   Month: number;
   Day: HolidayDay;
   WeekNo: number;
@@ -60,7 +63,7 @@ interface OptionsData {
   UTCoffset: number;
 }
 
-export interface DataObject {
+interface DataObject {
   Day: DayData;
   Options: OptionsData;
   Holidays: HolidayData[];

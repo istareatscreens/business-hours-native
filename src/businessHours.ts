@@ -1,6 +1,3 @@
-// eslint-disable-next-line no-unused-vars
-import { DataObject, WeekdayName, OptionsData, DayData } from "./typings";
-
 export class BusinessHours {
   private options: OptionsData;
   private currentDate: Date;
@@ -13,16 +10,16 @@ export class BusinessHours {
     this.data = data;
     this.options = { ...data.Options };
     this.currentDate = this.getCurrentLocalBusinessTime();
-    this.createDayObjects(data, shifted);
+    // this.createDayObjects(data, shifted);
   }
 
   public static init(data: DataObject, shifted: boolean = false) {
     return new BusinessHours(data, shifted);
   }
 
-  private createDayObjects(data: DataObject, shifted: boolean) {
-    //if (shifted)
-  }
+  // private createDayObjects(data: DataObject, shifted: boolean) {
+  //   //if (shifted)
+  // }
 
   private weekdayOverflow(num: number) {
     if (num < 6) {
@@ -38,7 +35,7 @@ export class BusinessHours {
   //   return new Date(new Date().toUTCString().substr(0, 25));
   // }
 
-  private getCurrentLocalBusinessTime() {
+  public getCurrentLocalBusinessTime() {
     const now = new Date();
     const timezone = this.options.UTCoffset;
     return new Date(

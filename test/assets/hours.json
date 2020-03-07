@@ -74,8 +74,16 @@
       "Hours": []
     }
   },
-  "Options": { "ClosedMsg": "Closed", "OpenMsg": "Open", "TimeZone": "EST" },
-  "Holidays": [
-    { "Month": 12, "Day": 25, "Hours": [{ "from": "10:00", "to": "22:00" }] }
-  ]
+  "Options": { "ClosedMsg": "Closed", "OpenMsg": "Open", "UTCoffset": -5 },
+  "Holidays": {
+    "12": [
+      {
+        "Name": "Christmas",
+        "WeekNo": -1,
+        "Day": 25,
+        "Year": -1,
+        "Hours": [{ "from": "10:00", "to": "22:00" }]
+      }
+    ]
+  }
 }

@@ -1,12 +1,19 @@
 import { expect } from "chai";
 import "mocha";
-import { buisnessHours } from "../src/index";
+import day from "../src/day";
+import { buisnessHours } from "../src";
 
 let jsondata = require("./assets/hours.json");
 
-describe("#buisnessHours", function() {
+describe("#Day", function() {
   //init class
   const bH = buisnessHours.init(jsondata);
+  const dayObject = day.init(
+    0,
+    jsondata.Day,
+    bH.getCurrentLocalBusinessTime(),
+    jsondata.Holidays
+  );
 
   it("should return data object", function() {
     expect(JSON.stringify(bH.getData())).equal(JSON.stringify(jsondata));
@@ -16,10 +23,3 @@ describe("#buisnessHours", function() {
     expect(JSON.stringify(bH.getWeek())).equal(JSON.stringify(jsondata.Day));
   });
 });
-
-// bb26IncrementInputTest.forEach(({ input, result }) =>
-// context("with argument " + input, function() {
-//   it("should return " + result, function() {
-//     expect(bb26Increment(input)).to.equal(result);
-//   });
-// })
