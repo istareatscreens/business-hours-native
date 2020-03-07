@@ -45,18 +45,20 @@ export default class Day {
     const day: number = this.date.getDate();
     const weekOfMonth: number = Math.ceil(day / 7);
     const possibleHolidays: HolidayData[] = holidayData[<MonthNumber>month];
-    for (const holiday of possibleHolidays) {
-      //Account for day of the year holiday
-      if (holiday.WeekNo == -1 && holiday.Year == -1) {
-        if (day == holiday.Day) return this.adjustDayForHoliday(holiday);
-        //Account for fixed Week and day holidays (i.e. first Monday of the month)
-      } else if (holiday.WeekNo != -1) {
-        if (weekOfMonth == holiday.WeekNo && this.dayName == holiday.Day)
-          return this.adjustDayForHoliday(holiday);
-        //Account for holiday with fixed year
-      } else if (holiday.Year != -1) {
-        if (holiday.Year == year && day == holiday.Day)
-          return this.adjustDayForHoliday(holiday);
+    if (possibleHolidays !== undefined && possibleHolidays.length !== 0) {
+      for (const holiday of possibleHolidays) {
+        //Account for day of the year holiday
+        if (holiday.WeekNo == -1 && holiday.Year == -1) {
+          if (day == holiday.Day) return this.adjustDayForHoliday(holiday);
+          //Account for fixed Week and day holidays (i.e. first Monday of the month)
+        } else if (holiday.WeekNo != -1) {
+          if (weekOfMonth == holiday.WeekNo && this.dayName == holiday.Day)
+            return this.adjustDayForHoliday(holiday);
+          //Account for holiday with fixed year
+        } else if (holiday.Year != -1) {
+          if (holiday.Year == year && day == holiday.Day)
+            return this.adjustDayForHoliday(holiday);
+        }
       }
     }
     return [];
