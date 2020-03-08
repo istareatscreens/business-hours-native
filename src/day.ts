@@ -1,4 +1,4 @@
-export default class Day {
+export default class Day implements DayObject {
   private dayName: WeekdayName;
   private holidayName: string = "";
   private dayoffset: number;
@@ -44,7 +44,9 @@ export default class Day {
     const month: MonthNumber = <MonthNumber>(this.date.getMonth() + 1);
     const day: number = this.date.getDate();
     const weekOfMonth: number = Math.ceil(day / 7);
-    const possibleHolidays: HolidayData[] = holidayData[<MonthNumber>month];
+    const possibleHolidays: HolidayData[] = <HolidayData[]>(
+      holidayData[<MonthNumber>month]
+    );
     if (possibleHolidays !== undefined && possibleHolidays.length !== 0) {
       for (const holiday of possibleHolidays) {
         //Account for day of the year holiday
@@ -84,9 +86,11 @@ export default class Day {
   }
 
   private deepCopyHours(Hours: HoursRangeArr): HoursRangeArr {
-    return Hours.map((timeRange: HoursRange) => {
-      return { ...timeRange };
-    });
+    if (Hours !== undefined && Hours !== null && Hours.length !== 0)
+      return Hours.map((timeRange: HoursRange) => {
+        return { ...timeRange };
+      });
+    return [];
   }
 
   private returnDayName(day: number): WeekdayName {
@@ -102,7 +106,20 @@ export default class Day {
     return dayName[day];
   }
 
-  public getHours(): HoursRange[] {
+  private getSpecificTime(time: string, date: Date): number {
+    return new Date(date).setHours(
+      this.parseTime(time),
+      this.parseTime(time, false)
+    );
+  }
+
+  private parseTime(time: string, hours: boolean = true): number {
+    return hours
+      ? Number(time.match(/([0-9]|[1-9][0-9])(?=:)/s)![0])
+      : Number(time.match(/((?<=:)([1-9][0-9]))|([1-9]+)(?!.*\d)|(00)/s)![0]);
+  }
+
+  public getHours(): HoursRangeArr {
     return this.deepCopyHours(this.data.Hours);
   }
 
@@ -120,5 +137,21 @@ export default class Day {
 
   public getDateObject(): Date {
     return this.date;
+  }
+
+  public getDayName(): WeekdayName {
+    return this.dayName;
+  }
+
+  public isOpen(date: Date): boolean {
+    const { Hours } = this.data;
+    for (const hours of Hours) {
+      if (
+        this.getSpecificTime(hours.from, date) <= date.getTime() &&
+        this.getSpecificTime(hours.to, date) > date.getTime()
+      )
+        return true;
+    }
+    return false;
   }
 }

@@ -33,19 +33,18 @@ interface DayData {
 
 type MonthNumber = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 
-interface HolidayMonthsData {
-  1: HolidayData[];
-  2: HolidayData[];
-  3: HolidayData[];
-  4: HolidayData[];
-  5: HolidayData[];
-  6: HolidayData[];
-  7: HolidayData[];
-  8: HolidayData[];
-  9: HolidayData[];
-  10: HolidayData[];
-  11: HolidayData[];
-  12: HolidayData[];
+type HolidayMonthsData = {
+  [index in MonthNumber]?: HolidayData[];
+};
+
+interface DayInfo {
+  Name: WeekdayName;
+  Alias: string;
+  HolidayName: string;
+  isHoliday: boolean;
+  isClosed: boolean;
+  isCurrentDay: boolean;
+  Hours: HoursRangeArr;
 }
 
 interface HolidayData {
@@ -54,7 +53,7 @@ interface HolidayData {
   Day: HolidayDay;
   WeekNo: number;
   Year: number;
-  Hours: HoursRange[];
+  Hours: HoursRangeArr;
 }
 
 interface OptionsData {
@@ -66,7 +65,17 @@ interface OptionsData {
 interface DataObject {
   Day: DayData;
   Options: OptionsData;
-  Holidays: HolidayData[];
+  Holidays: HolidayMonthsData;
+}
+
+interface DayObject {
+  getHours: () => HoursRange[];
+  getDayAlias: () => string;
+  getHolidayName: () => string;
+  isHoliday: () => boolean;
+  getDateObject: () => Date;
+  isOpen: (date: Date) => boolean;
+  getDayName: () => WeekdayName;
 }
 
 declare module "*.json" {
