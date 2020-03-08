@@ -73,7 +73,7 @@
       "Hours": []
     }
   },
-  "Options": { "ClosedMsg": "Closed", "OpenMsg": "Open", "UTCoffset": -5 },
+  "Options": { "UTCoffset": -5 },
   "Holidays": {
     "4": [
       {

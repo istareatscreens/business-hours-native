@@ -62,12 +62,6 @@ export class BusinessHours {
     );
   }
 
-  public getSchedule(): DayInfo[] {
-    return this.schedule.map(day => {
-      return this.generateDayInfoObject(day);
-    });
-  }
-
   private generateDayInfoObject(day: Day): DayInfo {
     return {
       Name: day.getDayName(),
@@ -109,6 +103,12 @@ export class BusinessHours {
 
   public getCurrentDayInfo(): DayInfo {
     return this.generateDayInfoObject(this.schedule[this.currentDay]);
+  }
+
+  public getSchedule(): DayInfo[] {
+    return this.schedule.map(day => {
+      return this.generateDayInfoObject(day);
+    });
   }
 
   public getCurrentDayIndexNo(): number {

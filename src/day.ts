@@ -15,7 +15,7 @@ export default class Day implements DayObject {
     this.dayoffset = dayoffset;
     this.date = new Date(date.setDate(date.getDate() + this.dayoffset));
     this.dayName = this.setDayName(date);
-    this.data = this.setData(data[`${this.dayName}`], holidayData);
+    this.data = this.setData(data[<WeekdayName>`${this.dayName}`], holidayData);
   }
 
   public static init(

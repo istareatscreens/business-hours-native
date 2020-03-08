@@ -6,7 +6,7 @@ let jsonTemplate = require("./assets/hours_testtemplate.json");
 
 const dayTestObject = [
   {
-    description: "fixed day, no holiday month object, not holiday",
+    description: "1. fixed day, no holiday month object, not holiday",
     testObject: day.init(
       0,
       jsonTemplate.Day,
@@ -25,7 +25,7 @@ const dayTestObject = [
   },
   {
     description:
-      "fixed day, no holiday month object, empty array for hours, not holiday",
+      "2. fixed day, no holiday month object, empty array for hours, not holiday",
     testObject: day.init(
       0,
       jsonTemplate.Day,
@@ -44,7 +44,7 @@ const dayTestObject = [
   },
   {
     description:
-      "fixed day, no holiday month object, empty array for hours, not holiday",
+      "3. fixed day, no holiday month object, empty array for hours, not holiday",
     testObject: day.init(
       0,
       jsonTemplate.Day,
@@ -62,7 +62,7 @@ const dayTestObject = [
     openDateObj: new Date(2020, 2, 7, 12, 20, 20)
   },
   {
-    description: "fixed day, single holiday month object, is holiday",
+    description: "4. fixed day, single holiday month object, is holiday",
     testObject: day.init(
       0,
       jsonTemplate.Day,
@@ -81,7 +81,7 @@ const dayTestObject = [
   },
   {
     description:
-      "fixed day using String Name, fixed year, double holiday month object, is holiday, closed after last interval",
+      "5. fixed day using String Name, fixed year, double holiday month object, is holiday, closed after last interval",
     testObject: day.init(
       0,
       jsonTemplate.Day,
@@ -100,64 +100,64 @@ const dayTestObject = [
   },
   {
     description:
-      "fixed day using String Name, fixed year, double holiday month object, holiday same day previous year, is not a holiday, closed before first interval",
+      "6. fixed day using String Name, fixed year, double holiday month object, holiday same day previous year, is not a holiday, closed before first interval",
     testObject: day.init(
       0,
       jsonTemplate.Day,
       new Date(2020, 3, 21, 20, 20, 20),
       jsonTemplate.Holidays
     ),
-    dayName: "Monday",
+    dayName: "Tuesday",
     fixedDate: new Date(2020, 3, 21, 20, 20, 20),
     isHoliday: false,
-    dayDataObject: jsonTemplate.Day["Monday"],
-    hours: jsonTemplate.Day["Monday"].Hours,
+    dayDataObject: jsonTemplate.Day["Tuesday"],
+    hours: jsonTemplate.Day["Tuesday"].Hours,
     holidayName: "",
-    dayAlias: jsonTemplate.Day["Monday"].Name,
+    dayAlias: jsonTemplate.Day["Tuesday"].Name,
     openStatus: false,
     openDateObj: new Date(2020, 3, 21, 9, 10, 10)
   },
   {
     description:
-      "fixed day using String Name, fixed year, double holiday month object, holiday same day previous year, is not a holiday, is closed inbetween intervals",
+      "7. fixed day using String Name, fixed year, double holiday month object, holiday same day previous year, is not a holiday, is closed inbetween intervals",
     testObject: day.init(
       0,
       jsonTemplate.Day,
       new Date(2020, 3, 21, 20, 20, 20),
       jsonTemplate.Holidays
     ),
-    dayName: "Monday",
+    dayName: "Tuesday",
     fixedDate: new Date(2020, 3, 21, 20, 20, 20),
     isHoliday: false,
-    dayDataObject: jsonTemplate.Day["Monday"],
-    hours: jsonTemplate.Day["Monday"].Hours,
+    dayDataObject: jsonTemplate.Day["Tuesday"],
+    hours: jsonTemplate.Day["Tuesday"].Hours,
     holidayName: "",
-    dayAlias: jsonTemplate.Day["Monday"].Name,
+    dayAlias: jsonTemplate.Day["Tuesday"].Name,
     openStatus: false,
     openDateObj: new Date(2020, 3, 21, 15, 10, 10)
   },
   {
     description:
-      "fixed day using String Name, double holiday month object, holiday same day previous year, is not a holiday, first interval open",
+      "8. fixed day using String Name, double holiday month object, holiday same day previous year, is not a holiday, first interval open",
     testObject: day.init(
       0,
       jsonTemplate.Day,
       new Date(2020, 3, 21, 20, 20, 20),
       jsonTemplate.Holidays
     ),
-    dayName: "Monday",
+    dayName: "Tuesday",
     fixedDate: new Date(2020, 3, 21, 20, 20, 20),
     isHoliday: false,
-    dayDataObject: jsonTemplate.Day["Monday"],
-    hours: jsonTemplate.Day["Monday"].Hours,
+    dayDataObject: jsonTemplate.Day["Tuesday"],
+    hours: jsonTemplate.Day["Tuesday"].Hours,
     holidayName: "",
-    dayAlias: jsonTemplate.Day["Monday"].Name,
+    dayAlias: jsonTemplate.Day["Tuesday"].Name,
     openStatus: true,
     openDateObj: new Date(2020, 3, 21, 11, 10, 10)
   },
   {
     description:
-      "fixed day using String Name, fixed year, single holiday month object, holiday first monday first week of the month, is a holiday, second interval open holiday",
+      "9. fixed day using String Name, fixed year, single holiday month object, holiday first monday first week of the month, is a holiday, second interval open holiday",
     testObject: day.init(
       0,
       jsonTemplate.Day,
@@ -185,6 +185,7 @@ describe("#Day", function() {
       isHoliday,
       dayAlias,
       hours,
+      dayName,
       holidayName,
       description,
       openStatus,
@@ -215,6 +216,10 @@ describe("#Day", function() {
 
         it("should return holiday name", function() {
           expect(dayObject.getHolidayName()).equal(holidayName);
+        });
+
+        it("should return day name", function() {
+          expect(dayObject.getDayName()).equal(dayName);
         });
       })
   );

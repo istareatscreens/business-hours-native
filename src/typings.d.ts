@@ -21,15 +21,9 @@ interface WeekdayData {
 
 type HolidayDay = WeekdayName | number;
 
-interface DayData {
-  [Sunday: string]: WeekdayData;
-  Monday: WeekdayData;
-  Tuesday: WeekdayData;
-  Wednesday: WeekdayData;
-  Thursday: WeekdayData;
-  Friday: WeekdayData;
-  Saturday: WeekdayData;
-}
+type DayData = {
+  [index in WeekdayName]: WeekdayData;
+};
 
 type MonthNumber = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 
@@ -49,7 +43,7 @@ interface DayInfo {
 
 interface HolidayData {
   Name: string;
-  Month: number;
+  Month: MonthNumber;
   Day: HolidayDay;
   WeekNo: number;
   Year: number;
@@ -57,8 +51,6 @@ interface HolidayData {
 }
 
 interface OptionsData {
-  ClosedMsg: string;
-  OpenMsg: string;
   UTCoffset: number;
 }
 
