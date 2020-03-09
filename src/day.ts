@@ -14,7 +14,17 @@ export default class Day implements DayObject {
   ) {
     this.dayoffset = dayoffset;
     this.date = new Date(date.setDate(date.getDate() + this.dayoffset));
-    this.dayName = this.setDayName(date);
+    this.dayName = <WeekdayName>(
+      [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ][this.date.getDay()]
+    ); //this.setDayName();
     this.data = this.setData(data[<WeekdayName>`${this.dayName}`], holidayData);
   }
 
@@ -24,7 +34,7 @@ export default class Day implements DayObject {
     date: Date,
     holidayData: HolidayMonthsData
   ) {
-    return new Day(dayoffset, data, date, holidayData);
+    return new Day(dayoffset, data, new Date(date.getTime()), holidayData);
   }
 
   private setData(
@@ -78,13 +88,6 @@ export default class Day implements DayObject {
     return this.deepCopyHours(holiday.Hours);
   }
 
-  private setDayName(date: Date): WeekdayName {
-    //Note to self use appended Date
-    return this.returnDayName(
-      new Date(date.setDate(date.getDate() + this.dayoffset)).getDay()
-    );
-  }
-
   private deepCopyHours(Hours: HoursRangeArr): HoursRangeArr {
     if (Hours !== undefined && Hours !== null && Hours.length !== 0)
       return Hours.map((timeRange: HoursRange) => {
@@ -93,21 +96,8 @@ export default class Day implements DayObject {
     return [];
   }
 
-  private returnDayName(day: number): WeekdayName {
-    const dayName: WeekdayName[] = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
-    ];
-    return dayName[day];
-  }
-
   private getSpecificTime(time: string, date: Date): number {
-    return new Date(date).setHours(
+    return new Date(date.getTime()).setHours(
       this.parseTime(time),
       this.parseTime(time, false)
     );

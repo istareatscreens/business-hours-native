@@ -1,6 +1,6 @@
 import Day from "./day";
 
-export class BusinessHours {
+export default class BusinessHours {
   private data: DataObject;
   private options: OptionsData;
   private currentDate: Date;
@@ -49,26 +49,19 @@ export class BusinessHours {
     }
   }
 
-  public getCurrentLocalBusinessTime() {
-    const now = new Date();
-    const timezone = this.options.UTCoffset;
-    return new Date(
-      now.getUTCFullYear(),
-      now.getUTCMonth(),
-      now.getUTCDate(),
-      now.getUTCHours() + timezone,
-      now.getUTCMinutes(),
-      now.getUTCSeconds()
-    );
-  }
-
   private generateDayInfoObject(day: Day): DayInfo {
+    // console.log(
+    //   this.currentDate.getDate() + " == " + day.getDateObject().getDate()
+    // );
+
+    // console.log(this.currentDate + " == " + day.getDateObject());
+    // console.log(day.getDateObject().getDate());
     return {
       Name: day.getDayName(),
       Alias: day.getDayAlias(),
       HolidayName: day.getHolidayName(),
       isHoliday: day.isHoliday(),
-      isClosed: day.getHours.length === 0 ? true : false,
+      isClosed: day.getHours().length === 0 ? true : false,
       isCurrentDay:
         this.currentDate.getDate() === day.getDateObject().getDate()
           ? true
@@ -89,6 +82,19 @@ export class BusinessHours {
         this.schedule = this.createDayObjects();
       }
     }
+  }
+
+  public getCurrentLocalBusinessTime() {
+    const now = new Date();
+    const timezone = this.options.UTCoffset;
+    return new Date(
+      now.getUTCFullYear(),
+      now.getUTCMonth(),
+      now.getUTCDate(),
+      now.getUTCHours() + timezone,
+      now.getUTCMinutes(),
+      now.getUTCSeconds()
+    );
   }
 
   public refresh(): void {
@@ -129,5 +135,3 @@ export class BusinessHours {
     );
   }
 }
-
-export default BusinessHours;

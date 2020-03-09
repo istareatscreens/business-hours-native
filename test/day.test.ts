@@ -173,6 +173,42 @@ const dayTestObject = [
     dayAlias: jsonTemplate.Day["Monday"].Name,
     openStatus: true,
     openDateObj: new Date(2020, 8, 7, 12, 10, 10)
+  },
+  {
+    description: "10. shifted -1 day, no holiday month object, not holiday",
+    testObject: day.init(
+      -1,
+      jsonTemplate.Day,
+      new Date(2020, 1, 20, 20, 20, 20),
+      jsonTemplate.Holidays
+    ),
+    dayName: "Wednesday",
+    fixedDate: new Date(2020, 1, 19, 20, 20, 20),
+    isHoliday: false,
+    dayDataObject: jsonTemplate.Day["Wednesday"],
+    hours: jsonTemplate.Day["Wednesday"].Hours,
+    holidayName: "",
+    dayAlias: jsonTemplate.Day["Wednesday"].Name,
+    openStatus: true,
+    openDateObj: new Date(2020, 1, 19, 20, 20, 20)
+  },
+  {
+    description: "11. shifted +4 day, no holiday month object, not holiday",
+    testObject: day.init(
+      4,
+      jsonTemplate.Day,
+      new Date(2020, 1, 20, 20, 20, 20),
+      jsonTemplate.Holidays
+    ),
+    dayName: "Monday",
+    fixedDate: new Date(2020, 1, 24, 20, 20, 20),
+    isHoliday: false,
+    dayDataObject: jsonTemplate.Day["Monday"],
+    hours: jsonTemplate.Day["Monday"].Hours,
+    holidayName: "",
+    dayAlias: jsonTemplate.Day["Monday"].Name,
+    openStatus: true,
+    openDateObj: new Date(2020, 1, 24, 20, 20, 20)
   }
 ];
 
