@@ -8,12 +8,12 @@ export default class BusinessHours {
   private schedule: Day[];
   private shifted: boolean;
 
-  constructor(data: DataObject, shifted: boolean) {
+  private constructor(data: DataObject, shifted: boolean) {
     this.data = data;
     this.shifted = shifted;
     this.options = { ...data.Options };
     this.currentDate = this.getCurrentLocalBusinessTime();
-    this.currentDay = this.getCurrentDayIndex(shifted);
+    this.currentDay = shifted ? 0 : this.currentDate.getDay();
     this.schedule = this.createDayObjects();
   }
 
@@ -23,9 +23,9 @@ export default class BusinessHours {
 
   private createDayObjects(): Day[] {
     let schedule = [];
-    if (this.shifted) {
+    if (!this.shifted) {
       for (let i = -this.currentDay; i < 0; i++) {
-        schedule.push(this.createDayObject(-i));
+        schedule.push(this.createDayObject(i));
       }
       for (let i = 0; i < 7 - this.currentDay; i++) {
         schedule.push(this.createDayObject(i));
@@ -41,21 +41,7 @@ export default class BusinessHours {
     return Day.init(offset, days, this.currentDate, holidays);
   }
 
-  private getCurrentDayIndex(shifted: boolean): number {
-    if (shifted) {
-      return 0;
-    } else {
-      return this.currentDate.getDay();
-    }
-  }
-
   private generateDayInfoObject(day: Day): DayInfo {
-    // console.log(
-    //   this.currentDate.getDate() + " == " + day.getDateObject().getDate()
-    // );
-
-    // console.log(this.currentDate + " == " + day.getDateObject());
-    // console.log(day.getDateObject().getDate());
     return {
       Name: day.getDayName(),
       Alias: day.getDayAlias(),
@@ -66,7 +52,8 @@ export default class BusinessHours {
         this.currentDate.getDate() === day.getDateObject().getDate()
           ? true
           : false,
-      Hours: day.getHours()
+      Hours: day.getHours(),
+      dateObj: day.getDateObject()
     };
   }
 
@@ -75,7 +62,7 @@ export default class BusinessHours {
       this.schedule.splice(0, 1);
       this.schedule.push(this.createDayObject(6));
     } else {
-      if (this.currentDay < 7) {
+      if (this.currentDay < 6) {
         this.currentDay++;
       } else {
         this.currentDay = 0;
@@ -99,9 +86,14 @@ export default class BusinessHours {
 
   public refresh(): void {
     this.currentDate = this.getCurrentLocalBusinessTime();
+    console.log(this.currentDate);
     if (
       this.currentDate.getDate() >
-      this.schedule[this.currentDay].getDateObject().getDate()
+        this.schedule[this.currentDay].getDateObject().getDate() ||
+      this.currentDate.getMonth() >
+        this.schedule[this.currentDay].getDateObject().getMonth() ||
+      this.currentDate.getFullYear() >
+        this.schedule[this.currentDay].getDateObject().getFullYear()
     ) {
       this.adjustSchedule();
     }

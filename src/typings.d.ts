@@ -39,6 +39,7 @@ interface DayInfo {
   isClosed: boolean;
   isCurrentDay: boolean;
   Hours: HoursRangeArr;
+  dateObj: Date;
 }
 
 interface HolidayData {

@@ -3,146 +3,11 @@ import sinon from "sinon";
 import "mocha";
 import { buisnessHours } from "../src/index";
 
-let jsondata = require("./assets/hours_testtemplate.json");
-
-const buisnessHoursTestObj = [
-  {
-    description: "No Holiday Week",
-    dateObj: new Date(2020, 2, 1),
-    date: new Date(
-      new Date(2020, 2, 1).getUTCFullYear(),
-      new Date(2020, 2, 1).getUTCMonth(),
-      new Date(2020, 2, 1).getUTCDate(),
-      new Date(2020, 2, 1).getUTCHours() - 5,
-      new Date(2020, 2, 1).getUTCMinutes(),
-      new Date(2020, 2, 1).getUTCSeconds()
-    ),
-    currentDayInfo: {
-      Name: "Sunday",
-      Alias: "Sun",
-      HolidayName: "",
-      isHoliday: false,
-      isClosed: true,
-      isCurrentDay: true,
-      Hours: []
-    },
-    schedule: [
-      {
-        Name: "Sunday",
-        Alias: "Sun",
-        HolidayName: "",
-        isHoliday: false,
-        isClosed: true,
-        isCurrentDay: true,
-        Hours: []
-      },
-      {
-        Name: "Monday",
-        Alias: "Sun",
-        HolidayName: "",
-        isHoliday: false,
-        isClosed: false,
-        isCurrentDay: false,
-        Hours: [
-          {
-            from: "10:00",
-            to: "13:30"
-          },
-          {
-            from: "18:00",
-            to: "22:00"
-          }
-        ]
-      },
-      {
-        Name: "Tuesday",
-        Alias: "Sun",
-        HolidayName: "",
-        isHoliday: false,
-        isClosed: false,
-        isCurrentDay: false,
-        Hours: [
-          {
-            from: "10:00",
-            to: "13:30"
-          },
-          {
-            from: "18:00",
-            to: "22:00"
-          }
-        ]
-      },
-      {
-        Name: "Wednesday",
-        Alias: "Wed",
-        HolidayName: "",
-        isHoliday: false,
-        isClosed: false,
-        isCurrentDay: false,
-        Hours: [
-          {
-            from: "10:00",
-            to: "13:30"
-          },
-          {
-            from: "18:00",
-            to: "22:00"
-          }
-        ]
-      },
-      {
-        Name: "Thursday",
-        Alias: "Sun",
-        HolidayName: "",
-        isHoliday: false,
-        isClosed: false,
-        isCurrentDay: false,
-        Hours: [
-          {
-            from: "10:00",
-            to: "13:30"
-          },
-          {
-            from: "18:00",
-            to: "22:00"
-          }
-        ]
-      },
-      {
-        Name: "Friday",
-        Alias: "Sun",
-        HolidayName: "",
-        isHoliday: false,
-        isClosed: false,
-        isCurrentDay: false,
-        Hours: [
-          {
-            from: "10:00",
-            to: "13:30"
-          },
-          {
-            from: "18:00",
-            to: "22:00"
-          }
-        ]
-      },
-      {
-        Name: "Saturday",
-        Alias: "Sun",
-        HolidayName: "",
-        isHoliday: false,
-        isClosed: true,
-        isCurrentDay: false,
-        Hours: []
-      }
-    ],
-    shifted: true,
-    indexCD: 0,
-    holidayName: "",
-    isHoliday: false,
-    isOpen: false
-  }
-];
+let jsondata = require("./assets/hours_test_template.json");
+import {
+  buisnessHoursTestObj,
+  buisnessHoursTestDynamicShiftedObj
+} from "./testObj";
 
 describe("#buisnessHours", function() {
   //init class
@@ -152,11 +17,10 @@ describe("#buisnessHours", function() {
   //   expect(JSON.stringify(bH.getRawData())).equal(JSON.stringify(jsondata));
   // });
 
-  buisnessHoursTestObj.forEach(
+  buisnessHoursTestObj(jsondata).forEach(
     ({
       description,
       dateObj,
-      date,
       currentDayInfo,
       schedule,
       indexCD,
@@ -176,17 +40,17 @@ describe("#buisnessHours", function() {
 
         it("Should return current local business time Date Object", function() {
           const bH = buisnessHours.init(jsondata, shifted);
-          expect(bH.getCurrentLocalBusinessTime()).deep.eq(date);
+          expect(bH.getCurrentLocalBusinessTime()).deep.eq(dateObj);
         });
 
         it("Should return get current day info", function() {
           const bH = buisnessHours.init(jsondata, shifted);
-          expect(bH.getCurrentDayInfo()).to.be.equal(currentDayInfo);
+          expect(bH.getCurrentDayInfo()).deep.eq(currentDayInfo);
         });
 
         it("Should return fulll schedule", function() {
           const bH = buisnessHours.init(jsondata, shifted);
-          expect(bH.getSchedule()).to.be.equal(schedule);
+          expect(bH.getSchedule()).deep.eq(schedule);
         });
 
         it("Should return current day index number ", function() {
@@ -204,8 +68,81 @@ describe("#buisnessHours", function() {
           expect(bH.isHoliday()).to.be.equal(isHoliday);
         });
 
-        it("Should return if isOpen", function() {
+        it("Should return if is Open", function() {
           const bH = buisnessHours.init(jsondata, shifted);
+          expect(bH.isOpen()).to.be.equal(isOpen);
+        });
+      })
+  );
+
+  const date = new Date(2020, 1, 28);
+  const dateObject = new Date(
+    date.getUTCFullYear(),
+    date.getUTCMonth(),
+    date.getUTCDate(),
+    date.getUTCHours() - 5,
+    date.getUTCMinutes(),
+    date.getUTCSeconds()
+  );
+
+  clock = sinon.useFakeTimers(dateObject.getTime());
+  const bH = buisnessHours.init(jsondata, false);
+  clock.restore();
+  buisnessHoursTestDynamicShiftedObj.forEach(
+    ({
+      description,
+      dateObj,
+      currentDayInfo,
+      schedule,
+      indexCD,
+      holidayName,
+      isHoliday,
+      isOpen
+    }) =>
+      context("Dynamic With testobject having: " + description, () => {
+        beforeEach(() => {
+          //console.log(dateObj);
+          clock = sinon.useFakeTimers(dateObj.getTime());
+          //console.log(dateObj);
+        });
+
+        this.afterEach(() => {
+          clock.restore();
+        });
+
+        it("Should refresh date", function() {
+          expect(bH.getCurrentLocalBusinessTime()).to.exist;
+        });
+
+        it("Should refresh Object", function() {
+          expect(bH.refresh()).to.be.undefined;
+        });
+
+        it("Should return current local business time Date Object", function() {
+          expect(bH.getCurrentLocalBusinessTime()).deep.eq(dateObj);
+        });
+
+        it("Should return get current day info", function() {
+          expect(bH.getCurrentDayInfo()).deep.eq(currentDayInfo);
+        });
+
+        it("Should return fulll schedule", function() {
+          expect(bH.getSchedule()).deep.eq(schedule);
+        });
+
+        it("Should return current day index number ", function() {
+          expect(bH.getCurrentDayIndexNo()).to.be.equal(indexCD);
+        });
+
+        it("Should return holiday name", function() {
+          expect(bH.getHolidayName()).to.be.equal(holidayName);
+        });
+
+        it("Should return if the current day is a holiday", function() {
+          expect(bH.isHoliday()).to.be.equal(isHoliday);
+        });
+
+        it("Should return if is Open", function() {
           expect(bH.isOpen()).to.be.equal(isOpen);
         });
       })
