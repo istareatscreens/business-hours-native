@@ -86,7 +86,6 @@ export default class BusinessHours {
 
   public refresh(): void {
     this.currentDate = this.getCurrentLocalBusinessTime();
-    console.log(this.currentDate);
     if (
       this.currentDate.getDate() >
         this.schedule[this.currentDay].getDateObject().getDate() ||
