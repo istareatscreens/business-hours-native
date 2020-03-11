@@ -44,7 +44,7 @@ export default class BusinessHours {
   private generateDayInfoObject(day: Day): DayInfo {
     return {
       Name: day.getDayName(),
-      Alias: day.getDayAlias(),
+      altName: day.getDayAltName(),
       HolidayName: day.getHolidayName(),
       isHoliday: day.isHoliday(),
       isClosed: day.getHours().length === 0 ? true : false,

@@ -113,7 +113,7 @@ export default class Day implements DayObject {
     return this.deepCopyHours(this.data.Hours);
   }
 
-  public getDayAlias(): string {
+  public getDayAltName(): string {
     return this.data.Name;
   }
 

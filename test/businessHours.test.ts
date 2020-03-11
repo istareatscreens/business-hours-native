@@ -13,12 +13,7 @@ import {
 import BusinessHours from "../src/businessHours";
 
 describe("#buisnessHours", function() {
-  //init class
   let clock: any;
-
-  // it("should return data object", function() {
-  //   expect(JSON.stringify(bH.getRawData())).equal(JSON.stringify(jsondata));
-  // });
 
   buisnessHoursTestObj(jsondata).forEach(
     ({

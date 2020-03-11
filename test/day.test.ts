@@ -11,7 +11,7 @@ describe("#Day", function() {
       testObject: dayObject,
       fixedDate,
       isHoliday,
-      dayAlias,
+      dayaltName,
       hours,
       dayName,
       holidayName,
@@ -34,8 +34,8 @@ describe("#Day", function() {
           expect(dayObject.isHoliday()).equal(isHoliday);
         });
 
-        it("should return day Alias", function() {
-          expect(dayObject.getDayAlias()).equal(dayAlias);
+        it("should return day altName", function() {
+          expect(dayObject.getDayAltName()).equal(dayaltName);
         });
 
         it("should return day hours", function() {

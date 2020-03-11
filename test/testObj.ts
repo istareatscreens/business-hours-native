@@ -15,7 +15,7 @@ export const dayTestObject = jsonTemplate => [
     dayDataObject: jsonTemplate.Day["Thursday"],
     hours: jsonTemplate.Day["Thursday"].Hours,
     holidayName: "",
-    dayAlias: jsonTemplate.Day["Thursday"].Name,
+    dayaltName: jsonTemplate.Day["Thursday"].Name,
     openStatus: true,
     openDateObj: new Date(2010, 1, 20, 11, 20, 20)
   },
@@ -34,7 +34,7 @@ export const dayTestObject = jsonTemplate => [
     dayDataObject: jsonTemplate.Day["Sunday"],
     hours: jsonTemplate.Day["Sunday"].Hours,
     holidayName: "",
-    dayAlias: jsonTemplate.Day["Sunday"].Name,
+    dayaltName: jsonTemplate.Day["Sunday"].Name,
     openStatus: false,
     openDateObj: new Date(2020, 2, 8, 12, 20, 20)
   },
@@ -53,7 +53,7 @@ export const dayTestObject = jsonTemplate => [
     dayDataObject: jsonTemplate.Day["Saturday"],
     hours: [],
     holidayName: "",
-    dayAlias: jsonTemplate.Day["Saturday"].Name,
+    dayaltName: jsonTemplate.Day["Saturday"].Name,
     openStatus: false,
     openDateObj: new Date(2020, 2, 7, 12, 20, 20)
   },
@@ -71,7 +71,7 @@ export const dayTestObject = jsonTemplate => [
     dayDataObject: jsonTemplate.Day["Friday"],
     hours: jsonTemplate.Holidays[12][0].Hours,
     holidayName: "Christmas",
-    dayAlias: jsonTemplate.Day["Friday"].Name,
+    dayaltName: jsonTemplate.Day["Friday"].Name,
     openStatus: true,
     openDateObj: new Date(2020, 11, 25, 4, 30, 20)
   },
@@ -90,7 +90,7 @@ export const dayTestObject = jsonTemplate => [
     dayDataObject: jsonTemplate.Day["Sunday"],
     hours: jsonTemplate.Holidays[4][0].Hours,
     holidayName: "Easter",
-    dayAlias: jsonTemplate.Day["Sunday"].Name,
+    dayaltName: jsonTemplate.Day["Sunday"].Name,
     openStatus: false,
     openDateObj: new Date(2020, 3, 12, 20, 20, 20)
   },
@@ -109,7 +109,7 @@ export const dayTestObject = jsonTemplate => [
     dayDataObject: jsonTemplate.Day["Tuesday"],
     hours: jsonTemplate.Day["Tuesday"].Hours,
     holidayName: "",
-    dayAlias: jsonTemplate.Day["Tuesday"].Name,
+    dayaltName: jsonTemplate.Day["Tuesday"].Name,
     openStatus: false,
     openDateObj: new Date(2020, 3, 21, 9, 10, 10)
   },
@@ -128,7 +128,7 @@ export const dayTestObject = jsonTemplate => [
     dayDataObject: jsonTemplate.Day["Tuesday"],
     hours: jsonTemplate.Day["Tuesday"].Hours,
     holidayName: "",
-    dayAlias: jsonTemplate.Day["Tuesday"].Name,
+    dayaltName: jsonTemplate.Day["Tuesday"].Name,
     openStatus: false,
     openDateObj: new Date(2020, 3, 21, 15, 10, 10)
   },
@@ -147,7 +147,7 @@ export const dayTestObject = jsonTemplate => [
     dayDataObject: jsonTemplate.Day["Tuesday"],
     hours: jsonTemplate.Day["Tuesday"].Hours,
     holidayName: "",
-    dayAlias: jsonTemplate.Day["Tuesday"].Name,
+    dayaltName: jsonTemplate.Day["Tuesday"].Name,
     openStatus: true,
     openDateObj: new Date(2020, 3, 21, 11, 10, 10)
   },
@@ -166,7 +166,7 @@ export const dayTestObject = jsonTemplate => [
     dayDataObject: jsonTemplate.Day["Monday"],
     hours: jsonTemplate.Holidays[9][0].Hours,
     holidayName: "Labour Day",
-    dayAlias: jsonTemplate.Day["Monday"].Name,
+    dayaltName: jsonTemplate.Day["Monday"].Name,
     openStatus: true,
     openDateObj: new Date(2020, 8, 7, 12, 10, 10)
   },
@@ -184,7 +184,7 @@ export const dayTestObject = jsonTemplate => [
     dayDataObject: jsonTemplate.Day["Wednesday"],
     hours: jsonTemplate.Day["Wednesday"].Hours,
     holidayName: "",
-    dayAlias: jsonTemplate.Day["Wednesday"].Name,
+    dayaltName: jsonTemplate.Day["Wednesday"].Name,
     openStatus: true,
     openDateObj: new Date(2020, 1, 19, 20, 20, 20)
   },
@@ -202,7 +202,7 @@ export const dayTestObject = jsonTemplate => [
     dayDataObject: jsonTemplate.Day["Monday"],
     hours: jsonTemplate.Day["Monday"].Hours,
     holidayName: "",
-    dayAlias: jsonTemplate.Day["Monday"].Name,
+    dayaltName: jsonTemplate.Day["Monday"].Name,
     openStatus: true,
     openDateObj: new Date(2020, 1, 24, 20, 20, 20)
   }
@@ -214,7 +214,7 @@ export const buisnessHoursTestObj = jsondata => [
     dateObj: new Date(2020, 2, 1),
     currentDayInfo: {
       Name: "Sunday",
-      Alias: "Sun",
+      altName: "Sun",
       HolidayName: "",
       isHoliday: false,
       isClosed: true,
@@ -232,7 +232,7 @@ export const buisnessHoursTestObj = jsondata => [
     schedule: [
       {
         Name: "Sunday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -249,7 +249,7 @@ export const buisnessHoursTestObj = jsondata => [
       },
       {
         Name: "Monday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -275,7 +275,7 @@ export const buisnessHoursTestObj = jsondata => [
       },
       {
         Name: "Tuesday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -301,7 +301,7 @@ export const buisnessHoursTestObj = jsondata => [
       },
       {
         Name: "Wednesday",
-        Alias: "Wed",
+        altName: "Wed",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -327,7 +327,7 @@ export const buisnessHoursTestObj = jsondata => [
       },
       {
         Name: "Thursday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -353,7 +353,7 @@ export const buisnessHoursTestObj = jsondata => [
       },
       {
         Name: "Friday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -379,7 +379,7 @@ export const buisnessHoursTestObj = jsondata => [
       },
       {
         Name: "Saturday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -406,7 +406,7 @@ export const buisnessHoursTestObj = jsondata => [
     dateObj: new Date(2020, 11, 25, 4, 0),
     currentDayInfo: {
       Name: "Friday",
-      Alias: "Sun",
+      altName: "Sun",
       HolidayName: "Christmas",
       isHoliday: true,
       isClosed: false,
@@ -424,7 +424,7 @@ export const buisnessHoursTestObj = jsondata => [
     schedule: [
       {
         Name: "Friday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "Christmas",
         isHoliday: true,
         isClosed: false,
@@ -441,7 +441,7 @@ export const buisnessHoursTestObj = jsondata => [
       },
       {
         Name: "Saturday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -458,7 +458,7 @@ export const buisnessHoursTestObj = jsondata => [
       },
       {
         Name: "Sunday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -475,7 +475,7 @@ export const buisnessHoursTestObj = jsondata => [
       },
       {
         Name: "Monday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -501,7 +501,7 @@ export const buisnessHoursTestObj = jsondata => [
       },
       {
         Name: "Tuesday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -527,7 +527,7 @@ export const buisnessHoursTestObj = jsondata => [
       },
       {
         Name: "Wednesday",
-        Alias: "Wed",
+        altName: "Wed",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -553,7 +553,7 @@ export const buisnessHoursTestObj = jsondata => [
       },
       {
         Name: "Thursday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -604,7 +604,7 @@ export const buisnessHoursTestDynamicObj = [
     dateObj: date[0],
     currentDayInfo: {
       Name: "Friday",
-      Alias: "Sun",
+      altName: "Sun",
       HolidayName: "",
       isHoliday: false,
       isClosed: false,
@@ -631,7 +631,7 @@ export const buisnessHoursTestDynamicObj = [
     schedule: [
       {
         Name: "Sunday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -648,7 +648,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Monday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -674,7 +674,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Tuesday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -700,7 +700,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Wednesday",
-        Alias: "Wed",
+        altName: "Wed",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -726,7 +726,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Thursday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -752,7 +752,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Friday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -778,7 +778,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Saturday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -805,7 +805,7 @@ export const buisnessHoursTestDynamicObj = [
     dateObj: date[1],
     currentDayInfo: {
       Name: "Saturday",
-      Alias: "Sun",
+      altName: "Sun",
       HolidayName: "",
       isHoliday: false,
       isClosed: true,
@@ -823,7 +823,7 @@ export const buisnessHoursTestDynamicObj = [
     schedule: [
       {
         Name: "Sunday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -840,7 +840,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Monday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -866,7 +866,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Tuesday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -892,7 +892,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Wednesday",
-        Alias: "Wed",
+        altName: "Wed",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -918,7 +918,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Thursday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -944,7 +944,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Friday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -970,7 +970,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Saturday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -998,7 +998,7 @@ export const buisnessHoursTestDynamicObj = [
     dateObj: date[2],
     currentDayInfo: {
       Name: "Sunday",
-      Alias: "Sun",
+      altName: "Sun",
       HolidayName: "",
       isHoliday: false,
       isClosed: true,
@@ -1016,7 +1016,7 @@ export const buisnessHoursTestDynamicObj = [
     schedule: [
       {
         Name: "Sunday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -1033,7 +1033,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Monday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -1059,7 +1059,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Tuesday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -1085,7 +1085,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Wednesday",
-        Alias: "Wed",
+        altName: "Wed",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -1111,7 +1111,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Thursday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -1137,7 +1137,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Friday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -1163,7 +1163,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Saturday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -1191,7 +1191,7 @@ export const buisnessHoursTestDynamicObj = [
     dateObj: date[3],
     currentDayInfo: {
       Name: "Monday",
-      Alias: "Sun",
+      altName: "Sun",
       HolidayName: "",
       isHoliday: false,
       isClosed: false,
@@ -1218,7 +1218,7 @@ export const buisnessHoursTestDynamicObj = [
     schedule: [
       {
         Name: "Sunday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -1235,7 +1235,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Monday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -1261,7 +1261,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Tuesday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -1287,7 +1287,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Wednesday",
-        Alias: "Wed",
+        altName: "Wed",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -1313,7 +1313,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Thursday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -1339,7 +1339,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Friday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -1365,7 +1365,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Saturday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -1393,7 +1393,7 @@ export const buisnessHoursTestDynamicObj = [
     dateObj: date[4],
     currentDayInfo: {
       Name: "Tuesday",
-      Alias: "Sun",
+      altName: "Sun",
       HolidayName: "",
       isHoliday: false,
       isClosed: false,
@@ -1420,7 +1420,7 @@ export const buisnessHoursTestDynamicObj = [
     schedule: [
       {
         Name: "Sunday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -1437,7 +1437,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Monday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -1463,7 +1463,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Tuesday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -1489,7 +1489,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Wednesday",
-        Alias: "Wed",
+        altName: "Wed",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -1515,7 +1515,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Thursday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -1541,7 +1541,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Friday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -1567,7 +1567,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Saturday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -1595,7 +1595,7 @@ export const buisnessHoursTestDynamicObj = [
     dateObj: date[5],
     currentDayInfo: {
       Name: "Wednesday",
-      Alias: "Wed",
+      altName: "Wed",
       HolidayName: "",
       isHoliday: false,
       isClosed: false,
@@ -1622,7 +1622,7 @@ export const buisnessHoursTestDynamicObj = [
     schedule: [
       {
         Name: "Sunday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -1639,7 +1639,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Monday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -1665,7 +1665,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Tuesday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -1691,7 +1691,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Wednesday",
-        Alias: "Wed",
+        altName: "Wed",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -1717,7 +1717,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Thursday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -1743,7 +1743,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Friday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -1769,7 +1769,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Saturday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -1797,7 +1797,7 @@ export const buisnessHoursTestDynamicObj = [
     dateObj: date[6],
     currentDayInfo: {
       Name: "Thursday",
-      Alias: "Sun",
+      altName: "Sun",
       HolidayName: "",
       isHoliday: false,
       isClosed: false,
@@ -1824,7 +1824,7 @@ export const buisnessHoursTestDynamicObj = [
     schedule: [
       {
         Name: "Sunday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -1841,7 +1841,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Monday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -1867,7 +1867,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Tuesday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -1893,7 +1893,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Wednesday",
-        Alias: "Wed",
+        altName: "Wed",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -1919,7 +1919,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Thursday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -1945,7 +1945,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Friday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -1971,7 +1971,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Saturday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -1999,7 +1999,7 @@ export const buisnessHoursTestDynamicObj = [
     dateObj: date[7],
     currentDayInfo: {
       Name: "Friday",
-      Alias: "Sun",
+      altName: "Sun",
       HolidayName: "",
       isHoliday: false,
       isClosed: false,
@@ -2026,7 +2026,7 @@ export const buisnessHoursTestDynamicObj = [
     schedule: [
       {
         Name: "Sunday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -2043,7 +2043,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Monday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -2069,7 +2069,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Tuesday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -2095,7 +2095,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Wednesday",
-        Alias: "Wed",
+        altName: "Wed",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -2121,7 +2121,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Thursday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -2147,7 +2147,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Friday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -2173,7 +2173,7 @@ export const buisnessHoursTestDynamicObj = [
       },
       {
         Name: "Saturday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -2215,7 +2215,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
     dateObj: dateShifted[0],
     currentDayInfo: {
       Name: "Wednesday",
-      Alias: "Wed",
+      altName: "Wed",
       HolidayName: "",
       isHoliday: false,
       isClosed: false,
@@ -2242,7 +2242,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
     schedule: [
       {
         Name: "Wednesday",
-        Alias: "Wed",
+        altName: "Wed",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -2268,7 +2268,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Thursday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -2294,7 +2294,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Friday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -2320,7 +2320,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Saturday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -2337,7 +2337,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Sunday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -2354,7 +2354,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Monday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -2380,7 +2380,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Tuesday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -2416,7 +2416,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
     dateObj: dateShifted[1],
     currentDayInfo: {
       Name: "Thursday",
-      Alias: "Sun",
+      altName: "Sun",
       HolidayName: "",
       isHoliday: false,
       isClosed: false,
@@ -2443,7 +2443,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
     schedule: [
       {
         Name: "Thursday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -2469,7 +2469,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Friday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -2495,7 +2495,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Saturday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -2512,7 +2512,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Sunday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -2529,7 +2529,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Monday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -2555,7 +2555,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Tuesday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -2581,7 +2581,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Wednesday",
-        Alias: "Wed",
+        altName: "Wed",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -2617,7 +2617,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
     dateObj: dateShifted[2],
     currentDayInfo: {
       Name: "Friday",
-      Alias: "Sun",
+      altName: "Sun",
       HolidayName: "",
       isHoliday: false,
       isClosed: false,
@@ -2644,7 +2644,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
     schedule: [
       {
         Name: "Friday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -2670,7 +2670,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Saturday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -2687,7 +2687,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Sunday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -2704,7 +2704,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Monday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -2730,7 +2730,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Tuesday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -2756,7 +2756,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Wednesday",
-        Alias: "Wed",
+        altName: "Wed",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -2782,7 +2782,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Thursday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -2818,7 +2818,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
     dateObj: dateShifted[3],
     currentDayInfo: {
       Name: "Saturday",
-      Alias: "Sun",
+      altName: "Sun",
       HolidayName: "",
       isHoliday: false,
       isClosed: true,
@@ -2836,7 +2836,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
     schedule: [
       {
         Name: "Saturday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -2853,7 +2853,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Sunday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -2870,7 +2870,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Monday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -2896,7 +2896,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Tuesday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -2922,7 +2922,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Wednesday",
-        Alias: "Wed",
+        altName: "Wed",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -2948,7 +2948,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Thursday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -2974,7 +2974,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Friday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -3010,7 +3010,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
     dateObj: dateShifted[4],
     currentDayInfo: {
       Name: "Sunday",
-      Alias: "Sun",
+      altName: "Sun",
       HolidayName: "",
       isHoliday: false,
       isClosed: true,
@@ -3028,7 +3028,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
     schedule: [
       {
         Name: "Sunday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -3045,7 +3045,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Monday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -3071,7 +3071,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Tuesday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -3097,7 +3097,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Wednesday",
-        Alias: "Wed",
+        altName: "Wed",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -3123,7 +3123,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Thursday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -3149,7 +3149,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Friday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -3175,7 +3175,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Saturday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -3202,7 +3202,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
     dateObj: dateShifted[5],
     currentDayInfo: {
       Name: "Monday",
-      Alias: "Sun",
+      altName: "Sun",
       HolidayName: "",
       isHoliday: false,
       isClosed: false,
@@ -3229,7 +3229,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
     schedule: [
       {
         Name: "Monday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -3255,7 +3255,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Tuesday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -3281,7 +3281,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Wednesday",
-        Alias: "Wed",
+        altName: "Wed",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -3307,7 +3307,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Thursday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -3333,7 +3333,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Friday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -3359,7 +3359,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Saturday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -3376,7 +3376,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Sunday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -3403,7 +3403,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
     dateObj: dateShifted[6],
     currentDayInfo: {
       Name: "Tuesday",
-      Alias: "Sun",
+      altName: "Sun",
       HolidayName: "",
       isHoliday: false,
       isClosed: false,
@@ -3430,7 +3430,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
     schedule: [
       {
         Name: "Tuesday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -3456,7 +3456,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Wednesday",
-        Alias: "Wed",
+        altName: "Wed",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -3482,7 +3482,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Thursday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -3508,7 +3508,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Friday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -3534,7 +3534,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Saturday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -3551,7 +3551,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Sunday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -3568,7 +3568,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Monday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -3604,7 +3604,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
     dateObj: dateShifted[7],
     currentDayInfo: {
       Name: "Wednesday",
-      Alias: "Wed",
+      altName: "Wed",
       HolidayName: "",
       isHoliday: false,
       isClosed: false,
@@ -3631,7 +3631,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
     schedule: [
       {
         Name: "Wednesday",
-        Alias: "Wed",
+        altName: "Wed",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -3657,7 +3657,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Thursday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -3683,7 +3683,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Friday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -3709,7 +3709,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Saturday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -3726,7 +3726,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Sunday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -3743,7 +3743,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Monday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -3769,7 +3769,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Tuesday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -3805,7 +3805,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
     dateObj: dateShifted[8],
     currentDayInfo: {
       Name: "Thursday",
-      Alias: "Sun",
+      altName: "Sun",
       HolidayName: "",
       isHoliday: false,
       isClosed: false,
@@ -3832,7 +3832,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
     schedule: [
       {
         Name: "Thursday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -3858,7 +3858,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Friday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -3884,7 +3884,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Saturday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -3901,7 +3901,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Sunday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -3918,7 +3918,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Monday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -3944,7 +3944,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Tuesday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -3970,7 +3970,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       },
       {
         Name: "Wednesday",
-        Alias: "Wed",
+        altName: "Wed",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -4009,7 +4009,7 @@ export const buisnessHoursTimeZoneTestObj = jsondata => [
     dateObj: new Date(2017, 11, 25, 4, 0),
     currentDayInfo: {
       Name: "Monday",
-      Alias: "Sun",
+      altName: "Sun",
       HolidayName: "Christmas",
       isHoliday: true,
       isClosed: false,
@@ -4027,7 +4027,7 @@ export const buisnessHoursTimeZoneTestObj = jsondata => [
     schedule: [
       {
         Name: "Monday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "Christmas",
         isHoliday: true,
         isClosed: false,
@@ -4045,7 +4045,7 @@ export const buisnessHoursTimeZoneTestObj = jsondata => [
 
       {
         Name: "Tuesday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -4071,7 +4071,7 @@ export const buisnessHoursTimeZoneTestObj = jsondata => [
       },
       {
         Name: "Wednesday",
-        Alias: "Wed",
+        altName: "Wed",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -4097,7 +4097,7 @@ export const buisnessHoursTimeZoneTestObj = jsondata => [
       },
       {
         Name: "Thursday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -4123,7 +4123,7 @@ export const buisnessHoursTimeZoneTestObj = jsondata => [
       },
       {
         Name: "Friday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -4149,7 +4149,7 @@ export const buisnessHoursTimeZoneTestObj = jsondata => [
       },
       {
         Name: "Saturday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -4166,7 +4166,7 @@ export const buisnessHoursTimeZoneTestObj = jsondata => [
       },
       {
         Name: "Sunday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -4194,7 +4194,7 @@ export const buisnessHoursTimeZoneTestObj = jsondata => [
     dateObj: new Date(2017, 11, 25, 4, 0),
     currentDayInfo: {
       Name: "Monday",
-      Alias: "Sun",
+      altName: "Sun",
       HolidayName: "Christmas",
       isHoliday: true,
       isClosed: false,
@@ -4212,7 +4212,7 @@ export const buisnessHoursTimeZoneTestObj = jsondata => [
     schedule: [
       {
         Name: "Monday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "Christmas",
         isHoliday: true,
         isClosed: false,
@@ -4229,7 +4229,7 @@ export const buisnessHoursTimeZoneTestObj = jsondata => [
       },
       {
         Name: "Tuesday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -4255,7 +4255,7 @@ export const buisnessHoursTimeZoneTestObj = jsondata => [
       },
       {
         Name: "Wednesday",
-        Alias: "Wed",
+        altName: "Wed",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -4281,7 +4281,7 @@ export const buisnessHoursTimeZoneTestObj = jsondata => [
       },
       {
         Name: "Thursday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -4307,7 +4307,7 @@ export const buisnessHoursTimeZoneTestObj = jsondata => [
       },
       {
         Name: "Friday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -4333,7 +4333,7 @@ export const buisnessHoursTimeZoneTestObj = jsondata => [
       },
       {
         Name: "Saturday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -4350,7 +4350,7 @@ export const buisnessHoursTimeZoneTestObj = jsondata => [
       },
       {
         Name: "Sunday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -4378,7 +4378,7 @@ export const buisnessHoursTimeZoneTestObj = jsondata => [
     dateObj: new Date(2017, 11, 25, 4, 0),
     currentDayInfo: {
       Name: "Monday",
-      Alias: "Sun",
+      altName: "Sun",
       HolidayName: "Christmas",
       isHoliday: true,
       isClosed: false,
@@ -4396,7 +4396,7 @@ export const buisnessHoursTimeZoneTestObj = jsondata => [
     schedule: [
       {
         Name: "Monday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "Christmas",
         isHoliday: true,
         isClosed: false,
@@ -4413,7 +4413,7 @@ export const buisnessHoursTimeZoneTestObj = jsondata => [
       },
       {
         Name: "Tuesday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -4439,7 +4439,7 @@ export const buisnessHoursTimeZoneTestObj = jsondata => [
       },
       {
         Name: "Wednesday",
-        Alias: "Wed",
+        altName: "Wed",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -4465,7 +4465,7 @@ export const buisnessHoursTimeZoneTestObj = jsondata => [
       },
       {
         Name: "Thursday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -4491,7 +4491,7 @@ export const buisnessHoursTimeZoneTestObj = jsondata => [
       },
       {
         Name: "Friday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: false,
@@ -4517,7 +4517,7 @@ export const buisnessHoursTimeZoneTestObj = jsondata => [
       },
       {
         Name: "Saturday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,
@@ -4534,7 +4534,7 @@ export const buisnessHoursTimeZoneTestObj = jsondata => [
       },
       {
         Name: "Sunday",
-        Alias: "Sun",
+        altName: "Sun",
         HolidayName: "",
         isHoliday: false,
         isClosed: true,

@@ -33,7 +33,7 @@ type HolidayMonthsData = {
 
 interface DayInfo {
   Name: WeekdayName;
-  Alias: string;
+  altName: string;
   HolidayName: string;
   isHoliday: boolean;
   isClosed: boolean;
@@ -63,7 +63,7 @@ interface DataObject {
 
 interface DayObject {
   getHours: () => HoursRange[];
-  getDayAlias: () => string;
+  getDayAltName: () => string;
   getHolidayName: () => string;
   isHoliday: () => boolean;
   getDateObject: () => Date;
