@@ -1,7 +1,7 @@
 {
   "name": "business-hours-native",
   "version": "1.0.0",
-  "description": "Native JavaScript business hour handler",
+  "description": "Native JavaScript business hour and schdule handler",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
