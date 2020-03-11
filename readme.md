@@ -7,7 +7,7 @@ This package provides a way to report a schedule of business hours and open stat
 ## Features:
 
 - Times reported are localized to the business using [UTC corrections](https://earthsky.org/astronomy-essentials/universal-time)
-- Shifting schedule where the first day of week is always the current day and fixed scheduling where Sunday is the first day and Saturday is the last
+- Shifting schedule where the first day of the week is always the current day and fixed scheduling where Sunday is the first day of the week and Saturday is the last day of the week
 - Dynamic time and scheduling adjustments by calling the refresh() function
 - Holiday hours - including support for reoccurring fixed week and named day of the week (e.g. Labour Day), and fixed date of the month holidays (e.g. Christmas)
 - Day alternative names for language support
