@@ -29,7 +29,7 @@ describe("#buisnessHours", function() {
     }) =>
       context("With testobject having: " + description, () => {
         beforeEach(() => {
-          clock = sinon.useFakeTimers(dateObj.getTime());
+          clock = sinon.useFakeTimers(currentDayInfo.dateObj.getTime());
         });
 
         this.afterEach(() => {
@@ -105,7 +105,7 @@ describe("#buisnessHours", function() {
     }) =>
       context("Dynamic With testobject having: " + description, () => {
         beforeEach(() => {
-          clock = sinon.useFakeTimers(dateObj.getTime());
+          clock = sinon.useFakeTimers(currentDayInfo.dateObj.getTime());
         });
 
         this.afterEach(() => {
@@ -186,7 +186,7 @@ describe("#buisnessHours", function() {
     }) =>
       context("Dynamic With testobject having: " + description, () => {
         beforeEach(() => {
-          clock = sinon.useFakeTimers(dateObj.getTime());
+          clock = sinon.useFakeTimers(currentDayInfo.dateObj.getTime());
         });
 
         this.afterEach(() => {
@@ -258,7 +258,7 @@ describe("#buisnessHours", function() {
           timezone_mock.register(timezone);
 
           beforeEach(() => {
-            clock = sinon.useFakeTimers(dateObj.getTime());
+            clock = sinon.useFakeTimers(currentDayInfo.dateObj.getTime());
           });
 
           this.afterEach(() => {
