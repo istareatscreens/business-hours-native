@@ -4002,3 +4002,559 @@ export const buisnessHoursTestDynamicShiftedObj = [
     isOpen: false
   }
 ];
+
+export const buisnessHoursTimeZoneTestObj = jsondata => [
+  {
+    description: "Holiday Week Christmas timezone, open, shifted",
+    dateObj: new Date(2017, 11, 25, 4, 0),
+    currentDayInfo: {
+      Name: "Monday",
+      Alias: "Sun",
+      HolidayName: "Christmas",
+      isHoliday: true,
+      isClosed: false,
+      isCurrentDay: true,
+      Hours: jsondata.Holidays[12][0].Hours,
+      dateObj: new Date(
+        new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
+        new Date(2017, 11, 25, 4, 0).getUTCMonth(),
+        new Date(2017, 11, 25, 4, 0).getUTCDate() + 0,
+        new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
+        new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
+        new Date(2017, 11, 25, 4, 0).getUTCSeconds()
+      )
+    },
+    schedule: [
+      {
+        Name: "Monday",
+        Alias: "Sun",
+        HolidayName: "Christmas",
+        isHoliday: true,
+        isClosed: false,
+        isCurrentDay: true,
+        Hours: [{ from: "03:00", to: "05:00" }],
+        dateObj: new Date(
+          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
+          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
+          new Date(2017, 11, 25, 4, 0).getUTCDate(),
+          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
+          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
+          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
+        )
+      },
+
+      {
+        Name: "Tuesday",
+        Alias: "Sun",
+        HolidayName: "",
+        isHoliday: false,
+        isClosed: false,
+        isCurrentDay: false,
+        Hours: [
+          {
+            from: "10:00",
+            to: "13:30"
+          },
+          {
+            from: "18:00",
+            to: "22:00"
+          }
+        ],
+        dateObj: new Date(
+          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
+          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
+          new Date(2017, 11, 25, 4, 0).getUTCDate() + 1,
+          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
+          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
+          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
+        )
+      },
+      {
+        Name: "Wednesday",
+        Alias: "Wed",
+        HolidayName: "",
+        isHoliday: false,
+        isClosed: false,
+        isCurrentDay: false,
+        Hours: [
+          {
+            from: "10:00",
+            to: "13:30"
+          },
+          {
+            from: "18:00",
+            to: "22:00"
+          }
+        ],
+        dateObj: new Date(
+          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
+          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
+          new Date(2017, 11, 25, 4, 0).getUTCDate() + 2,
+          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
+          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
+          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
+        )
+      },
+      {
+        Name: "Thursday",
+        Alias: "Sun",
+        HolidayName: "",
+        isHoliday: false,
+        isClosed: false,
+        isCurrentDay: false,
+        Hours: [
+          {
+            from: "10:00",
+            to: "13:30"
+          },
+          {
+            from: "18:00",
+            to: "22:00"
+          }
+        ],
+        dateObj: new Date(
+          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
+          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
+          new Date(2017, 11, 25, 4, 0).getUTCDate() + 3,
+          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
+          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
+          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
+        )
+      },
+      {
+        Name: "Friday",
+        Alias: "Sun",
+        HolidayName: "",
+        isHoliday: false,
+        isClosed: false,
+        isCurrentDay: false,
+        Hours: [
+          {
+            from: "10:00",
+            to: "13:30"
+          },
+          {
+            from: "18:00",
+            to: "22:00"
+          }
+        ],
+        dateObj: new Date(
+          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
+          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
+          new Date(2017, 11, 25, 4, 0).getUTCDate() + 4,
+          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
+          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
+          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
+        )
+      },
+      {
+        Name: "Saturday",
+        Alias: "Sun",
+        HolidayName: "",
+        isHoliday: false,
+        isClosed: true,
+        isCurrentDay: false,
+        Hours: [],
+        dateObj: new Date(
+          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
+          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
+          new Date(2017, 11, 25, 4, 0).getUTCDate() + 5,
+          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
+          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
+          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
+        )
+      },
+      {
+        Name: "Sunday",
+        Alias: "Sun",
+        HolidayName: "",
+        isHoliday: false,
+        isClosed: true,
+        isCurrentDay: false,
+        Hours: [],
+        dateObj: new Date(
+          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
+          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
+          new Date(2017, 11, 25, 4, 0).getUTCDate() + 6,
+          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
+          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
+          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
+        )
+      }
+    ],
+    shifted: true,
+    indexCD: 0,
+    holidayName: "Christmas",
+    isHoliday: true,
+    isOpen: true,
+    timezone: "Brazil/East"
+  },
+  {
+    description: "Holiday Week Christmas timezone, open, shifted",
+    dateObj: new Date(2017, 11, 25, 4, 0),
+    currentDayInfo: {
+      Name: "Monday",
+      Alias: "Sun",
+      HolidayName: "Christmas",
+      isHoliday: true,
+      isClosed: false,
+      isCurrentDay: true,
+      Hours: jsondata.Holidays[12][0].Hours,
+      dateObj: new Date(
+        new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
+        new Date(2017, 11, 25, 4, 0).getUTCMonth(),
+        new Date(2017, 11, 25, 4, 0).getUTCDate() + 0,
+        new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
+        new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
+        new Date(2017, 11, 25, 4, 0).getUTCSeconds()
+      )
+    },
+    schedule: [
+      {
+        Name: "Monday",
+        Alias: "Sun",
+        HolidayName: "Christmas",
+        isHoliday: true,
+        isClosed: false,
+        isCurrentDay: true,
+        Hours: [{ from: "03:00", to: "05:00" }],
+        dateObj: new Date(
+          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
+          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
+          new Date(2017, 11, 25, 4, 0).getUTCDate(),
+          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
+          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
+          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
+        )
+      },
+      {
+        Name: "Tuesday",
+        Alias: "Sun",
+        HolidayName: "",
+        isHoliday: false,
+        isClosed: false,
+        isCurrentDay: false,
+        Hours: [
+          {
+            from: "10:00",
+            to: "13:30"
+          },
+          {
+            from: "18:00",
+            to: "22:00"
+          }
+        ],
+        dateObj: new Date(
+          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
+          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
+          new Date(2017, 11, 25, 4, 0).getUTCDate() + 1,
+          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
+          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
+          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
+        )
+      },
+      {
+        Name: "Wednesday",
+        Alias: "Wed",
+        HolidayName: "",
+        isHoliday: false,
+        isClosed: false,
+        isCurrentDay: false,
+        Hours: [
+          {
+            from: "10:00",
+            to: "13:30"
+          },
+          {
+            from: "18:00",
+            to: "22:00"
+          }
+        ],
+        dateObj: new Date(
+          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
+          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
+          new Date(2017, 11, 25, 4, 0).getUTCDate() + 2,
+          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
+          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
+          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
+        )
+      },
+      {
+        Name: "Thursday",
+        Alias: "Sun",
+        HolidayName: "",
+        isHoliday: false,
+        isClosed: false,
+        isCurrentDay: false,
+        Hours: [
+          {
+            from: "10:00",
+            to: "13:30"
+          },
+          {
+            from: "18:00",
+            to: "22:00"
+          }
+        ],
+        dateObj: new Date(
+          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
+          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
+          new Date(2017, 11, 25, 4, 0).getUTCDate() + 3,
+          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
+          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
+          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
+        )
+      },
+      {
+        Name: "Friday",
+        Alias: "Sun",
+        HolidayName: "",
+        isHoliday: false,
+        isClosed: false,
+        isCurrentDay: false,
+        Hours: [
+          {
+            from: "10:00",
+            to: "13:30"
+          },
+          {
+            from: "18:00",
+            to: "22:00"
+          }
+        ],
+        dateObj: new Date(
+          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
+          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
+          new Date(2017, 11, 25, 4, 0).getUTCDate() + 4,
+          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
+          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
+          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
+        )
+      },
+      {
+        Name: "Saturday",
+        Alias: "Sun",
+        HolidayName: "",
+        isHoliday: false,
+        isClosed: true,
+        isCurrentDay: false,
+        Hours: [],
+        dateObj: new Date(
+          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
+          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
+          new Date(2017, 11, 25, 4, 0).getUTCDate() + 5,
+          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
+          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
+          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
+        )
+      },
+      {
+        Name: "Sunday",
+        Alias: "Sun",
+        HolidayName: "",
+        isHoliday: false,
+        isClosed: true,
+        isCurrentDay: false,
+        Hours: [],
+        dateObj: new Date(
+          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
+          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
+          new Date(2017, 11, 25, 4, 0).getUTCDate() + 6,
+          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
+          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
+          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
+        )
+      }
+    ],
+    shifted: true,
+    indexCD: 0,
+    holidayName: "Christmas",
+    isHoliday: true,
+    isOpen: true,
+    timezone: "Europe/London"
+  },
+  {
+    description: "Holiday Week Christmas timezone, open, shifted",
+    dateObj: new Date(2017, 11, 25, 4, 0),
+    currentDayInfo: {
+      Name: "Monday",
+      Alias: "Sun",
+      HolidayName: "Christmas",
+      isHoliday: true,
+      isClosed: false,
+      isCurrentDay: true,
+      Hours: jsondata.Holidays[12][0].Hours,
+      dateObj: new Date(
+        new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
+        new Date(2017, 11, 25, 4, 0).getUTCMonth(),
+        new Date(2017, 11, 25, 4, 0).getUTCDate() + 0,
+        new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
+        new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
+        new Date(2017, 11, 25, 4, 0).getUTCSeconds()
+      )
+    },
+    schedule: [
+      {
+        Name: "Monday",
+        Alias: "Sun",
+        HolidayName: "Christmas",
+        isHoliday: true,
+        isClosed: false,
+        isCurrentDay: true,
+        Hours: [{ from: "03:00", to: "05:00" }],
+        dateObj: new Date(
+          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
+          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
+          new Date(2017, 11, 25, 4, 0).getUTCDate(),
+          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
+          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
+          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
+        )
+      },
+      {
+        Name: "Tuesday",
+        Alias: "Sun",
+        HolidayName: "",
+        isHoliday: false,
+        isClosed: false,
+        isCurrentDay: false,
+        Hours: [
+          {
+            from: "10:00",
+            to: "13:30"
+          },
+          {
+            from: "18:00",
+            to: "22:00"
+          }
+        ],
+        dateObj: new Date(
+          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
+          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
+          new Date(2017, 11, 25, 4, 0).getUTCDate() + 1,
+          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
+          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
+          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
+        )
+      },
+      {
+        Name: "Wednesday",
+        Alias: "Wed",
+        HolidayName: "",
+        isHoliday: false,
+        isClosed: false,
+        isCurrentDay: false,
+        Hours: [
+          {
+            from: "10:00",
+            to: "13:30"
+          },
+          {
+            from: "18:00",
+            to: "22:00"
+          }
+        ],
+        dateObj: new Date(
+          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
+          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
+          new Date(2017, 11, 25, 4, 0).getUTCDate() + 2,
+          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
+          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
+          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
+        )
+      },
+      {
+        Name: "Thursday",
+        Alias: "Sun",
+        HolidayName: "",
+        isHoliday: false,
+        isClosed: false,
+        isCurrentDay: false,
+        Hours: [
+          {
+            from: "10:00",
+            to: "13:30"
+          },
+          {
+            from: "18:00",
+            to: "22:00"
+          }
+        ],
+        dateObj: new Date(
+          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
+          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
+          new Date(2017, 11, 25, 4, 0).getUTCDate() + 3,
+          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
+          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
+          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
+        )
+      },
+      {
+        Name: "Friday",
+        Alias: "Sun",
+        HolidayName: "",
+        isHoliday: false,
+        isClosed: false,
+        isCurrentDay: false,
+        Hours: [
+          {
+            from: "10:00",
+            to: "13:30"
+          },
+          {
+            from: "18:00",
+            to: "22:00"
+          }
+        ],
+        dateObj: new Date(
+          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
+          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
+          new Date(2017, 11, 25, 4, 0).getUTCDate() + 4,
+          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
+          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
+          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
+        )
+      },
+      {
+        Name: "Saturday",
+        Alias: "Sun",
+        HolidayName: "",
+        isHoliday: false,
+        isClosed: true,
+        isCurrentDay: false,
+        Hours: [],
+        dateObj: new Date(
+          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
+          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
+          new Date(2017, 11, 25, 4, 0).getUTCDate() + 5,
+          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
+          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
+          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
+        )
+      },
+      {
+        Name: "Sunday",
+        Alias: "Sun",
+        HolidayName: "",
+        isHoliday: false,
+        isClosed: true,
+        isCurrentDay: false,
+        Hours: [],
+        dateObj: new Date(
+          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
+          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
+          new Date(2017, 11, 25, 4, 0).getUTCDate() + 6,
+          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
+          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
+          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
+        )
+      }
+    ],
+    shifted: true,
+    indexCD: 0,
+    holidayName: "Christmas",
+    isHoliday: true,
+    isOpen: true,
+    timezone: "Australia/Adelaide"
+  }
+];

@@ -1,7 +1,7 @@
 {
   "Day": {
     "Monday": {
-      "Name": "Sun",
+      "Name": "Mon",
       "Hours": [
         {
           "from": "10:00",
@@ -14,7 +14,7 @@
       ]
     },
     "Tuesday": {
-      "Name": "Sun",
+      "Name": "Tue",
       "Hours": [
         {
           "from": "10:00",
@@ -27,7 +27,7 @@
       ]
     },
     "Wednesday": {
-      "Name": "Sun",
+      "Name": "Wed",
       "Hours": [
         {
           "from": "10:00",
@@ -40,7 +40,7 @@
       ]
     },
     "Thursday": {
-      "Name": "Sun",
+      "Name": "Thu",
       "Hours": [
         {
           "from": "10:00",
@@ -53,7 +53,7 @@
       ]
     },
     "Friday": {
-      "Name": "Sun",
+      "Name": "Fri",
       "Hours": [
         {
           "from": "10:00",
@@ -66,7 +66,7 @@
       ]
     },
     "Saturday": {
-      "Name": "Sun",
+      "Name": "Sat",
       "Hours": []
     },
     "Sunday": {
@@ -76,6 +76,40 @@
   },
   "Options": { "UTCoffset": -5 },
   "Holidays": {
+    "4": [
+      {
+        "Name": "Easter",
+        "WeekNo": -1,
+        "Day": 12,
+        "Year": 2020,
+        "Hours": [
+          { "from": "1:00", "to": "10:50" },
+          { "from": "11:00", "to": "18:00" }
+        ]
+      },
+      {
+        "Name": "Easter",
+        "WeekNo": -1,
+        "Day": 21,
+        "Year": 2019,
+        "Hours": [
+          { "from": "1:50", "to": "10:50" },
+          { "from": "11:00", "to": "18:00" }
+        ]
+      }
+    ],
+    "9": [
+      {
+        "Name": "Labour Day",
+        "WeekNo": 1,
+        "Day": "Monday",
+        "Year": -1,
+        "Hours": [
+          { "from": "4:50", "to": "09:50" },
+          { "from": "11:00", "to": "18:00" }
+        ]
+      }
+    ],
     "12": [
       {
         "Name": "Christmas",
