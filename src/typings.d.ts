@@ -52,7 +52,8 @@ interface HolidayData {
 }
 
 interface OptionsData {
-  UTCoffset: number;
+  Timezone: string;
+  Format: string;
 }
 
 interface DataObject {

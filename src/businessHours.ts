@@ -3,7 +3,7 @@ import Day from "./day";
 export default class BusinessHours {
   private data: DataObject;
   private options: OptionsData;
-  private currentDate: Date;
+  private currentDate: string;
   private currentDay: number;
   private schedule: Day[];
   private shifted: boolean;
@@ -13,7 +13,7 @@ export default class BusinessHours {
     this.shifted = shifted;
     this.options = { ...data.Options };
     this.currentDate = this.getCurrentLocalBusinessTime();
-    this.currentDay = shifted ? 0 : this.currentDate.getDay();
+    this.currentDay = shifted ? 0 : new Date(this.currentDate).getDay();
     this.schedule = this.createDayObjects();
   }
 
@@ -38,7 +38,7 @@ export default class BusinessHours {
 
   private createDayObject(offset: number): Day {
     const { Day: days, Holidays: holidays } = this.data;
-    return Day.init(offset, days, this.currentDate, holidays);
+    return Day.init(offset, days, new Date(this.currentDate), holidays);
   }
 
   private generateDayInfoObject(day: Day): DayInfo {
@@ -49,7 +49,7 @@ export default class BusinessHours {
       isHoliday: day.isHoliday(),
       isClosed: day.getHours().length === 0 ? true : false,
       isCurrentDay:
-        this.currentDate.getDate() === day.getDateObject().getDate()
+        new Date(this.currentDate).getDate() === day.getDateObject().getDate()
           ? true
           : false,
       Hours: day.getHours(),
@@ -71,27 +71,21 @@ export default class BusinessHours {
     }
   }
 
-  public getCurrentLocalBusinessTime() {
-    const now = new Date();
-    const timezone = this.options.UTCoffset;
-    return new Date(
-      now.getUTCFullYear(),
-      now.getUTCMonth(),
-      now.getUTCDate(),
-      now.getUTCHours() + timezone,
-      now.getUTCMinutes(),
-      now.getUTCSeconds()
-    );
+  public getCurrentLocalBusinessTime(): string {
+    return new Date().toLocaleString(this.options.Format, {
+      timeZone: this.options.Timezone
+    });
   }
 
   public refresh(): void {
     this.currentDate = this.getCurrentLocalBusinessTime();
+    const currentDateObj = new Date(this.currentDate);
     if (
-      this.currentDate.getDate() >
+      currentDateObj.getDate() >
         this.schedule[this.currentDay].getDateObject().getDate() ||
-      this.currentDate.getMonth() >
+      currentDateObj.getMonth() >
         this.schedule[this.currentDay].getDateObject().getMonth() ||
-      this.currentDate.getFullYear() >
+      currentDateObj.getFullYear() >
         this.schedule[this.currentDay].getDateObject().getFullYear()
     ) {
       this.adjustSchedule();
@@ -122,7 +116,7 @@ export default class BusinessHours {
 
   public isOpen(): boolean {
     return this.schedule[this.currentDay].isOpen(
-      this.getCurrentLocalBusinessTime()
+      new Date(this.getCurrentLocalBusinessTime())
     );
   }
 }

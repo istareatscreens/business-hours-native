@@ -17,7 +17,7 @@ export const dayTestObject = jsonTemplate => [
     holidayName: "",
     dayaltName: jsonTemplate.Day["Thursday"].Name,
     openStatus: true,
-    openDateObj: new Date(2010, 1, 20, 11, 20, 20)
+    openDateObj: new Date(2020, 1, 20, 11, 20, 20)
   },
   {
     description:
@@ -205,13 +205,79 @@ export const dayTestObject = jsonTemplate => [
     dayaltName: jsonTemplate.Day["Monday"].Name,
     openStatus: true,
     openDateObj: new Date(2020, 1, 24, 20, 20, 20)
+  },
+  {
+    description: "11. checking open status at open time, but incorrect year",
+    testObject: day.init(
+      4,
+      jsonTemplate.Day,
+      new Date(2020, 1, 20, 20, 20, 20),
+      jsonTemplate.Holidays
+    ),
+    dayName: "Monday",
+    fixedDate: new Date(2020, 1, 24, 20, 20, 20),
+    isHoliday: false,
+    dayDataObject: jsonTemplate.Day["Monday"],
+    hours: jsonTemplate.Day["Monday"].Hours,
+    holidayName: "",
+    dayaltName: jsonTemplate.Day["Monday"].Name,
+    openStatus: false,
+    openDateObj: new Date(2021, 1, 24, 20, 20, 20)
+  },
+  {
+    description: "12. checking open status at open time, but incorrect date",
+    testObject: day.init(
+      4,
+      jsonTemplate.Day,
+      new Date(2020, 1, 20, 20, 20, 20),
+      jsonTemplate.Holidays
+    ),
+    dayName: "Monday",
+    fixedDate: new Date(2020, 1, 24, 20, 20, 20),
+    isHoliday: false,
+    dayDataObject: jsonTemplate.Day["Monday"],
+    hours: jsonTemplate.Day["Monday"].Hours,
+    holidayName: "",
+    dayaltName: jsonTemplate.Day["Monday"].Name,
+    openStatus: false,
+    openDateObj: new Date(2020, 1, 25, 20, 20, 20)
+  },
+  {
+    description: "13. checking open status at open time, but incorrect date",
+    testObject: day.init(
+      4,
+      jsonTemplate.Day,
+      new Date(2020, 1, 20, 20, 20, 20),
+      jsonTemplate.Holidays
+    ),
+    dayName: "Monday",
+    fixedDate: new Date(2020, 1, 24, 20, 20, 20),
+    isHoliday: false,
+    dayDataObject: jsonTemplate.Day["Monday"],
+    hours: jsonTemplate.Day["Monday"].Hours,
+    holidayName: "",
+    dayaltName: jsonTemplate.Day["Monday"].Name,
+    openStatus: false,
+    openDateObj: new Date(2020, 0, 24, 20, 20, 20)
   }
 ];
+
+function dateConversion(date) {
+  return new Date(
+    date.toLocaleString("en-US", {
+      timeZone: "America/New_York"
+    })
+  );
+}
 
 export const buisnessHoursTestObj = jsondata => [
   {
     description: "No Holiday Week, shifted = false",
-    dateObj: new Date(2020, 2, 1),
+    dateObj: new Date(
+      new Date(2020, 2, 1).toLocaleString("en-US", {
+        timeZone: "America/New_York"
+      })
+    ),
     currentDayInfo: {
       Name: "Sunday",
       altName: "Sun",
@@ -221,12 +287,9 @@ export const buisnessHoursTestObj = jsondata => [
       isCurrentDay: true,
       Hours: [],
       dateObj: new Date(
-        new Date(2020, 2, 1).getUTCFullYear(),
-        new Date(2020, 2, 1).getUTCMonth(),
-        new Date(2020, 2, 1).getUTCDate(),
-        new Date(2020, 2, 1).getUTCHours() - 5,
-        new Date(2020, 2, 1).getUTCMinutes(),
-        new Date(2020, 2, 1).getUTCSeconds()
+        new Date(2020, 2, 1).toLocaleString("en-US", {
+          timeZone: "America/New_York"
+        })
       )
     },
     schedule: [
@@ -239,12 +302,9 @@ export const buisnessHoursTestObj = jsondata => [
         isCurrentDay: true,
         Hours: [],
         dateObj: new Date(
-          new Date(2020, 2, 1).getUTCFullYear(),
-          new Date(2020, 2, 1).getUTCMonth(),
-          new Date(2020, 2, 1).getUTCDate() + 0,
-          new Date(2020, 2, 1).getUTCHours() - 5,
-          new Date(2020, 2, 1).getUTCMinutes(),
-          new Date(2020, 2, 1).getUTCSeconds()
+          new Date(2020, 2, 1).toLocaleString("en-US", {
+            timeZone: "America/New_York"
+          })
         )
       },
       {
@@ -265,12 +325,9 @@ export const buisnessHoursTestObj = jsondata => [
           }
         ],
         dateObj: new Date(
-          new Date(2020, 2, 1).getUTCFullYear(),
-          new Date(2020, 2, 1).getUTCMonth(),
-          new Date(2020, 2, 1).getUTCDate() + 1,
-          new Date(2020, 2, 1).getUTCHours() - 5,
-          new Date(2020, 2, 1).getUTCMinutes(),
-          new Date(2020, 2, 1).getUTCSeconds()
+          new Date(2020, 2, 2).toLocaleString("en-US", {
+            timeZone: "America/New_York"
+          })
         )
       },
       {
@@ -291,12 +348,9 @@ export const buisnessHoursTestObj = jsondata => [
           }
         ],
         dateObj: new Date(
-          new Date(2020, 2, 1).getUTCFullYear(),
-          new Date(2020, 2, 1).getUTCMonth(),
-          new Date(2020, 2, 1).getUTCDate() + 2,
-          new Date(2020, 2, 1).getUTCHours() - 5,
-          new Date(2020, 2, 1).getUTCMinutes(),
-          new Date(2020, 2, 1).getUTCSeconds()
+          new Date(2020, 2, 3).toLocaleString("en-US", {
+            timeZone: "America/New_York"
+          })
         )
       },
       {
@@ -317,12 +371,9 @@ export const buisnessHoursTestObj = jsondata => [
           }
         ],
         dateObj: new Date(
-          new Date(2020, 2, 1).getUTCFullYear(),
-          new Date(2020, 2, 1).getUTCMonth(),
-          new Date(2020, 2, 1).getUTCDate() + 3,
-          new Date(2020, 2, 1).getUTCHours() - 5,
-          new Date(2020, 2, 1).getUTCMinutes(),
-          new Date(2020, 2, 1).getUTCSeconds()
+          new Date(2020, 2, 4).toLocaleString("en-US", {
+            timeZone: "America/New_York"
+          })
         )
       },
       {
@@ -343,12 +394,9 @@ export const buisnessHoursTestObj = jsondata => [
           }
         ],
         dateObj: new Date(
-          new Date(2020, 2, 1).getUTCFullYear(),
-          new Date(2020, 2, 1).getUTCMonth(),
-          new Date(2020, 2, 1).getUTCDate() + 4,
-          new Date(2020, 2, 1).getUTCHours() - 5,
-          new Date(2020, 2, 1).getUTCMinutes(),
-          new Date(2020, 2, 1).getUTCSeconds()
+          new Date(2020, 2, 5).toLocaleString("en-US", {
+            timeZone: "America/New_York"
+          })
         )
       },
       {
@@ -369,12 +417,9 @@ export const buisnessHoursTestObj = jsondata => [
           }
         ],
         dateObj: new Date(
-          new Date(2020, 2, 1).getUTCFullYear(),
-          new Date(2020, 2, 1).getUTCMonth(),
-          new Date(2020, 2, 1).getUTCDate() + 5,
-          new Date(2020, 2, 1).getUTCHours() - 5,
-          new Date(2020, 2, 1).getUTCMinutes(),
-          new Date(2020, 2, 1).getUTCSeconds()
+          new Date(2020, 2, 6).toLocaleString("en-US", {
+            timeZone: "America/New_York"
+          })
         )
       },
       {
@@ -386,12 +431,9 @@ export const buisnessHoursTestObj = jsondata => [
         isCurrentDay: false,
         Hours: [],
         dateObj: new Date(
-          new Date(2020, 2, 1).getUTCFullYear(),
-          new Date(2020, 2, 1).getUTCMonth(),
-          new Date(2020, 2, 1).getUTCDate() + 6,
-          new Date(2020, 2, 1).getUTCHours() - 5,
-          new Date(2020, 2, 1).getUTCMinutes(),
-          new Date(2020, 2, 1).getUTCSeconds()
+          new Date(2020, 2, 7).toLocaleString("en-US", {
+            timeZone: "America/New_York"
+          })
         )
       }
     ],
@@ -403,7 +445,7 @@ export const buisnessHoursTestObj = jsondata => [
   },
   {
     description: "Holiday Week Christmas, open, shifted",
-    dateObj: new Date(2020, 11, 25, 4, 0),
+    dateObj: dateConversion(new Date(2020, 11, 25, 4, 0)),
     currentDayInfo: {
       Name: "Friday",
       altName: "Sun",
@@ -412,14 +454,7 @@ export const buisnessHoursTestObj = jsondata => [
       isClosed: false,
       isCurrentDay: true,
       Hours: jsondata.Holidays[12][0].Hours,
-      dateObj: new Date(
-        new Date(2020, 11, 25, 4, 0).getUTCFullYear(),
-        new Date(2020, 11, 25, 4, 0).getUTCMonth(),
-        new Date(2020, 11, 25, 4, 0).getUTCDate() + 0,
-        new Date(2020, 11, 25, 4, 0).getUTCHours() - 5,
-        new Date(2020, 11, 25, 4, 0).getUTCMinutes(),
-        new Date(2020, 11, 25, 4, 0).getUTCSeconds()
-      )
+      dateObj: dateConversion(new Date(2020, 11, 25, 4, 0))
     },
     schedule: [
       {
@@ -430,14 +465,7 @@ export const buisnessHoursTestObj = jsondata => [
         isClosed: false,
         isCurrentDay: true,
         Hours: [{ from: "03:00", to: "05:00" }],
-        dateObj: new Date(
-          new Date(2020, 11, 25, 4).getUTCFullYear(),
-          new Date(2020, 11, 25, 4).getUTCMonth(),
-          new Date(2020, 11, 25, 4).getUTCDate(),
-          new Date(2020, 11, 25, 4).getUTCHours() - 5,
-          new Date(2020, 11, 25, 4).getUTCMinutes(),
-          new Date(2020, 11, 25, 4).getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 11, 25, 4))
       },
       {
         Name: "Saturday",
@@ -447,14 +475,7 @@ export const buisnessHoursTestObj = jsondata => [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          new Date(2020, 11, 25, 4).getUTCFullYear(),
-          new Date(2020, 11, 25, 4).getUTCMonth(),
-          new Date(2020, 11, 25, 4).getUTCDate() + 1,
-          new Date(2020, 11, 25, 4).getUTCHours() - 5,
-          new Date(2020, 11, 25, 4).getUTCMinutes(),
-          new Date(2020, 11, 25, 4).getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 11, 25 + 1, 4))
       },
       {
         Name: "Sunday",
@@ -464,14 +485,7 @@ export const buisnessHoursTestObj = jsondata => [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          new Date(2020, 11, 25, 4).getUTCFullYear(),
-          new Date(2020, 11, 25, 4).getUTCMonth(),
-          new Date(2020, 11, 25, 4).getUTCDate() + 2,
-          new Date(2020, 11, 25, 4).getUTCHours() - 5,
-          new Date(2020, 11, 25, 4).getUTCMinutes(),
-          new Date(2020, 11, 25, 4).getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 11, 25 + 2, 4))
       },
       {
         Name: "Monday",
@@ -490,14 +504,7 @@ export const buisnessHoursTestObj = jsondata => [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          new Date(2020, 11, 25, 4).getUTCFullYear(),
-          new Date(2020, 11, 25, 4).getUTCMonth(),
-          new Date(2020, 11, 25, 4).getUTCDate() + 3,
-          new Date(2020, 11, 25, 4).getUTCHours() - 5,
-          new Date(2020, 11, 25, 4).getUTCMinutes(),
-          new Date(2020, 11, 25, 4).getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 11, 25 + 3, 4))
       },
       {
         Name: "Tuesday",
@@ -516,14 +523,7 @@ export const buisnessHoursTestObj = jsondata => [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          new Date(2020, 11, 25, 4).getUTCFullYear(),
-          new Date(2020, 11, 25, 4).getUTCMonth(),
-          new Date(2020, 11, 25, 4).getUTCDate() + 4,
-          new Date(2020, 11, 25, 4).getUTCHours() - 5,
-          new Date(2020, 11, 25, 4).getUTCMinutes(),
-          new Date(2020, 11, 25, 4).getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 11, 25 + 4, 4))
       },
       {
         Name: "Wednesday",
@@ -542,14 +542,7 @@ export const buisnessHoursTestObj = jsondata => [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          new Date(2020, 11, 25, 4).getUTCFullYear(),
-          new Date(2020, 11, 25, 4).getUTCMonth(),
-          new Date(2020, 11, 25, 4).getUTCDate() + 5,
-          new Date(2020, 11, 25, 4).getUTCHours() - 5,
-          new Date(2020, 11, 25, 4).getUTCMinutes(),
-          new Date(2020, 11, 25, 4).getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 11, 25 + 5, 4))
       },
       {
         Name: "Thursday",
@@ -568,14 +561,7 @@ export const buisnessHoursTestObj = jsondata => [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          new Date(2020, 11, 25, 4).getUTCFullYear(),
-          new Date(2020, 11, 25, 4).getUTCMonth(),
-          new Date(2020, 11, 25, 4).getUTCDate() + 6,
-          new Date(2020, 11, 25, 4).getUTCHours() - 5,
-          new Date(2020, 11, 25, 4).getUTCMinutes(),
-          new Date(2020, 11, 25, 4).getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 11, 25 + 6, 4))
       }
     ],
     shifted: true,
@@ -586,22 +572,10 @@ export const buisnessHoursTestObj = jsondata => [
   }
 ];
 
-const date = [
-  new Date(2020, 1, 28),
-  new Date(2020, 1, 29),
-  new Date(2020, 2, 1),
-  new Date(2020, 2, 2),
-  new Date(2020, 2, 3),
-  new Date(2020, 2, 4),
-  new Date(2020, 2, 5),
-  new Date(2020, 2, 6),
-  new Date(2021, 1, 5)
-];
-
 export const buisnessHoursTestDynamicObj = [
   {
     description: "0 No Holiday Week, shifted = false",
-    dateObj: date[0],
+    dateObj: new Date(dateConversion(new Date(2020, 1, 28))),
     currentDayInfo: {
       Name: "Friday",
       altName: "Sun",
@@ -619,14 +593,7 @@ export const buisnessHoursTestDynamicObj = [
           to: "22:00"
         }
       ],
-      dateObj: new Date(
-        date[0].getUTCFullYear(),
-        date[0].getUTCMonth(),
-        date[0].getUTCDate(),
-        date[0].getUTCHours() - 5,
-        date[0].getUTCMinutes(),
-        date[0].getUTCSeconds()
-      )
+      dateObj: dateConversion(new Date(2020, 1, 28))
     },
     schedule: [
       {
@@ -637,14 +604,7 @@ export const buisnessHoursTestDynamicObj = [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          date[0].getUTCFullYear(),
-          date[0].getUTCMonth(),
-          date[0].getUTCDate() - 5,
-          date[0].getUTCHours() - 5,
-          date[0].getUTCMinutes(),
-          date[0].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 1, 28 - 5))
       },
       {
         Name: "Monday",
@@ -663,14 +623,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[0].getUTCFullYear(),
-          date[0].getUTCMonth(),
-          date[0].getUTCDate() + -4,
-          date[0].getUTCHours() - 5,
-          date[0].getUTCMinutes(),
-          date[0].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 1, 28 - 4))
       },
       {
         Name: "Tuesday",
@@ -689,14 +642,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[0].getUTCFullYear(),
-          date[0].getUTCMonth(),
-          date[0].getUTCDate() - 3,
-          date[0].getUTCHours() - 5,
-          date[0].getUTCMinutes(),
-          date[0].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 1, 28 - 3))
       },
       {
         Name: "Wednesday",
@@ -715,14 +661,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[0].getUTCFullYear(),
-          date[0].getUTCMonth(),
-          date[0].getUTCDate() - 2,
-          date[0].getUTCHours() - 5,
-          date[0].getUTCMinutes(),
-          date[0].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 1, 28 - 2))
       },
       {
         Name: "Thursday",
@@ -741,14 +680,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[0].getUTCFullYear(),
-          date[0].getUTCMonth(),
-          date[0].getUTCDate() - 1,
-          date[0].getUTCHours() - 5,
-          date[0].getUTCMinutes(),
-          date[0].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 1, 28 - 1))
       },
       {
         Name: "Friday",
@@ -767,14 +699,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[0].getUTCFullYear(),
-          date[0].getUTCMonth(),
-          date[0].getUTCDate() + 0,
-          date[0].getUTCHours() - 5,
-          date[0].getUTCMinutes(),
-          date[0].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 1, 28))
       },
       {
         Name: "Saturday",
@@ -784,14 +709,7 @@ export const buisnessHoursTestDynamicObj = [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          date[0].getUTCFullYear(),
-          date[0].getUTCMonth(),
-          date[0].getUTCDate() + 1,
-          date[0].getUTCHours() - 5,
-          date[0].getUTCMinutes(),
-          date[0].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 1, 28 + 1))
       }
     ],
     shifted: false,
@@ -802,7 +720,7 @@ export const buisnessHoursTestDynamicObj = [
   },
   {
     description: "+1 day not shifted No Holiday Week, shifted = false",
-    dateObj: date[1],
+    dateObj: new Date(dateConversion(new Date(2020, 1, 29))),
     currentDayInfo: {
       Name: "Saturday",
       altName: "Sun",
@@ -811,14 +729,7 @@ export const buisnessHoursTestDynamicObj = [
       isClosed: true,
       isCurrentDay: true,
       Hours: [],
-      dateObj: new Date(
-        date[1].getUTCFullYear(),
-        date[1].getUTCMonth(),
-        date[1].getUTCDate(),
-        date[1].getUTCHours() - 5,
-        date[1].getUTCMinutes(),
-        date[1].getUTCSeconds()
-      )
+      dateObj: dateConversion(new Date(2020, 1, 29))
     },
     schedule: [
       {
@@ -829,14 +740,7 @@ export const buisnessHoursTestDynamicObj = [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          date[1].getUTCFullYear(),
-          date[1].getUTCMonth(),
-          date[1].getUTCDate() + -6,
-          date[1].getUTCHours() - 5,
-          date[1].getUTCMinutes(),
-          date[1].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 1, 29 - 6))
       },
       {
         Name: "Monday",
@@ -855,14 +759,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[1].getUTCFullYear(),
-          date[1].getUTCMonth(),
-          date[1].getUTCDate() + -5,
-          date[1].getUTCHours() - 5,
-          date[1].getUTCMinutes(),
-          date[1].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 1, 29 - 5))
       },
       {
         Name: "Tuesday",
@@ -881,14 +778,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[1].getUTCFullYear(),
-          date[1].getUTCMonth(),
-          date[1].getUTCDate() + -4,
-          date[1].getUTCHours() - 5,
-          date[1].getUTCMinutes(),
-          date[1].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 1, 29 - 4))
       },
       {
         Name: "Wednesday",
@@ -907,14 +797,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[1].getUTCFullYear(),
-          date[1].getUTCMonth(),
-          date[1].getUTCDate() + -3,
-          date[1].getUTCHours() - 5,
-          date[1].getUTCMinutes(),
-          date[1].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 1, 29 - 3))
       },
       {
         Name: "Thursday",
@@ -933,14 +816,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[1].getUTCFullYear(),
-          date[1].getUTCMonth(),
-          date[1].getUTCDate() + -2,
-          date[1].getUTCHours() - 5,
-          date[1].getUTCMinutes(),
-          date[1].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 1, 29 - 2))
       },
       {
         Name: "Friday",
@@ -959,14 +835,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[1].getUTCFullYear(),
-          date[1].getUTCMonth(),
-          date[1].getUTCDate() + -1,
-          date[1].getUTCHours() - 5,
-          date[1].getUTCMinutes(),
-          date[1].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 1, 29 - 1))
       },
       {
         Name: "Saturday",
@@ -976,14 +845,7 @@ export const buisnessHoursTestDynamicObj = [
         isClosed: true,
         isCurrentDay: true,
         Hours: [],
-        dateObj: new Date(
-          date[1].getUTCFullYear(),
-          date[1].getUTCMonth(),
-          date[1].getUTCDate() + 0,
-          date[1].getUTCHours() - 5,
-          date[1].getUTCMinutes(),
-          date[1].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 1, 29))
       }
     ],
     shifted: false,
@@ -995,7 +857,7 @@ export const buisnessHoursTestDynamicObj = [
   {
     description:
       "+2 day not shifted, new week refresh, No Holiday Week, shifted = false",
-    dateObj: date[2],
+    dateObj: dateConversion(new Date(2020, 2, 1)),
     currentDayInfo: {
       Name: "Sunday",
       altName: "Sun",
@@ -1004,14 +866,7 @@ export const buisnessHoursTestDynamicObj = [
       isClosed: true,
       isCurrentDay: true,
       Hours: [],
-      dateObj: new Date(
-        date[2].getUTCFullYear(),
-        date[2].getUTCMonth(),
-        date[2].getUTCDate(),
-        date[2].getUTCHours() - 5,
-        date[2].getUTCMinutes(),
-        date[2].getUTCSeconds()
-      )
+      dateObj: dateConversion(new Date(2020, 2, 1))
     },
     schedule: [
       {
@@ -1022,14 +877,7 @@ export const buisnessHoursTestDynamicObj = [
         isClosed: true,
         isCurrentDay: true,
         Hours: [],
-        dateObj: new Date(
-          date[2].getUTCFullYear(),
-          date[2].getUTCMonth(),
-          date[2].getUTCDate() + 0,
-          date[2].getUTCHours() - 5,
-          date[2].getUTCMinutes(),
-          date[2].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 1))
       },
       {
         Name: "Monday",
@@ -1048,14 +896,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[2].getUTCFullYear(),
-          date[2].getUTCMonth(),
-          date[2].getUTCDate() + 1,
-          date[2].getUTCHours() - 5,
-          date[2].getUTCMinutes(),
-          date[2].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 1 + 1))
       },
       {
         Name: "Tuesday",
@@ -1074,14 +915,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[2].getUTCFullYear(),
-          date[2].getUTCMonth(),
-          date[2].getUTCDate() + 2,
-          date[2].getUTCHours() - 5,
-          date[2].getUTCMinutes(),
-          date[2].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 1 + 2))
       },
       {
         Name: "Wednesday",
@@ -1100,14 +934,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[2].getUTCFullYear(),
-          date[2].getUTCMonth(),
-          date[2].getUTCDate() + 3,
-          date[2].getUTCHours() - 5,
-          date[2].getUTCMinutes(),
-          date[2].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 1 + 3))
       },
       {
         Name: "Thursday",
@@ -1126,14 +953,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[2].getUTCFullYear(),
-          date[2].getUTCMonth(),
-          date[2].getUTCDate() + 4,
-          date[2].getUTCHours() - 5,
-          date[2].getUTCMinutes(),
-          date[2].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 1 + 4))
       },
       {
         Name: "Friday",
@@ -1152,14 +972,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[2].getUTCFullYear(),
-          date[2].getUTCMonth(),
-          date[2].getUTCDate() + 5,
-          date[2].getUTCHours() - 5,
-          date[2].getUTCMinutes(),
-          date[2].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 1 + 5))
       },
       {
         Name: "Saturday",
@@ -1169,14 +982,7 @@ export const buisnessHoursTestDynamicObj = [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          date[2].getUTCFullYear(),
-          date[2].getUTCMonth(),
-          date[2].getUTCDate() + 6,
-          date[2].getUTCHours() - 5,
-          date[2].getUTCMinutes(),
-          date[2].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 1 + 6))
       }
     ],
     shifted: false,
@@ -1188,7 +994,7 @@ export const buisnessHoursTestDynamicObj = [
   {
     description:
       "+3 day not shifted, new week refresh, No Holiday Week, shifted = false",
-    dateObj: date[3],
+    dateObj: dateConversion(new Date(2020, 2, 2)),
     currentDayInfo: {
       Name: "Monday",
       altName: "Sun",
@@ -1206,14 +1012,7 @@ export const buisnessHoursTestDynamicObj = [
           to: "22:00"
         }
       ],
-      dateObj: new Date(
-        date[3].getUTCFullYear(),
-        date[3].getUTCMonth(),
-        date[3].getUTCDate(),
-        date[3].getUTCHours() - 5,
-        date[3].getUTCMinutes(),
-        date[3].getUTCSeconds()
-      )
+      dateObj: dateConversion(new Date(2020, 2, 2))
     },
     schedule: [
       {
@@ -1224,14 +1023,7 @@ export const buisnessHoursTestDynamicObj = [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          date[3].getUTCFullYear(),
-          date[3].getUTCMonth(),
-          date[3].getUTCDate() - 1,
-          date[3].getUTCHours() - 5,
-          date[3].getUTCMinutes(),
-          date[3].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 2 - 1))
       },
       {
         Name: "Monday",
@@ -1250,14 +1042,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[3].getUTCFullYear(),
-          date[3].getUTCMonth(),
-          date[3].getUTCDate() + 0,
-          date[3].getUTCHours() - 5,
-          date[3].getUTCMinutes(),
-          date[3].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 2))
       },
       {
         Name: "Tuesday",
@@ -1276,14 +1061,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[3].getUTCFullYear(),
-          date[3].getUTCMonth(),
-          date[3].getUTCDate() + 1,
-          date[3].getUTCHours() - 5,
-          date[3].getUTCMinutes(),
-          date[3].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 2 + 1))
       },
       {
         Name: "Wednesday",
@@ -1302,14 +1080,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[3].getUTCFullYear(),
-          date[3].getUTCMonth(),
-          date[3].getUTCDate() + 2,
-          date[3].getUTCHours() - 5,
-          date[3].getUTCMinutes(),
-          date[3].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 2 + 2))
       },
       {
         Name: "Thursday",
@@ -1328,14 +1099,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[3].getUTCFullYear(),
-          date[3].getUTCMonth(),
-          date[3].getUTCDate() + 3,
-          date[3].getUTCHours() - 5,
-          date[3].getUTCMinutes(),
-          date[3].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 2 + 3))
       },
       {
         Name: "Friday",
@@ -1354,14 +1118,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[3].getUTCFullYear(),
-          date[3].getUTCMonth(),
-          date[3].getUTCDate() + 4,
-          date[3].getUTCHours() - 5,
-          date[3].getUTCMinutes(),
-          date[3].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 2 + 4))
       },
       {
         Name: "Saturday",
@@ -1371,14 +1128,7 @@ export const buisnessHoursTestDynamicObj = [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          date[3].getUTCFullYear(),
-          date[3].getUTCMonth(),
-          date[3].getUTCDate() + 5,
-          date[3].getUTCHours() - 5,
-          date[3].getUTCMinutes(),
-          date[3].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 2 + 5))
       }
     ],
     shifted: false,
@@ -1390,7 +1140,7 @@ export const buisnessHoursTestDynamicObj = [
   {
     description:
       "+4 day not shifted, new week refresh, No Holiday Week, shifted = false",
-    dateObj: date[4],
+    dateObj: dateConversion(new Date(2020, 2, 3)),
     currentDayInfo: {
       Name: "Tuesday",
       altName: "Sun",
@@ -1408,14 +1158,7 @@ export const buisnessHoursTestDynamicObj = [
           to: "22:00"
         }
       ],
-      dateObj: new Date(
-        date[4].getUTCFullYear(),
-        date[4].getUTCMonth(),
-        date[4].getUTCDate(),
-        date[4].getUTCHours() - 5,
-        date[4].getUTCMinutes(),
-        date[4].getUTCSeconds()
-      )
+      dateObj: dateConversion(new Date(2020, 2, 3))
     },
     schedule: [
       {
@@ -1426,14 +1169,7 @@ export const buisnessHoursTestDynamicObj = [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          date[4].getUTCFullYear(),
-          date[4].getUTCMonth(),
-          date[4].getUTCDate() + -2,
-          date[4].getUTCHours() - 5,
-          date[4].getUTCMinutes(),
-          date[4].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 1))
       },
       {
         Name: "Monday",
@@ -1452,14 +1188,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[4].getUTCFullYear(),
-          date[4].getUTCMonth(),
-          date[4].getUTCDate() + -1,
-          date[4].getUTCHours() - 5,
-          date[4].getUTCMinutes(),
-          date[4].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 2))
       },
       {
         Name: "Tuesday",
@@ -1478,14 +1207,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[4].getUTCFullYear(),
-          date[4].getUTCMonth(),
-          date[4].getUTCDate() + 0,
-          date[4].getUTCHours() - 5,
-          date[4].getUTCMinutes(),
-          date[4].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 3))
       },
       {
         Name: "Wednesday",
@@ -1504,14 +1226,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[4].getUTCFullYear(),
-          date[4].getUTCMonth(),
-          date[4].getUTCDate() + 1,
-          date[4].getUTCHours() - 5,
-          date[4].getUTCMinutes(),
-          date[4].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 4))
       },
       {
         Name: "Thursday",
@@ -1530,14 +1245,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[4].getUTCFullYear(),
-          date[4].getUTCMonth(),
-          date[4].getUTCDate() + 2,
-          date[4].getUTCHours() - 5,
-          date[4].getUTCMinutes(),
-          date[4].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 5))
       },
       {
         Name: "Friday",
@@ -1556,14 +1264,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[4].getUTCFullYear(),
-          date[4].getUTCMonth(),
-          date[4].getUTCDate() + 3,
-          date[4].getUTCHours() - 5,
-          date[4].getUTCMinutes(),
-          date[4].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 6))
       },
       {
         Name: "Saturday",
@@ -1573,14 +1274,7 @@ export const buisnessHoursTestDynamicObj = [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          date[4].getUTCFullYear(),
-          date[4].getUTCMonth(),
-          date[4].getUTCDate() + 4,
-          date[4].getUTCHours() - 5,
-          date[4].getUTCMinutes(),
-          date[4].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 7))
       }
     ],
     shifted: false,
@@ -1592,7 +1286,7 @@ export const buisnessHoursTestDynamicObj = [
   {
     description:
       "+5 day not shifted, new week refresh, No Holiday Week, shifted = false",
-    dateObj: date[5],
+    dateObj: dateConversion(new Date(2020, 2, 4)),
     currentDayInfo: {
       Name: "Wednesday",
       altName: "Wed",
@@ -1610,14 +1304,7 @@ export const buisnessHoursTestDynamicObj = [
           to: "22:00"
         }
       ],
-      dateObj: new Date(
-        date[5].getUTCFullYear(),
-        date[5].getUTCMonth(),
-        date[5].getUTCDate(),
-        date[5].getUTCHours() - 5,
-        date[5].getUTCMinutes(),
-        date[5].getUTCSeconds()
-      )
+      dateObj: dateConversion(new Date(2020, 2, 4))
     },
     schedule: [
       {
@@ -1628,14 +1315,7 @@ export const buisnessHoursTestDynamicObj = [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          date[5].getUTCFullYear(),
-          date[5].getUTCMonth(),
-          date[5].getUTCDate() + -3,
-          date[5].getUTCHours() - 5,
-          date[5].getUTCMinutes(),
-          date[5].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 1))
       },
       {
         Name: "Monday",
@@ -1654,14 +1334,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[5].getUTCFullYear(),
-          date[5].getUTCMonth(),
-          date[5].getUTCDate() + -2,
-          date[5].getUTCHours() - 5,
-          date[5].getUTCMinutes(),
-          date[5].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 2))
       },
       {
         Name: "Tuesday",
@@ -1680,14 +1353,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[5].getUTCFullYear(),
-          date[5].getUTCMonth(),
-          date[5].getUTCDate() - 1,
-          date[5].getUTCHours() - 5,
-          date[5].getUTCMinutes(),
-          date[5].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 3))
       },
       {
         Name: "Wednesday",
@@ -1706,14 +1372,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[5].getUTCFullYear(),
-          date[5].getUTCMonth(),
-          date[5].getUTCDate() + 0,
-          date[5].getUTCHours() - 5,
-          date[5].getUTCMinutes(),
-          date[5].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 4))
       },
       {
         Name: "Thursday",
@@ -1732,14 +1391,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[5].getUTCFullYear(),
-          date[5].getUTCMonth(),
-          date[5].getUTCDate() + 1,
-          date[5].getUTCHours() - 5,
-          date[5].getUTCMinutes(),
-          date[5].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 5))
       },
       {
         Name: "Friday",
@@ -1758,14 +1410,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[5].getUTCFullYear(),
-          date[5].getUTCMonth(),
-          date[5].getUTCDate() + 2,
-          date[5].getUTCHours() - 5,
-          date[5].getUTCMinutes(),
-          date[5].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 6))
       },
       {
         Name: "Saturday",
@@ -1775,14 +1420,7 @@ export const buisnessHoursTestDynamicObj = [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          date[5].getUTCFullYear(),
-          date[5].getUTCMonth(),
-          date[5].getUTCDate() + 3,
-          date[5].getUTCHours() - 5,
-          date[5].getUTCMinutes(),
-          date[5].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 7))
       }
     ],
     shifted: false,
@@ -1794,7 +1432,7 @@ export const buisnessHoursTestDynamicObj = [
   {
     description:
       "+6 day not shifted, new week refresh, No Holiday Week, shifted = false",
-    dateObj: date[6],
+    dateObj: dateConversion(new Date(2020, 2, 5)),
     currentDayInfo: {
       Name: "Thursday",
       altName: "Sun",
@@ -1812,14 +1450,7 @@ export const buisnessHoursTestDynamicObj = [
           to: "22:00"
         }
       ],
-      dateObj: new Date(
-        date[6].getUTCFullYear(),
-        date[6].getUTCMonth(),
-        date[6].getUTCDate(),
-        date[6].getUTCHours() - 5,
-        date[6].getUTCMinutes(),
-        date[6].getUTCSeconds()
-      )
+      dateObj: dateConversion(new Date(2020, 2, 5))
     },
     schedule: [
       {
@@ -1830,14 +1461,7 @@ export const buisnessHoursTestDynamicObj = [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          date[6].getUTCFullYear(),
-          date[6].getUTCMonth(),
-          date[6].getUTCDate() + -4,
-          date[6].getUTCHours() - 5,
-          date[6].getUTCMinutes(),
-          date[6].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 1))
       },
       {
         Name: "Monday",
@@ -1856,14 +1480,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[6].getUTCFullYear(),
-          date[6].getUTCMonth(),
-          date[6].getUTCDate() + -3,
-          date[6].getUTCHours() - 5,
-          date[6].getUTCMinutes(),
-          date[6].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 2))
       },
       {
         Name: "Tuesday",
@@ -1882,14 +1499,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[6].getUTCFullYear(),
-          date[6].getUTCMonth(),
-          date[6].getUTCDate() + -2,
-          date[6].getUTCHours() - 5,
-          date[6].getUTCMinutes(),
-          date[6].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 3))
       },
       {
         Name: "Wednesday",
@@ -1908,14 +1518,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[6].getUTCFullYear(),
-          date[6].getUTCMonth(),
-          date[6].getUTCDate() + -1,
-          date[6].getUTCHours() - 5,
-          date[6].getUTCMinutes(),
-          date[6].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 4))
       },
       {
         Name: "Thursday",
@@ -1934,14 +1537,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[6].getUTCFullYear(),
-          date[6].getUTCMonth(),
-          date[6].getUTCDate() + -0,
-          date[6].getUTCHours() - 5,
-          date[6].getUTCMinutes(),
-          date[6].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 5))
       },
       {
         Name: "Friday",
@@ -1960,14 +1556,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[6].getUTCFullYear(),
-          date[6].getUTCMonth(),
-          date[6].getUTCDate() + 1,
-          date[6].getUTCHours() - 5,
-          date[6].getUTCMinutes(),
-          date[6].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 6))
       },
       {
         Name: "Saturday",
@@ -1977,14 +1566,7 @@ export const buisnessHoursTestDynamicObj = [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          date[6].getUTCFullYear(),
-          date[6].getUTCMonth(),
-          date[6].getUTCDate() + 2,
-          date[6].getUTCHours() - 5,
-          date[6].getUTCMinutes(),
-          date[6].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 7))
       }
     ],
     shifted: false,
@@ -1996,7 +1578,7 @@ export const buisnessHoursTestDynamicObj = [
   {
     description:
       "+7 day not shifted, new week refresh, No Holiday Week, shifted = false",
-    dateObj: date[7],
+    dateObj: dateConversion(new Date(2020, 2, 6)),
     currentDayInfo: {
       Name: "Friday",
       altName: "Sun",
@@ -2014,14 +1596,7 @@ export const buisnessHoursTestDynamicObj = [
           to: "22:00"
         }
       ],
-      dateObj: new Date(
-        date[7].getUTCFullYear(),
-        date[7].getUTCMonth(),
-        date[7].getUTCDate(),
-        date[7].getUTCHours() - 5,
-        date[7].getUTCMinutes(),
-        date[7].getUTCSeconds()
-      )
+      dateObj: dateConversion(new Date(2020, 2, 6))
     },
     schedule: [
       {
@@ -2032,14 +1607,7 @@ export const buisnessHoursTestDynamicObj = [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          date[7].getUTCFullYear(),
-          date[7].getUTCMonth(),
-          date[7].getUTCDate() - 5,
-          date[7].getUTCHours() - 5,
-          date[7].getUTCMinutes(),
-          date[7].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 1))
       },
       {
         Name: "Monday",
@@ -2058,14 +1626,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[7].getUTCFullYear(),
-          date[7].getUTCMonth(),
-          date[7].getUTCDate() + -4,
-          date[7].getUTCHours() - 5,
-          date[7].getUTCMinutes(),
-          date[7].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 2))
       },
       {
         Name: "Tuesday",
@@ -2084,14 +1645,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[7].getUTCFullYear(),
-          date[7].getUTCMonth(),
-          date[7].getUTCDate() + -3,
-          date[7].getUTCHours() - 5,
-          date[7].getUTCMinutes(),
-          date[7].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 3))
       },
       {
         Name: "Wednesday",
@@ -2110,14 +1664,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[7].getUTCFullYear(),
-          date[7].getUTCMonth(),
-          date[7].getUTCDate() + -2,
-          date[7].getUTCHours() - 5,
-          date[7].getUTCMinutes(),
-          date[7].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 4))
       },
       {
         Name: "Thursday",
@@ -2136,14 +1683,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[7].getUTCFullYear(),
-          date[7].getUTCMonth(),
-          date[7].getUTCDate() + -1,
-          date[7].getUTCHours() - 5,
-          date[7].getUTCMinutes(),
-          date[7].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 5))
       },
       {
         Name: "Friday",
@@ -2162,14 +1702,7 @@ export const buisnessHoursTestDynamicObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          date[7].getUTCFullYear(),
-          date[7].getUTCMonth(),
-          date[7].getUTCDate() + 0,
-          date[7].getUTCHours() - 5,
-          date[7].getUTCMinutes(),
-          date[7].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 6))
       },
       {
         Name: "Saturday",
@@ -2179,14 +1712,7 @@ export const buisnessHoursTestDynamicObj = [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          date[7].getUTCFullYear(),
-          date[7].getUTCMonth(),
-          date[7].getUTCDate() + 1,
-          date[7].getUTCHours() - 5,
-          date[7].getUTCMinutes(),
-          date[7].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(2020, 2, 7))
       }
     ],
     shifted: false,
@@ -2198,21 +1724,27 @@ export const buisnessHoursTestDynamicObj = [
 ];
 
 const dateShifted = [
-  new Date(2020, 11, 30),
-  new Date(2020, 11, 31),
-  new Date(2021, 0, 1),
-  new Date(2021, 0, 2),
-  new Date(2021, 0, 3),
-  new Date(2021, 0, 4),
-  new Date(2021, 0, 5),
-  new Date(2021, 0, 6),
-  new Date(2021, 0, 7)
+  "2020, 12, 30",
+  "2020, 12, 31",
+  "2021, 1, 1",
+  "2021, 1, 2",
+  "2021, 1, 3",
+  "2021, 1, 4",
+  "2021, 1, 5",
+  "2021, 1, 6",
+  "2021, 1, 7",
+  "2021, 1, 8",
+  "2021, 1, 9",
+  "2021, 1, 10",
+  "2021, 1, 11",
+  "2021, 1, 12",
+  "2021, 1, 13"
 ];
 
 export const buisnessHoursTestDynamicShiftedObj = [
   {
     description: "0 end of year, open, shifted",
-    dateObj: dateShifted[0],
+    dateObj: dateConversion(new Date(dateShifted[0])),
     currentDayInfo: {
       Name: "Wednesday",
       altName: "Wed",
@@ -2230,14 +1762,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
           to: "22:00"
         }
       ],
-      dateObj: new Date(
-        dateShifted[0].getUTCFullYear(),
-        dateShifted[0].getUTCMonth(),
-        dateShifted[0].getUTCDate() + 0,
-        dateShifted[0].getUTCHours() - 5,
-        dateShifted[0].getUTCMinutes(),
-        dateShifted[0].getUTCSeconds()
-      )
+      dateObj: dateConversion(new Date(dateShifted[0]))
     },
     schedule: [
       {
@@ -2257,14 +1782,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[0].getUTCFullYear(),
-          dateShifted[0].getUTCMonth(),
-          dateShifted[0].getUTCDate() + 0,
-          dateShifted[0].getUTCHours() - 5,
-          dateShifted[0].getUTCMinutes(),
-          dateShifted[0].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[0]))
       },
       {
         Name: "Thursday",
@@ -2283,14 +1801,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[0].getUTCFullYear(),
-          dateShifted[0].getUTCMonth(),
-          dateShifted[0].getUTCDate() + 1,
-          dateShifted[0].getUTCHours() - 5,
-          dateShifted[0].getUTCMinutes(),
-          dateShifted[0].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[1]))
       },
       {
         Name: "Friday",
@@ -2309,14 +1820,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[0].getUTCFullYear(),
-          dateShifted[0].getUTCMonth(),
-          dateShifted[0].getUTCDate() + 2,
-          dateShifted[0].getUTCHours() - 5,
-          dateShifted[0].getUTCMinutes(),
-          dateShifted[0].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[2]))
       },
       {
         Name: "Saturday",
@@ -2326,14 +1830,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          dateShifted[0].getUTCFullYear(),
-          dateShifted[0].getUTCMonth(),
-          dateShifted[0].getUTCDate() + 3,
-          dateShifted[0].getUTCHours() - 5,
-          dateShifted[0].getUTCMinutes(),
-          dateShifted[0].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[3]))
       },
       {
         Name: "Sunday",
@@ -2343,14 +1840,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          dateShifted[0].getUTCFullYear(),
-          dateShifted[0].getUTCMonth(),
-          dateShifted[0].getUTCDate() + 4,
-          dateShifted[0].getUTCHours() - 5,
-          dateShifted[0].getUTCMinutes(),
-          dateShifted[0].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[4]))
       },
       {
         Name: "Monday",
@@ -2369,14 +1859,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[0].getUTCFullYear(),
-          dateShifted[0].getUTCMonth(),
-          dateShifted[0].getUTCDate() + 5,
-          dateShifted[0].getUTCHours() - 5,
-          dateShifted[0].getUTCMinutes(),
-          dateShifted[0].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[5]))
       },
       {
         Name: "Tuesday",
@@ -2395,14 +1878,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[0].getUTCFullYear(),
-          dateShifted[0].getUTCMonth(),
-          dateShifted[0].getUTCDate() + 6,
-          dateShifted[0].getUTCHours() - 5,
-          dateShifted[0].getUTCMinutes(),
-          dateShifted[0].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[6]))
       }
     ],
     shifted: true,
@@ -2413,7 +1889,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
   },
   {
     description: "+1 end of year, open, shifted",
-    dateObj: dateShifted[1],
+    dateObj: dateConversion(new Date(dateShifted[1])),
     currentDayInfo: {
       Name: "Thursday",
       altName: "Sun",
@@ -2431,14 +1907,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
           to: "22:00"
         }
       ],
-      dateObj: new Date(
-        dateShifted[1].getUTCFullYear(),
-        dateShifted[1].getUTCMonth(),
-        dateShifted[1].getUTCDate() + 0,
-        dateShifted[1].getUTCHours() - 5,
-        dateShifted[1].getUTCMinutes(),
-        dateShifted[1].getUTCSeconds()
-      )
+      dateObj: dateConversion(new Date(dateShifted[1]))
     },
     schedule: [
       {
@@ -2458,14 +1927,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[1].getUTCFullYear(),
-          dateShifted[1].getUTCMonth(),
-          dateShifted[1].getUTCDate() + 0,
-          dateShifted[1].getUTCHours() - 5,
-          dateShifted[1].getUTCMinutes(),
-          dateShifted[1].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[1]))
       },
       {
         Name: "Friday",
@@ -2484,14 +1946,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[1].getUTCFullYear(),
-          dateShifted[1].getUTCMonth(),
-          dateShifted[1].getUTCDate() + 1,
-          dateShifted[1].getUTCHours() - 5,
-          dateShifted[1].getUTCMinutes(),
-          dateShifted[1].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[2]))
       },
       {
         Name: "Saturday",
@@ -2501,14 +1956,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          dateShifted[1].getUTCFullYear(),
-          dateShifted[1].getUTCMonth(),
-          dateShifted[1].getUTCDate() + 2,
-          dateShifted[1].getUTCHours() - 5,
-          dateShifted[1].getUTCMinutes(),
-          dateShifted[1].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[3]))
       },
       {
         Name: "Sunday",
@@ -2518,14 +1966,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          dateShifted[1].getUTCFullYear(),
-          dateShifted[1].getUTCMonth(),
-          dateShifted[1].getUTCDate() + 3,
-          dateShifted[1].getUTCHours() - 5,
-          dateShifted[1].getUTCMinutes(),
-          dateShifted[1].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[4]))
       },
       {
         Name: "Monday",
@@ -2544,14 +1985,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[1].getUTCFullYear(),
-          dateShifted[1].getUTCMonth(),
-          dateShifted[1].getUTCDate() + 4,
-          dateShifted[1].getUTCHours() - 5,
-          dateShifted[1].getUTCMinutes(),
-          dateShifted[1].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[5]))
       },
       {
         Name: "Tuesday",
@@ -2570,14 +2004,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[1].getUTCFullYear(),
-          dateShifted[1].getUTCMonth(),
-          dateShifted[1].getUTCDate() + 5,
-          dateShifted[1].getUTCHours() - 5,
-          dateShifted[1].getUTCMinutes(),
-          dateShifted[1].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[6]))
       },
       {
         Name: "Wednesday",
@@ -2596,14 +2023,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[1].getUTCFullYear(),
-          dateShifted[1].getUTCMonth(),
-          dateShifted[1].getUTCDate() + 6,
-          dateShifted[1].getUTCHours() - 5,
-          dateShifted[1].getUTCMinutes(),
-          dateShifted[1].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[7]))
       }
     ],
     shifted: true,
@@ -2614,7 +2034,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
   },
   {
     description: "+2 end of year, open, shifted",
-    dateObj: dateShifted[2],
+    dateObj: dateConversion(new Date(dateShifted[2])),
     currentDayInfo: {
       Name: "Friday",
       altName: "Sun",
@@ -2632,14 +2052,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
           to: "22:00"
         }
       ],
-      dateObj: new Date(
-        dateShifted[2].getUTCFullYear(),
-        dateShifted[2].getUTCMonth(),
-        dateShifted[2].getUTCDate() + 0,
-        dateShifted[2].getUTCHours() - 5,
-        dateShifted[2].getUTCMinutes(),
-        dateShifted[2].getUTCSeconds()
-      )
+      dateObj: dateConversion(new Date(dateShifted[2]))
     },
     schedule: [
       {
@@ -2659,14 +2072,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[2].getUTCFullYear(),
-          dateShifted[2].getUTCMonth(),
-          dateShifted[2].getUTCDate() + 0,
-          dateShifted[2].getUTCHours() - 5,
-          dateShifted[2].getUTCMinutes(),
-          dateShifted[2].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[2]))
       },
       {
         Name: "Saturday",
@@ -2676,14 +2082,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          dateShifted[2].getUTCFullYear(),
-          dateShifted[2].getUTCMonth(),
-          dateShifted[2].getUTCDate() + 1,
-          dateShifted[2].getUTCHours() - 5,
-          dateShifted[2].getUTCMinutes(),
-          dateShifted[2].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[3]))
       },
       {
         Name: "Sunday",
@@ -2693,14 +2092,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          dateShifted[2].getUTCFullYear(),
-          dateShifted[2].getUTCMonth(),
-          dateShifted[2].getUTCDate() + 2,
-          dateShifted[2].getUTCHours() - 5,
-          dateShifted[2].getUTCMinutes(),
-          dateShifted[2].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[4]))
       },
       {
         Name: "Monday",
@@ -2719,14 +2111,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[2].getUTCFullYear(),
-          dateShifted[2].getUTCMonth(),
-          dateShifted[2].getUTCDate() + 3,
-          dateShifted[2].getUTCHours() - 5,
-          dateShifted[2].getUTCMinutes(),
-          dateShifted[2].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[5]))
       },
       {
         Name: "Tuesday",
@@ -2745,14 +2130,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[2].getUTCFullYear(),
-          dateShifted[2].getUTCMonth(),
-          dateShifted[2].getUTCDate() + 4,
-          dateShifted[2].getUTCHours() - 5,
-          dateShifted[2].getUTCMinutes(),
-          dateShifted[2].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[6]))
       },
       {
         Name: "Wednesday",
@@ -2771,14 +2149,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[2].getUTCFullYear(),
-          dateShifted[2].getUTCMonth(),
-          dateShifted[2].getUTCDate() + 5,
-          dateShifted[2].getUTCHours() - 5,
-          dateShifted[2].getUTCMinutes(),
-          dateShifted[2].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[7]))
       },
       {
         Name: "Thursday",
@@ -2797,14 +2168,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[2].getUTCFullYear(),
-          dateShifted[2].getUTCMonth(),
-          dateShifted[2].getUTCDate() + 6,
-          dateShifted[2].getUTCHours() - 5,
-          dateShifted[2].getUTCMinutes(),
-          dateShifted[2].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[8]))
       }
     ],
     shifted: true,
@@ -2815,7 +2179,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
   },
   {
     description: "+3 Last of year, open, shifted",
-    dateObj: dateShifted[3],
+    dateObj: dateConversion(new Date(dateShifted[3])),
     currentDayInfo: {
       Name: "Saturday",
       altName: "Sun",
@@ -2824,14 +2188,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       isClosed: true,
       isCurrentDay: true,
       Hours: [],
-      dateObj: new Date(
-        dateShifted[3].getUTCFullYear(),
-        dateShifted[3].getUTCMonth(),
-        dateShifted[3].getUTCDate() + 0,
-        dateShifted[3].getUTCHours() - 5,
-        dateShifted[3].getUTCMinutes(),
-        dateShifted[3].getUTCSeconds()
-      )
+      dateObj: dateConversion(new Date(dateShifted[3]))
     },
     schedule: [
       {
@@ -2842,14 +2199,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
         isClosed: true,
         isCurrentDay: true,
         Hours: [],
-        dateObj: new Date(
-          dateShifted[3].getUTCFullYear(),
-          dateShifted[3].getUTCMonth(),
-          dateShifted[3].getUTCDate() + 0,
-          dateShifted[3].getUTCHours() - 5,
-          dateShifted[3].getUTCMinutes(),
-          dateShifted[3].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[3]))
       },
       {
         Name: "Sunday",
@@ -2859,14 +2209,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          dateShifted[3].getUTCFullYear(),
-          dateShifted[3].getUTCMonth(),
-          dateShifted[3].getUTCDate() + 1,
-          dateShifted[3].getUTCHours() - 5,
-          dateShifted[3].getUTCMinutes(),
-          dateShifted[3].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[4]))
       },
       {
         Name: "Monday",
@@ -2885,14 +2228,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[3].getUTCFullYear(),
-          dateShifted[3].getUTCMonth(),
-          dateShifted[3].getUTCDate() + 2,
-          dateShifted[3].getUTCHours() - 5,
-          dateShifted[3].getUTCMinutes(),
-          dateShifted[3].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[5]))
       },
       {
         Name: "Tuesday",
@@ -2911,14 +2247,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[3].getUTCFullYear(),
-          dateShifted[3].getUTCMonth(),
-          dateShifted[3].getUTCDate() + 3,
-          dateShifted[3].getUTCHours() - 5,
-          dateShifted[3].getUTCMinutes(),
-          dateShifted[3].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[6]))
       },
       {
         Name: "Wednesday",
@@ -2937,14 +2266,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[3].getUTCFullYear(),
-          dateShifted[3].getUTCMonth(),
-          dateShifted[3].getUTCDate() + 4,
-          dateShifted[3].getUTCHours() - 5,
-          dateShifted[3].getUTCMinutes(),
-          dateShifted[3].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[7]))
       },
       {
         Name: "Thursday",
@@ -2963,14 +2285,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[3].getUTCFullYear(),
-          dateShifted[3].getUTCMonth(),
-          dateShifted[3].getUTCDate() + 5,
-          dateShifted[3].getUTCHours() - 5,
-          dateShifted[3].getUTCMinutes(),
-          dateShifted[3].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[8]))
       },
       {
         Name: "Friday",
@@ -2989,14 +2304,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[3].getUTCFullYear(),
-          dateShifted[3].getUTCMonth(),
-          dateShifted[3].getUTCDate() + 6,
-          dateShifted[3].getUTCHours() - 5,
-          dateShifted[3].getUTCMinutes(),
-          dateShifted[3].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[9]))
       }
     ],
     shifted: true,
@@ -3007,7 +2315,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
   },
   {
     description: "+4 end of year, open, shifted",
-    dateObj: dateShifted[4],
+    dateObj: dateConversion(new Date(dateShifted[4])),
     currentDayInfo: {
       Name: "Sunday",
       altName: "Sun",
@@ -3016,14 +2324,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
       isClosed: true,
       isCurrentDay: true,
       Hours: [],
-      dateObj: new Date(
-        dateShifted[4].getUTCFullYear(),
-        dateShifted[4].getUTCMonth(),
-        dateShifted[4].getUTCDate() + 0,
-        dateShifted[4].getUTCHours() - 5,
-        dateShifted[4].getUTCMinutes(),
-        dateShifted[4].getUTCSeconds()
-      )
+      dateObj: dateConversion(new Date(dateShifted[4]))
     },
     schedule: [
       {
@@ -3034,14 +2335,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
         isClosed: true,
         isCurrentDay: true,
         Hours: [],
-        dateObj: new Date(
-          dateShifted[4].getUTCFullYear(),
-          dateShifted[4].getUTCMonth(),
-          dateShifted[4].getUTCDate() + 0,
-          dateShifted[4].getUTCHours() - 5,
-          dateShifted[4].getUTCMinutes(),
-          dateShifted[4].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[4]))
       },
       {
         Name: "Monday",
@@ -3060,14 +2354,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[4].getUTCFullYear(),
-          dateShifted[4].getUTCMonth(),
-          dateShifted[4].getUTCDate() + 1,
-          dateShifted[4].getUTCHours() - 5,
-          dateShifted[4].getUTCMinutes(),
-          dateShifted[4].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[5]))
       },
       {
         Name: "Tuesday",
@@ -3086,14 +2373,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[4].getUTCFullYear(),
-          dateShifted[4].getUTCMonth(),
-          dateShifted[4].getUTCDate() + 2,
-          dateShifted[4].getUTCHours() - 5,
-          dateShifted[4].getUTCMinutes(),
-          dateShifted[4].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[6]))
       },
       {
         Name: "Wednesday",
@@ -3112,14 +2392,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[4].getUTCFullYear(),
-          dateShifted[4].getUTCMonth(),
-          dateShifted[4].getUTCDate() + 3,
-          dateShifted[4].getUTCHours() - 5,
-          dateShifted[4].getUTCMinutes(),
-          dateShifted[4].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[7]))
       },
       {
         Name: "Thursday",
@@ -3138,14 +2411,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[4].getUTCFullYear(),
-          dateShifted[4].getUTCMonth(),
-          dateShifted[4].getUTCDate() + 4,
-          dateShifted[4].getUTCHours() - 5,
-          dateShifted[4].getUTCMinutes(),
-          dateShifted[4].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[8]))
       },
       {
         Name: "Friday",
@@ -3164,14 +2430,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[4].getUTCFullYear(),
-          dateShifted[4].getUTCMonth(),
-          dateShifted[4].getUTCDate() + 5,
-          dateShifted[4].getUTCHours() - 5,
-          dateShifted[4].getUTCMinutes(),
-          dateShifted[4].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[9]))
       },
       {
         Name: "Saturday",
@@ -3181,14 +2440,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          dateShifted[4].getUTCFullYear(),
-          dateShifted[4].getUTCMonth(),
-          dateShifted[4].getUTCDate() + 6,
-          dateShifted[4].getUTCHours() - 5,
-          dateShifted[4].getUTCMinutes(),
-          dateShifted[4].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[10]))
       }
     ],
     shifted: true,
@@ -3199,7 +2451,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
   },
   {
     description: "+5 end of year, open, shifted",
-    dateObj: dateShifted[5],
+    dateObj: dateConversion(new Date(dateShifted[5])),
     currentDayInfo: {
       Name: "Monday",
       altName: "Sun",
@@ -3217,14 +2469,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
           to: "22:00"
         }
       ],
-      dateObj: new Date(
-        dateShifted[5].getUTCFullYear(),
-        dateShifted[5].getUTCMonth(),
-        dateShifted[5].getUTCDate() + 0,
-        dateShifted[5].getUTCHours() - 5,
-        dateShifted[5].getUTCMinutes(),
-        dateShifted[5].getUTCSeconds()
-      )
+      dateObj: dateConversion(new Date(dateShifted[5]))
     },
     schedule: [
       {
@@ -3244,14 +2489,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[5].getUTCFullYear(),
-          dateShifted[5].getUTCMonth(),
-          dateShifted[5].getUTCDate() + 0,
-          dateShifted[5].getUTCHours() - 5,
-          dateShifted[5].getUTCMinutes(),
-          dateShifted[5].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[5]))
       },
       {
         Name: "Tuesday",
@@ -3270,14 +2508,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[5].getUTCFullYear(),
-          dateShifted[5].getUTCMonth(),
-          dateShifted[5].getUTCDate() + 1,
-          dateShifted[5].getUTCHours() - 5,
-          dateShifted[5].getUTCMinutes(),
-          dateShifted[5].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[6]))
       },
       {
         Name: "Wednesday",
@@ -3296,14 +2527,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[5].getUTCFullYear(),
-          dateShifted[5].getUTCMonth(),
-          dateShifted[5].getUTCDate() + 2,
-          dateShifted[5].getUTCHours() - 5,
-          dateShifted[5].getUTCMinutes(),
-          dateShifted[5].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[7]))
       },
       {
         Name: "Thursday",
@@ -3322,14 +2546,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[5].getUTCFullYear(),
-          dateShifted[5].getUTCMonth(),
-          dateShifted[5].getUTCDate() + 3,
-          dateShifted[5].getUTCHours() - 5,
-          dateShifted[5].getUTCMinutes(),
-          dateShifted[5].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[8]))
       },
       {
         Name: "Friday",
@@ -3348,14 +2565,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[5].getUTCFullYear(),
-          dateShifted[5].getUTCMonth(),
-          dateShifted[5].getUTCDate() + 4,
-          dateShifted[5].getUTCHours() - 5,
-          dateShifted[5].getUTCMinutes(),
-          dateShifted[5].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[9]))
       },
       {
         Name: "Saturday",
@@ -3365,14 +2575,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          dateShifted[5].getUTCFullYear(),
-          dateShifted[5].getUTCMonth(),
-          dateShifted[5].getUTCDate() + 5,
-          dateShifted[5].getUTCHours() - 5,
-          dateShifted[5].getUTCMinutes(),
-          dateShifted[5].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[10]))
       },
       {
         Name: "Sunday",
@@ -3382,14 +2585,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          dateShifted[5].getUTCFullYear(),
-          dateShifted[5].getUTCMonth(),
-          dateShifted[5].getUTCDate() + 6,
-          dateShifted[5].getUTCHours() - 5,
-          dateShifted[5].getUTCMinutes(),
-          dateShifted[5].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[11]))
       }
     ],
     shifted: true,
@@ -3400,7 +2596,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
   },
   {
     description: "+6 end of year, open, shifted",
-    dateObj: dateShifted[6],
+    dateObj: dateConversion(new Date(dateShifted[6])),
     currentDayInfo: {
       Name: "Tuesday",
       altName: "Sun",
@@ -3418,14 +2614,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
           to: "22:00"
         }
       ],
-      dateObj: new Date(
-        dateShifted[6].getUTCFullYear(),
-        dateShifted[6].getUTCMonth(),
-        dateShifted[6].getUTCDate() + 0,
-        dateShifted[6].getUTCHours() - 5,
-        dateShifted[6].getUTCMinutes(),
-        dateShifted[6].getUTCSeconds()
-      )
+      dateObj: dateConversion(new Date(dateShifted[6]))
     },
     schedule: [
       {
@@ -3445,14 +2634,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[6].getUTCFullYear(),
-          dateShifted[6].getUTCMonth(),
-          dateShifted[6].getUTCDate() + 0,
-          dateShifted[6].getUTCHours() - 5,
-          dateShifted[6].getUTCMinutes(),
-          dateShifted[6].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[6]))
       },
       {
         Name: "Wednesday",
@@ -3471,14 +2653,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[6].getUTCFullYear(),
-          dateShifted[6].getUTCMonth(),
-          dateShifted[6].getUTCDate() + 1,
-          dateShifted[6].getUTCHours() - 5,
-          dateShifted[6].getUTCMinutes(),
-          dateShifted[6].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[7]))
       },
       {
         Name: "Thursday",
@@ -3497,14 +2672,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[6].getUTCFullYear(),
-          dateShifted[6].getUTCMonth(),
-          dateShifted[6].getUTCDate() + 2,
-          dateShifted[6].getUTCHours() - 5,
-          dateShifted[6].getUTCMinutes(),
-          dateShifted[6].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[8]))
       },
       {
         Name: "Friday",
@@ -3523,14 +2691,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[6].getUTCFullYear(),
-          dateShifted[6].getUTCMonth(),
-          dateShifted[6].getUTCDate() + 3,
-          dateShifted[6].getUTCHours() - 5,
-          dateShifted[6].getUTCMinutes(),
-          dateShifted[6].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[9]))
       },
       {
         Name: "Saturday",
@@ -3540,14 +2701,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          dateShifted[6].getUTCFullYear(),
-          dateShifted[6].getUTCMonth(),
-          dateShifted[6].getUTCDate() + 4,
-          dateShifted[6].getUTCHours() - 5,
-          dateShifted[6].getUTCMinutes(),
-          dateShifted[6].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[10]))
       },
       {
         Name: "Sunday",
@@ -3557,14 +2711,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          dateShifted[6].getUTCFullYear(),
-          dateShifted[6].getUTCMonth(),
-          dateShifted[6].getUTCDate() + 5,
-          dateShifted[6].getUTCHours() - 5,
-          dateShifted[6].getUTCMinutes(),
-          dateShifted[6].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[11]))
       },
       {
         Name: "Monday",
@@ -3583,14 +2730,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[6].getUTCFullYear(),
-          dateShifted[6].getUTCMonth(),
-          dateShifted[6].getUTCDate() + 6,
-          dateShifted[6].getUTCHours() - 5,
-          dateShifted[6].getUTCMinutes(),
-          dateShifted[6].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[12]))
       }
     ],
     shifted: true,
@@ -3601,7 +2741,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
   },
   {
     description: "+7 end of year, open, shifted",
-    dateObj: dateShifted[7],
+    dateObj: dateConversion(new Date(dateShifted[7])),
     currentDayInfo: {
       Name: "Wednesday",
       altName: "Wed",
@@ -3619,14 +2759,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
           to: "22:00"
         }
       ],
-      dateObj: new Date(
-        dateShifted[7].getUTCFullYear(),
-        dateShifted[7].getUTCMonth(),
-        dateShifted[7].getUTCDate() + 0,
-        dateShifted[7].getUTCHours() - 5,
-        dateShifted[7].getUTCMinutes(),
-        dateShifted[7].getUTCSeconds()
-      )
+      dateObj: dateConversion(new Date(dateShifted[7]))
     },
     schedule: [
       {
@@ -3646,14 +2779,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[7].getUTCFullYear(),
-          dateShifted[7].getUTCMonth(),
-          dateShifted[7].getUTCDate() + 0,
-          dateShifted[7].getUTCHours() - 5,
-          dateShifted[7].getUTCMinutes(),
-          dateShifted[7].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[7]))
       },
       {
         Name: "Thursday",
@@ -3672,14 +2798,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[7].getUTCFullYear(),
-          dateShifted[7].getUTCMonth(),
-          dateShifted[7].getUTCDate() + 1,
-          dateShifted[7].getUTCHours() - 5,
-          dateShifted[7].getUTCMinutes(),
-          dateShifted[7].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[8]))
       },
       {
         Name: "Friday",
@@ -3698,14 +2817,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[7].getUTCFullYear(),
-          dateShifted[7].getUTCMonth(),
-          dateShifted[7].getUTCDate() + 2,
-          dateShifted[7].getUTCHours() - 5,
-          dateShifted[7].getUTCMinutes(),
-          dateShifted[7].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[9]))
       },
       {
         Name: "Saturday",
@@ -3715,14 +2827,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          dateShifted[7].getUTCFullYear(),
-          dateShifted[7].getUTCMonth(),
-          dateShifted[7].getUTCDate() + 3,
-          dateShifted[7].getUTCHours() - 5,
-          dateShifted[7].getUTCMinutes(),
-          dateShifted[7].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[10]))
       },
       {
         Name: "Sunday",
@@ -3732,14 +2837,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          dateShifted[7].getUTCFullYear(),
-          dateShifted[7].getUTCMonth(),
-          dateShifted[7].getUTCDate() + 4,
-          dateShifted[7].getUTCHours() - 5,
-          dateShifted[7].getUTCMinutes(),
-          dateShifted[7].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[11]))
       },
       {
         Name: "Monday",
@@ -3758,14 +2856,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[7].getUTCFullYear(),
-          dateShifted[7].getUTCMonth(),
-          dateShifted[7].getUTCDate() + 5,
-          dateShifted[7].getUTCHours() - 5,
-          dateShifted[7].getUTCMinutes(),
-          dateShifted[7].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[12]))
       },
       {
         Name: "Tuesday",
@@ -3784,14 +2875,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[7].getUTCFullYear(),
-          dateShifted[7].getUTCMonth(),
-          dateShifted[7].getUTCDate() + 6,
-          dateShifted[7].getUTCHours() - 5,
-          dateShifted[7].getUTCMinutes(),
-          dateShifted[7].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[13]))
       }
     ],
     shifted: true,
@@ -3802,7 +2886,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
   },
   {
     description: "+8 Last of year, open, shifted",
-    dateObj: dateShifted[8],
+    dateObj: dateConversion(new Date(dateShifted[8])),
     currentDayInfo: {
       Name: "Thursday",
       altName: "Sun",
@@ -3820,14 +2904,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
           to: "22:00"
         }
       ],
-      dateObj: new Date(
-        dateShifted[8].getUTCFullYear(),
-        dateShifted[8].getUTCMonth(),
-        dateShifted[8].getUTCDate() + 0,
-        dateShifted[8].getUTCHours() - 5,
-        dateShifted[8].getUTCMinutes(),
-        dateShifted[8].getUTCSeconds()
-      )
+      dateObj: dateConversion(new Date(dateShifted[8]))
     },
     schedule: [
       {
@@ -3847,14 +2924,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[8].getUTCFullYear(),
-          dateShifted[8].getUTCMonth(),
-          dateShifted[8].getUTCDate() + 0,
-          dateShifted[8].getUTCHours() - 5,
-          dateShifted[8].getUTCMinutes(),
-          dateShifted[8].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[8]))
       },
       {
         Name: "Friday",
@@ -3873,14 +2943,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[8].getUTCFullYear(),
-          dateShifted[8].getUTCMonth(),
-          dateShifted[8].getUTCDate() + 1,
-          dateShifted[8].getUTCHours() - 5,
-          dateShifted[8].getUTCMinutes(),
-          dateShifted[8].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[9]))
       },
       {
         Name: "Saturday",
@@ -3890,14 +2953,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          dateShifted[8].getUTCFullYear(),
-          dateShifted[8].getUTCMonth(),
-          dateShifted[8].getUTCDate() + 2,
-          dateShifted[8].getUTCHours() - 5,
-          dateShifted[8].getUTCMinutes(),
-          dateShifted[8].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[10]))
       },
       {
         Name: "Sunday",
@@ -3907,14 +2963,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
         isClosed: true,
         isCurrentDay: false,
         Hours: [],
-        dateObj: new Date(
-          dateShifted[8].getUTCFullYear(),
-          dateShifted[8].getUTCMonth(),
-          dateShifted[8].getUTCDate() + 3,
-          dateShifted[8].getUTCHours() - 5,
-          dateShifted[8].getUTCMinutes(),
-          dateShifted[8].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[11]))
       },
       {
         Name: "Monday",
@@ -3933,14 +2982,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[8].getUTCFullYear(),
-          dateShifted[8].getUTCMonth(),
-          dateShifted[8].getUTCDate() + 4,
-          dateShifted[8].getUTCHours() - 5,
-          dateShifted[8].getUTCMinutes(),
-          dateShifted[8].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[12]))
       },
       {
         Name: "Tuesday",
@@ -3959,14 +3001,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[8].getUTCFullYear(),
-          dateShifted[8].getUTCMonth(),
-          dateShifted[8].getUTCDate() + 5,
-          dateShifted[8].getUTCHours() - 5,
-          dateShifted[8].getUTCMinutes(),
-          dateShifted[8].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[13]))
       },
       {
         Name: "Wednesday",
@@ -3985,14 +3020,7 @@ export const buisnessHoursTestDynamicShiftedObj = [
             to: "22:00"
           }
         ],
-        dateObj: new Date(
-          dateShifted[8].getUTCFullYear(),
-          dateShifted[8].getUTCMonth(),
-          dateShifted[8].getUTCDate() + 6,
-          dateShifted[8].getUTCHours() - 5,
-          dateShifted[8].getUTCMinutes(),
-          dateShifted[8].getUTCSeconds()
-        )
+        dateObj: dateConversion(new Date(dateShifted[14]))
       }
     ],
     shifted: true,
@@ -4000,561 +3028,5 @@ export const buisnessHoursTestDynamicShiftedObj = [
     holidayName: "",
     isHoliday: false,
     isOpen: false
-  }
-];
-
-export const buisnessHoursTimeZoneTestObj = jsondata => [
-  {
-    description: "Holiday Week Christmas timezone, open, shifted",
-    dateObj: new Date(2017, 11, 25, 4, 0),
-    currentDayInfo: {
-      Name: "Monday",
-      altName: "Sun",
-      HolidayName: "Christmas",
-      isHoliday: true,
-      isClosed: false,
-      isCurrentDay: true,
-      Hours: jsondata.Holidays[12][0].Hours,
-      dateObj: new Date(
-        new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
-        new Date(2017, 11, 25, 4, 0).getUTCMonth(),
-        new Date(2017, 11, 25, 4, 0).getUTCDate() + 0,
-        new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
-        new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
-        new Date(2017, 11, 25, 4, 0).getUTCSeconds()
-      )
-    },
-    schedule: [
-      {
-        Name: "Monday",
-        altName: "Sun",
-        HolidayName: "Christmas",
-        isHoliday: true,
-        isClosed: false,
-        isCurrentDay: true,
-        Hours: [{ from: "03:00", to: "05:00" }],
-        dateObj: new Date(
-          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
-          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
-          new Date(2017, 11, 25, 4, 0).getUTCDate(),
-          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
-          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
-          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
-        )
-      },
-
-      {
-        Name: "Tuesday",
-        altName: "Sun",
-        HolidayName: "",
-        isHoliday: false,
-        isClosed: false,
-        isCurrentDay: false,
-        Hours: [
-          {
-            from: "10:00",
-            to: "13:30"
-          },
-          {
-            from: "18:00",
-            to: "22:00"
-          }
-        ],
-        dateObj: new Date(
-          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
-          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
-          new Date(2017, 11, 25, 4, 0).getUTCDate() + 1,
-          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
-          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
-          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
-        )
-      },
-      {
-        Name: "Wednesday",
-        altName: "Wed",
-        HolidayName: "",
-        isHoliday: false,
-        isClosed: false,
-        isCurrentDay: false,
-        Hours: [
-          {
-            from: "10:00",
-            to: "13:30"
-          },
-          {
-            from: "18:00",
-            to: "22:00"
-          }
-        ],
-        dateObj: new Date(
-          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
-          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
-          new Date(2017, 11, 25, 4, 0).getUTCDate() + 2,
-          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
-          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
-          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
-        )
-      },
-      {
-        Name: "Thursday",
-        altName: "Sun",
-        HolidayName: "",
-        isHoliday: false,
-        isClosed: false,
-        isCurrentDay: false,
-        Hours: [
-          {
-            from: "10:00",
-            to: "13:30"
-          },
-          {
-            from: "18:00",
-            to: "22:00"
-          }
-        ],
-        dateObj: new Date(
-          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
-          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
-          new Date(2017, 11, 25, 4, 0).getUTCDate() + 3,
-          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
-          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
-          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
-        )
-      },
-      {
-        Name: "Friday",
-        altName: "Sun",
-        HolidayName: "",
-        isHoliday: false,
-        isClosed: false,
-        isCurrentDay: false,
-        Hours: [
-          {
-            from: "10:00",
-            to: "13:30"
-          },
-          {
-            from: "18:00",
-            to: "22:00"
-          }
-        ],
-        dateObj: new Date(
-          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
-          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
-          new Date(2017, 11, 25, 4, 0).getUTCDate() + 4,
-          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
-          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
-          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
-        )
-      },
-      {
-        Name: "Saturday",
-        altName: "Sun",
-        HolidayName: "",
-        isHoliday: false,
-        isClosed: true,
-        isCurrentDay: false,
-        Hours: [],
-        dateObj: new Date(
-          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
-          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
-          new Date(2017, 11, 25, 4, 0).getUTCDate() + 5,
-          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
-          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
-          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
-        )
-      },
-      {
-        Name: "Sunday",
-        altName: "Sun",
-        HolidayName: "",
-        isHoliday: false,
-        isClosed: true,
-        isCurrentDay: false,
-        Hours: [],
-        dateObj: new Date(
-          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
-          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
-          new Date(2017, 11, 25, 4, 0).getUTCDate() + 6,
-          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
-          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
-          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
-        )
-      }
-    ],
-    shifted: true,
-    indexCD: 0,
-    holidayName: "Christmas",
-    isHoliday: true,
-    isOpen: true,
-    timezone: "Brazil/East"
-  },
-  {
-    description: "Holiday Week Christmas timezone, open, shifted",
-    dateObj: new Date(2017, 11, 25, 4, 0),
-    currentDayInfo: {
-      Name: "Monday",
-      altName: "Sun",
-      HolidayName: "Christmas",
-      isHoliday: true,
-      isClosed: false,
-      isCurrentDay: true,
-      Hours: jsondata.Holidays[12][0].Hours,
-      dateObj: new Date(
-        new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
-        new Date(2017, 11, 25, 4, 0).getUTCMonth(),
-        new Date(2017, 11, 25, 4, 0).getUTCDate() + 0,
-        new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
-        new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
-        new Date(2017, 11, 25, 4, 0).getUTCSeconds()
-      )
-    },
-    schedule: [
-      {
-        Name: "Monday",
-        altName: "Sun",
-        HolidayName: "Christmas",
-        isHoliday: true,
-        isClosed: false,
-        isCurrentDay: true,
-        Hours: [{ from: "03:00", to: "05:00" }],
-        dateObj: new Date(
-          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
-          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
-          new Date(2017, 11, 25, 4, 0).getUTCDate(),
-          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
-          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
-          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
-        )
-      },
-      {
-        Name: "Tuesday",
-        altName: "Sun",
-        HolidayName: "",
-        isHoliday: false,
-        isClosed: false,
-        isCurrentDay: false,
-        Hours: [
-          {
-            from: "10:00",
-            to: "13:30"
-          },
-          {
-            from: "18:00",
-            to: "22:00"
-          }
-        ],
-        dateObj: new Date(
-          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
-          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
-          new Date(2017, 11, 25, 4, 0).getUTCDate() + 1,
-          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
-          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
-          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
-        )
-      },
-      {
-        Name: "Wednesday",
-        altName: "Wed",
-        HolidayName: "",
-        isHoliday: false,
-        isClosed: false,
-        isCurrentDay: false,
-        Hours: [
-          {
-            from: "10:00",
-            to: "13:30"
-          },
-          {
-            from: "18:00",
-            to: "22:00"
-          }
-        ],
-        dateObj: new Date(
-          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
-          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
-          new Date(2017, 11, 25, 4, 0).getUTCDate() + 2,
-          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
-          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
-          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
-        )
-      },
-      {
-        Name: "Thursday",
-        altName: "Sun",
-        HolidayName: "",
-        isHoliday: false,
-        isClosed: false,
-        isCurrentDay: false,
-        Hours: [
-          {
-            from: "10:00",
-            to: "13:30"
-          },
-          {
-            from: "18:00",
-            to: "22:00"
-          }
-        ],
-        dateObj: new Date(
-          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
-          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
-          new Date(2017, 11, 25, 4, 0).getUTCDate() + 3,
-          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
-          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
-          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
-        )
-      },
-      {
-        Name: "Friday",
-        altName: "Sun",
-        HolidayName: "",
-        isHoliday: false,
-        isClosed: false,
-        isCurrentDay: false,
-        Hours: [
-          {
-            from: "10:00",
-            to: "13:30"
-          },
-          {
-            from: "18:00",
-            to: "22:00"
-          }
-        ],
-        dateObj: new Date(
-          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
-          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
-          new Date(2017, 11, 25, 4, 0).getUTCDate() + 4,
-          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
-          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
-          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
-        )
-      },
-      {
-        Name: "Saturday",
-        altName: "Sun",
-        HolidayName: "",
-        isHoliday: false,
-        isClosed: true,
-        isCurrentDay: false,
-        Hours: [],
-        dateObj: new Date(
-          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
-          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
-          new Date(2017, 11, 25, 4, 0).getUTCDate() + 5,
-          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
-          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
-          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
-        )
-      },
-      {
-        Name: "Sunday",
-        altName: "Sun",
-        HolidayName: "",
-        isHoliday: false,
-        isClosed: true,
-        isCurrentDay: false,
-        Hours: [],
-        dateObj: new Date(
-          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
-          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
-          new Date(2017, 11, 25, 4, 0).getUTCDate() + 6,
-          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
-          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
-          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
-        )
-      }
-    ],
-    shifted: true,
-    indexCD: 0,
-    holidayName: "Christmas",
-    isHoliday: true,
-    isOpen: true,
-    timezone: "Europe/London"
-  },
-  {
-    description: "Holiday Week Christmas timezone, open, shifted",
-    dateObj: new Date(2017, 11, 25, 4, 0),
-    currentDayInfo: {
-      Name: "Monday",
-      altName: "Sun",
-      HolidayName: "Christmas",
-      isHoliday: true,
-      isClosed: false,
-      isCurrentDay: true,
-      Hours: jsondata.Holidays[12][0].Hours,
-      dateObj: new Date(
-        new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
-        new Date(2017, 11, 25, 4, 0).getUTCMonth(),
-        new Date(2017, 11, 25, 4, 0).getUTCDate() + 0,
-        new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
-        new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
-        new Date(2017, 11, 25, 4, 0).getUTCSeconds()
-      )
-    },
-    schedule: [
-      {
-        Name: "Monday",
-        altName: "Sun",
-        HolidayName: "Christmas",
-        isHoliday: true,
-        isClosed: false,
-        isCurrentDay: true,
-        Hours: [{ from: "03:00", to: "05:00" }],
-        dateObj: new Date(
-          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
-          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
-          new Date(2017, 11, 25, 4, 0).getUTCDate(),
-          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
-          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
-          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
-        )
-      },
-      {
-        Name: "Tuesday",
-        altName: "Sun",
-        HolidayName: "",
-        isHoliday: false,
-        isClosed: false,
-        isCurrentDay: false,
-        Hours: [
-          {
-            from: "10:00",
-            to: "13:30"
-          },
-          {
-            from: "18:00",
-            to: "22:00"
-          }
-        ],
-        dateObj: new Date(
-          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
-          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
-          new Date(2017, 11, 25, 4, 0).getUTCDate() + 1,
-          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
-          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
-          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
-        )
-      },
-      {
-        Name: "Wednesday",
-        altName: "Wed",
-        HolidayName: "",
-        isHoliday: false,
-        isClosed: false,
-        isCurrentDay: false,
-        Hours: [
-          {
-            from: "10:00",
-            to: "13:30"
-          },
-          {
-            from: "18:00",
-            to: "22:00"
-          }
-        ],
-        dateObj: new Date(
-          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
-          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
-          new Date(2017, 11, 25, 4, 0).getUTCDate() + 2,
-          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
-          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
-          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
-        )
-      },
-      {
-        Name: "Thursday",
-        altName: "Sun",
-        HolidayName: "",
-        isHoliday: false,
-        isClosed: false,
-        isCurrentDay: false,
-        Hours: [
-          {
-            from: "10:00",
-            to: "13:30"
-          },
-          {
-            from: "18:00",
-            to: "22:00"
-          }
-        ],
-        dateObj: new Date(
-          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
-          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
-          new Date(2017, 11, 25, 4, 0).getUTCDate() + 3,
-          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
-          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
-          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
-        )
-      },
-      {
-        Name: "Friday",
-        altName: "Sun",
-        HolidayName: "",
-        isHoliday: false,
-        isClosed: false,
-        isCurrentDay: false,
-        Hours: [
-          {
-            from: "10:00",
-            to: "13:30"
-          },
-          {
-            from: "18:00",
-            to: "22:00"
-          }
-        ],
-        dateObj: new Date(
-          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
-          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
-          new Date(2017, 11, 25, 4, 0).getUTCDate() + 4,
-          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
-          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
-          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
-        )
-      },
-      {
-        Name: "Saturday",
-        altName: "Sun",
-        HolidayName: "",
-        isHoliday: false,
-        isClosed: true,
-        isCurrentDay: false,
-        Hours: [],
-        dateObj: new Date(
-          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
-          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
-          new Date(2017, 11, 25, 4, 0).getUTCDate() + 5,
-          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
-          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
-          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
-        )
-      },
-      {
-        Name: "Sunday",
-        altName: "Sun",
-        HolidayName: "",
-        isHoliday: false,
-        isClosed: true,
-        isCurrentDay: false,
-        Hours: [],
-        dateObj: new Date(
-          new Date(2017, 11, 25, 4, 0).getUTCFullYear(),
-          new Date(2017, 11, 25, 4, 0).getUTCMonth(),
-          new Date(2017, 11, 25, 4, 0).getUTCDate() + 6,
-          new Date(2017, 11, 25, 4, 0).getUTCHours() - 5,
-          new Date(2017, 11, 25, 4, 0).getUTCMinutes(),
-          new Date(2017, 11, 25, 4, 0).getUTCSeconds()
-        )
-      }
-    ],
-    shifted: true,
-    indexCD: 0,
-    holidayName: "Christmas",
-    isHoliday: true,
-    isOpen: true,
-    timezone: "Australia/Adelaide"
   }
 ];

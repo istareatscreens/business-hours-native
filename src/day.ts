@@ -135,6 +135,12 @@ export default class Day implements DayObject {
 
   public isOpen(date: Date): boolean {
     const { Hours } = this.data;
+    if (
+      date.getDate() !== this.date.getDate() ||
+      date.getMonth() !== this.date.getMonth() ||
+      date.getFullYear() !== this.date.getFullYear()
+    )
+      return false;
     for (const hours of Hours) {
       if (
         this.getSpecificTime(hours.from, date) <= date.getTime() &&

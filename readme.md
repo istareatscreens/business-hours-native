@@ -2,11 +2,11 @@
 
 # business-hours-native
 
-This package provides a way to report a schedule of business hours and open status dynamically using the native JavaScript date object and no dependencies. Scheduling data is stored in a [JSON file](https://raw.githubusercontent.com/istareatscreens/business-hours-native/master/assets/hoursTemplate.json).
+This package provides a way to report a schedule of business hours and open status dynamically using the native JavaScript date object and no dependencies. Input data is delieverd via a JSON configuration file, example [HERE](https://raw.githubusercontent.com/istareatscreens/business-hours-native/master/assets/hoursTemplate.json).
 
 ## Features:
 
-- Times reported are localized to the business using [UTC corrections](https://earthsky.org/astronomy-essentials/universal-time)
+- Times reported are localized to the business using the date function toLocaleString() and [specifying a timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
 - Shifting schedule where the first day of the week is always the current day and fixed scheduling where Sunday is the first day of the week and Saturday is the last day of the week
 - Dynamic time and scheduling adjustments by calling the refresh() function
 - Holiday hours - including support for reoccurring fixed week and named day of the week (e.g. Labour Day), and fixed date of the month holidays (e.g. Christmas)
@@ -31,9 +31,7 @@ Configuration is achieved through a JSON file, a template file can be found [HER
 - Holidays are stored in an array of objects index by numbers corresponding to the month they occur on
 - Closed business days can be specified by providing an empty array [] for the index hours, or no hours index
 - Multiple open periods must be specified in their own objects, where index "from" specifies the time of opening and index "to" specifies the time of closing
-- A UTC offset is used to specify the businesses time zone and must be specified.
-  UTC offsets for time zone are located [HERE](https://earthsky.org/astronomy-essentials/universal-time) and [HERE](https://www.timetemperature.com/abbreviations/united_states_time_zone_abbreviations.shtml)
-  For example the [template](https://raw.githubusercontent.com/istareatscreens/business-hours-native/master/assets/hoursTemplate.json) specifies an EST business time zone
+- Time zone and output format are specified [HERE](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), lookup country codes are found [HERE](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
 
 ## Initialization
 
@@ -110,7 +108,7 @@ bH.getCurrentDayInfo();
 //  isClosed: boolean, //true if the business has no listed open hours for the day, otherwise false
 //  isCurrentDay: boolean //true if it is the current day of the week, else false
 //  Hours: object[] // array of {from: XX:XX, to: XX:XX} objects reporting opening/closing times
-//  dateObj: Date //returns Date object with correct year, day, month corresponding to the current day
+//  dateObj: Date //returns Date object with correct year, day, month corresponding to each day in the array
 //  }
 //  ...]
 ```

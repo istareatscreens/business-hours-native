@@ -74,7 +74,10 @@
       "Hours": []
     }
   },
-  "Options": { "UTCoffset": -5 },
+  "Options": {
+    "timezone": "America/New_York",
+    "format": "en-US"
+  },
   "Holidays": {
     "4": [
       {
