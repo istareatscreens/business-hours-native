@@ -72,8 +72,9 @@ export default class BusinessHours {
   }
 
   public getCurrentLocalBusinessTime(): string {
-    return new Date().toLocaleString(this.options.Format, {
-      timeZone: this.options.Timezone
+    const { Format, timeZone } = this.options;
+    return new Date().toLocaleString(Format === "" ? undefined : Format, {
+      timeZone: timeZone
     });
   }
 

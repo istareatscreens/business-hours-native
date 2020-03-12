@@ -3,6 +3,8 @@ import sinon from "sinon";
 import "mocha";
 import { buisnessHours } from "../src/index";
 let jsondata = require("./assets/hours_test_template.json");
+let jsondataNoFormat = require("./assets/hours_test_template.json");
+
 import {
   buisnessHoursTestObj,
   buisnessHoursTestDynamicObj,
@@ -10,6 +12,7 @@ import {
 } from "./testObj";
 import BusinessHours from "../src/businessHours";
 
+//Basic tests, open/closed, holidays
 describe("#buisnessHours", function() {
   let clock: any;
 
@@ -83,7 +86,7 @@ describe("#buisnessHours", function() {
 
   let firstRun = true;
   let bH;
-
+  //Testing shifting = false
   buisnessHoursTestDynamicObj.forEach(
     ({
       description,
@@ -173,6 +176,7 @@ describe("#buisnessHours", function() {
   const bHS = buisnessHours.init(jsondata, true);
   clock.restore();
 
+  //testing shifting = true and no format option
   buisnessHoursTestDynamicShiftedObj.forEach(
     ({
       description,
@@ -195,7 +199,7 @@ describe("#buisnessHours", function() {
         });
 
         it("Should return initialized businessHours object ", () => {
-          expect(buisnessHours.init(jsondata, true)).to.instanceof(
+          expect(buisnessHours.init(jsondataNoFormat, true)).to.instanceof(
             BusinessHours
           );
         });
@@ -206,8 +210,8 @@ describe("#buisnessHours", function() {
 
         it("Should return current local business time Date Object", function() {
           expect(bHS.getCurrentLocalBusinessTime()).to.equal(
-            dateObj.toLocaleString("en-US", {
-              timeZone: "America/New_York"
+            dateObj.toLocaleString(jsondataNoFormat.Options.Format, {
+              timeZone: jsondataNoFormat.Options.timeZone
             })
           );
         });

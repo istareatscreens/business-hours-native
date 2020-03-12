@@ -4,9 +4,11 @@
 
 This package provides a way to report a schedule of business hours and open status dynamically using the native JavaScript date object and no dependencies. Input data is delieverd via a JSON configuration file, example [HERE](https://raw.githubusercontent.com/istareatscreens/business-hours-native/master/assets/hoursTemplate.json).
 
+This package uses the Date objects [toLocaleDateString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString) function to support timezones. Browser support for this function is listed [HERE](https://caniuse.com/#feat=date-tolocaledatestring).
+
 ## Features:
 
-- Times reported are localized to the business using the date function toLocaleString() and [specifying a timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+- Times reported are localized to the business using the date function [toLocaleDateString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString) and [specifying a timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
 - Shifting schedule where the first day of the week is always the current day and fixed scheduling where Sunday is the first day of the week and Saturday is the last day of the week
 - Dynamic time and scheduling adjustments by calling the refresh() function
 - Holiday hours - including support for reoccurring fixed week and named day of the week (e.g. Labour Day), and fixed date of the month holidays (e.g. Christmas)
@@ -22,7 +24,7 @@ npm i business-hours-native
 
 ## Configuration
 
-Configuration is achieved through a JSON file, a template file can be found [HERE](https://raw.githubusercontent.com/istareatscreens/business-hours-native/master/assets/hoursTemplate.json).
+Configuration is achieved through a JSON file, a template file can be found [HERE](https://raw.githubusercontent.com/istareatscreens/business-hours-native/master/assets/hoursTemplate.json). Not specifying a
 
 ### JSON File Formatting
 
@@ -31,7 +33,17 @@ Configuration is achieved through a JSON file, a template file can be found [HER
 - Holidays are stored in an array of objects index by numbers corresponding to the month they occur on
 - Closed business days can be specified by providing an empty array [] for the index hours, or no hours index
 - Multiple open periods must be specified in their own objects, where index "from" specifies the time of opening and index "to" specifies the time of closing
-- Time zone and output format are specified [HERE](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), lookup country codes are found [HERE](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+- Time zone options are located here [HERE](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), lookup country codes are found [HERE](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+- locale formating for the output of the function getCurrentLocalBusinessTime() can be found [HERE].
+- For possible increased browser support specify an empty string for the Format option
+
+```
+    "Options": {
+  "timezone": "America/New_York",
+  "Format": ""
+}
+
+```
 
 ## Initialization
 
@@ -50,13 +62,14 @@ const bH = businessHours.init(jsonHourConfig, true);
 
 ## Methods
 
-### `getCurrentLocalBusinessTime(): Date`
+### `getCurrentLocalBusinessTime(): string`
 
-Returns date object specifying the current local time of the business.
+Returns string specifying the current local time of the business in the
+format specified in the JSON Config file (e.g. en-us). Documentation can be found [HERE](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString) regarding the string format. The returned string can be passed as an argument to the native Date object if needed.
 
 ```javascript
 bH.getCurrentLocalBusinessTime();
-//returns Date object local to the business
+//returns string in specified format
 ```
 
 ### `refresh(): void`
@@ -71,7 +84,7 @@ bH.refresh();
 
 ### `getCurrentDayInfo(): object`
 
-Returns an objected containing all information about the current day
+Returns an object containing all information about the current day
 
 ```javascript
 bH.getCurrentDayInfo();

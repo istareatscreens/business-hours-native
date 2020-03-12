@@ -52,7 +52,7 @@ interface HolidayData {
 }
 
 interface OptionsData {
-  Timezone: string;
+  timeZone: string;
   Format: string;
 }
 
