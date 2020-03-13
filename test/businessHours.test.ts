@@ -54,19 +54,28 @@ buisnessHoursTestObj.forEach(
         expect(bH.refresh()).to.be.undefined;
       });
 
-      it("Should return current local business time Date Object", function() {
-        expect(bH.getCurrentLocalBusinessTime()).to.equal(
-          dateObj.toLocaleString("en-US", {
-            timeZone: "America/New_York"
-          })
-        );
+      it("Should return current local business time", function() {
+        const date = new Date(bH.getCurrentLocalBusinessTime());
+        const testDate = new Date(dateObj);
+
+        const getDateParams = date =>
+          date.getFullYear +
+          ", " +
+          date.getMonth() +
+          ", " +
+          date.getDate() +
+          ", " +
+          date.getHours() +
+          ", " +
+          date.getMinutes();
+        expect(getDateParams(date)).to.equal(getDateParams(testDate));
       });
 
       it("Should return get current day info", function() {
         expect(bH.getCurrentDayInfo()).deep.eq(currentDayInfo);
       });
 
-      it("Should return fulll schedule", function() {
+      it("Should return full schedule", function() {
         expect(bH.getSchedule()).deep.eq(schedule);
       });
 
