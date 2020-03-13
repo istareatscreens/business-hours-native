@@ -2,7 +2,7 @@ import { expect } from "chai";
 import "mocha";
 //import { buisnessHours } from "../src";
 let jsonTemplate = require("./assets/hours_test_template.json");
-import { dayTestObject } from "./testObj";
+import { dayTestObject } from "./testObjDays";
 
 describe("#Day", function() {
   //input test

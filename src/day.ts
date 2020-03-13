@@ -138,7 +138,7 @@ export default class Day implements DayObject {
     if (
       date.getDate() !== this.date.getDate() ||
       date.getMonth() !== this.date.getMonth() ||
-      date.getFullYear() !== this.date.getFullYear()
+      date.getFullYear() > this.date.getFullYear()
     )
       return false;
     for (const hours of Hours) {
