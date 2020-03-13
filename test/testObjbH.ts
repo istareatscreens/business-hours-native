@@ -15,11 +15,19 @@ const { Day: days, Holidays: holidays } = jsondata;
 //   return dates;
 // }
 
+function timeZoneConvert(date) {
+  return new Date(
+    new Date(date).toLocaleString("en-US", {
+      timeZone: "America/New_York"
+    })
+  );
+}
+
 function getProperties(dates, jsondata) {
   const { Day: days, Holidays: holidays } = jsondata;
   let properties = [];
   for (let i = 0; i < 7; i++) {
-    let day = Day.init(i, days, dateTestOne, holidays);
+    let day = Day.init(i, days, timeZoneConvert(dateTestOne), holidays);
     properties.push({
       Name: day.getDayName(),
       altName: day.getDayAltName(),
@@ -27,7 +35,7 @@ function getProperties(dates, jsondata) {
       isHoliday: day.isHoliday(),
       isClosed: day.getHours().length === 0 ? true : false,
       isCurrentDay:
-        new Date(dateTestOne).getDate() === day.getDateObject().getDate()
+        timeZoneConvert(dateTestOne).getDate() === day.getDateObject().getDate()
           ? true
           : false,
       Hours: day.getHours(),
@@ -54,6 +62,6 @@ export const buisnessHoursTestObj = [
     indexCD: 0,
     holidayName: "",
     isHoliday: props[0].isHoliday,
-    isOpen: day.isOpen(dateTestOne)
+    isOpen: day.isOpen(timeZoneConvert(dateTestOne))
   }
 ];
