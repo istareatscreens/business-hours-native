@@ -24,7 +24,7 @@ npm i business-hours-native
 
 ## Configuration
 
-Configuration is achieved through a JSON file, a template file can be found [HERE](https://raw.githubusercontent.com/istareatscreens/business-hours-native/master/assets/hoursTemplate.json). Not specifying a
+Configuration is achieved through a JSON file, a template file can be found [HERE](https://raw.githubusercontent.com/istareatscreens/business-hours-native/master/assets/hoursTemplate.json).
 
 ### JSON File Formatting
 
@@ -38,11 +38,10 @@ Configuration is achieved through a JSON file, a template file can be found [HER
 - For possible increased browser support specify an empty string for the Format option
 
 ```
-    "Options": {
+"Options": {
   "timezone": "America/New_York",
-  "Format": ""
+  "format": ""
 }
-
 ```
 
 ## Initialization

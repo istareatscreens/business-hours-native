@@ -261,3 +261,12 @@ export const dayTestObject = jsonTemplate => [
     openDateObj: new Date(2020, 0, 24, 20, 20, 20)
   }
 ];
+
+const hello = () => {
+  return {
+    Options: {
+      timezone: "America/New_York",
+      Format: ""
+    }
+  };
+};
