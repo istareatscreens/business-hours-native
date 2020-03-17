@@ -12,10 +12,10 @@ export default abstract class BusinessHours {
     this.options = { ...data.Options };
     this.currentDate = this.getCurrentLocalBusinessTime();
     this.currentDay = shifted ? 0 : new Date(this.currentDate).getDay();
-    this.schedule = this.createDayObjects();
+    this.schedule = <Day[]>this.createDayObjects();
   }
 
-  protected abstract createDayObjects(): Day[];
+  protected abstract createDayObjects(): DayObject[];
 
   protected createDayObject(offset: number): Day {
     const { Day: days, Holidays: holidays } = this.data;

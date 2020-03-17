@@ -13,5 +13,5 @@
     "allowSyntheticDefaultImports": true
   },
   "include": ["src"],
-  "exclude": ["node_modules", "tests", "dist", "doc"]
+  "exclude": ["node_modules", "tests", "dist", "doc"],
 }
