@@ -59,9 +59,9 @@ businessHoursUnshifted object provides a schedule where the first day is the mos
 import { businessHours, businessHoursUnshifted } from "business-hours-native";
 import jsonHoursConfig from "jsonHoursConfig.json";
 
-const bH = businessHours.init(jsonHourConfig);
+const bH = businessHours.init(jsonHoursConfig);
 //returns businessHours object with shifted schedule (index 0 = current day)
-const bHUS = businessHoursUnshifted.init(jsonHourConfig)
+const bHUS = businessHoursUnshifted.init(jsonHoursConfig)
 //returns businessHoursUnshifted object with unshifted schedule (index 0 = Sunday, index 6 = Saturday)
 ```
 
