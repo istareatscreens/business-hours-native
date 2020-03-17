@@ -1,14 +1,14 @@
 {
   "name": "business-hours-native",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Native JavaScript business hour and schedule handler",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/istareatscreens/bb26-spreadsheet.git"
+    "url": "https://github.com/istareatscreens/business-hours-native.git"
   },
   "bugs": {
-    "url": "https://github.com/istareatscreens/bb26-spreadsheet/issues"
+    "url": "https://github.com/istareatscreens/bbusiness-hours-native/issues"
   },
   "types": "lib",
   "files": [
