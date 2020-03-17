@@ -76,7 +76,7 @@
   },
   "Options": {
     "timezone": "America/New_York",
-    "format": "en-US"
+    "Format": "en-US"
   },
   "Holidays": {
     "4": [

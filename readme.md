@@ -31,6 +31,7 @@ Configuration is achieved through a JSON file, a template file can be found [HER
 - Times must be in 24 hour format 00:00 to 24:00
 - Day index names must start with a capital letter
 - Holidays are stored in an array of objects index by numbers corresponding to the month they occur on
+- A value of -1 is used for Holiday properties that are not applicable
 - Closed business days can be specified by providing an empty array [] for the index hours, or no hours index
 - Multiple open periods must be specified in their own objects, where index "from" specifies the time of opening and index "to" specifies the time of closing
 - Time zone options are located here [HERE](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), lookup country codes are found [HERE](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
@@ -46,17 +47,22 @@ Configuration is achieved through a JSON file, a template file can be found [HER
 
 ## Initialization
 
-Initialization of the businessHours object is conducted via the static init method. Arguments include the JSON configuration file and a boolean value
-specifying if the object should return a shifted (true) (index 0 is the current day) or fixed (false) schedule (index 0 is Sunday)
+Initialization of the businessHours or businessHoursUnshifted object is conducted via the static init method. Arguments include a JSON configuration file
+
+businessHours object provides a shifted schedule. Therefore for all returned arrays index 0 is the current day
+
+businessHoursUnshifted object provides a schedule where the first day is the most recent Sunday (index 0) and the last day is Saturday. The array index of the current day is provided by the method getCurrentDayIndexNo() 
 
 ### `businessHours.init(JSON: object, shifted: boolean): Date`
 
 ```javascript
-import { businessHours } from "business-hours-native";
+import { businessHours, businessHoursUnshifted } from "business-hours-native";
 import jsonHoursConfig from "jsonHoursConfig.json";
 
-const bH = businessHours.init(jsonHourConfig, true);
-//returns businessHours object
+const bH = businessHours.init(jsonHourConfig);
+//returns businessHours object with shifted schedule (index 0 = current day)
+const bHUS = businessHoursUnshifted.init(jsonHourConfig)
+//returns businessHoursUnshifted object with unshifted schedule (index 0 = Sunday, index 6 = Saturday)
 ```
 
 ## Methods
@@ -104,9 +110,11 @@ bH.getCurrentDayInfo();
 
 Returns an array of objects containing all information about the current week (7 days).
 
-If shifted was specified as true on business hour initialization returns current day as index 0 of array with increasing days of the week
+If shifted was specified as true on business hour initialization returns current day as
+index 0 of array with increasing days of the week
 
-If shifted was specified as false on business hour initialization returns Sunday at index 0 and Saturday as the last index. Note current day index can be obtained with the getCurrentDayIndexNo() method
+If shifted was specified as false on business hour initialization returns Sunday at index 0
+and Saturday as the last index. Note current day index can be obtained with the getCurrentDayIndexNo() method
 
 ```javascript
 bH.getCurrentDayInfo();
@@ -126,6 +134,8 @@ bH.getCurrentDayInfo();
 ```
 
 ### `getCurrentDayIndexNo(): number`
+
+Note method is only available on businessHoursUnshifted object as businessHours object current day index is always 0 
 
 Returns the index number (0-6) corresponding to the current day in the array returned from the
 getCurrentDayInfo() method. Note this method is only useful when shifted is specified as false

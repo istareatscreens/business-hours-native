@@ -1,3 +1,7 @@
-import buisnessHours from "./businessHours";
+import BusinessHoursShifted from "./bHShifted";
+import BusinessHoursUnshifted from "./bHUnshifted";
 
-export { buisnessHours };
+export {
+  BusinessHoursShifted as businessHours,
+  BusinessHoursUnshifted as businessHoursUnshifted
+};

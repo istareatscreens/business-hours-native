@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import sinon from "sinon";
 import "mocha";
-import { buisnessHours } from "../src/index";
+import { businessHours, businessHoursUnshifted } from "../src/index";
 let jsondata = require("./assets/hours_test_template.json");
 let jsondataNoFormat = require("./assets/hours_test_template.json");
 
@@ -23,11 +23,9 @@ describe("#businessHours", function() {
       dateObj,
       currentDayInfo,
       schedule,
-      indexCD,
       holidayName,
       isHoliday,
-      isOpen,
-      shifted
+      isOpen
     }) =>
       describe("Dynamic With testobject having: " + description, () => {
         beforeEach(() => {
@@ -36,7 +34,7 @@ describe("#businessHours", function() {
 
         if (firstRun) {
           clock = sinon.useFakeTimers(dateObj.getTime());
-          bH = buisnessHours.init(jsondata, shifted);
+          bH = businessHours.init(jsondata);
           clock.restore();
           firstRun = false;
         }
@@ -46,13 +44,11 @@ describe("#businessHours", function() {
         });
 
         it("Should return initialized businessHours object", () => {
-          expect(buisnessHours.init(jsondata, shifted)).to.instanceof(
-            BusinessHours
-          );
+          expect(businessHours.init(jsondata)).to.instanceof(businessHours);
         });
 
         it("Should return initialized businessHours object", () => {
-          expect(buisnessHours.init(jsondata)).to.instanceof(BusinessHours);
+          expect(businessHours.init(jsondata)).to.instanceof(BusinessHours);
         });
 
         it("Should refresh Object", function() {
@@ -84,10 +80,6 @@ describe("#businessHours", function() {
           expect(bH.getSchedule()).deep.eq(schedule);
         });
 
-        it("Should return current day index number ", function() {
-          expect(bH.getCurrentDayIndexNo()).to.be.equal(indexCD);
-        });
-
         it("Should return holiday name", function() {
           expect(bH.getHolidayName()).to.be.equal(holidayName);
         });
@@ -105,6 +97,8 @@ describe("#businessHours", function() {
         });
       })
   );
+
+  //Unshifted
   let secondRun = true;
   let bHS;
   buisnessHoursTestUnshiftedObj.forEach(
@@ -116,8 +110,7 @@ describe("#businessHours", function() {
       indexCD,
       holidayName,
       isHoliday,
-      isOpen,
-      shifted
+      isOpen
     }) =>
       describe("Dynamic With testobject having: " + description, () => {
         beforeEach(() => {
@@ -126,7 +119,7 @@ describe("#businessHours", function() {
 
         if (secondRun) {
           clock = sinon.useFakeTimers(dateObj.getTime());
-          bHS = buisnessHours.init(jsondata, shifted);
+          bHS = businessHoursUnshifted.init(jsondata);
           clock.restore();
           secondRun = false;
         }
@@ -136,17 +129,23 @@ describe("#businessHours", function() {
         });
 
         it("Should return initialized businessHours object", () => {
-          expect(buisnessHours.init(jsondata, shifted)).to.instanceof(
-            BusinessHours
+          expect(businessHoursUnshifted.init(jsondata)).to.instanceof(
+            businessHoursUnshifted
           );
         });
 
         it("Should return initialized businessHours object", () => {
-          expect(buisnessHours.init(jsondata)).to.instanceof(BusinessHours);
+          expect(businessHoursUnshifted.init(jsondata)).to.instanceof(
+            businessHoursUnshifted
+          );
         });
 
         it("Should refresh Object", function() {
           expect(bHS.refresh()).to.be.undefined;
+        });
+
+        it("Should refresh date", function() {
+          expect(bHS.getCurrentLocalBusinessTime()).to.exist;
         });
 
         it("Should return current local business time", function() {
@@ -184,10 +183,6 @@ describe("#businessHours", function() {
 
         it("Should return if the current day is a holiday", function() {
           expect(bHS.isHoliday()).to.be.equal(isHoliday);
-        });
-
-        it("Should refresh date", function() {
-          expect(bHS.getCurrentLocalBusinessTime()).to.exist;
         });
 
         it("Should return if is Open", function() {

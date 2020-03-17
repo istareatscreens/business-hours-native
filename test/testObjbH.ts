@@ -8,7 +8,7 @@ const { Day: days, Holidays: holidays } = jsondata;
 function timeZoneConvert(date) {
   return new Date(
     new Date(date).toLocaleString("en-US", {
-      timeZone: "America/New_York"
+      timeZone: "Africa/Bissau"
     })
   );
 }
@@ -45,7 +45,7 @@ export const buisnessHoursTestObj = [
     description: "Baisc Test Shifted",
     dateObj: new Date(
       dateTestOne.toLocaleString("en-US", {
-        timeZone: "America/New_York"
+        timeZone: "Africa/Bissau"
       })
     ),
     currentDayInfo: props[0],
@@ -109,7 +109,7 @@ export const buisnessHoursTestUnshiftedObj = [
     description: "Baisc Test Unshifted",
     dateObj: new Date(
       dateTestTwo.toLocaleString("en-US", {
-        timeZone: "America/New_York"
+        timeZone: "Africa/Bissau"
       })
     ),
     currentDayInfo: propsUS[currentDayUS],
