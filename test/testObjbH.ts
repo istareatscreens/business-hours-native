@@ -1,8 +1,10 @@
 import Day from "../src/day";
 let jsondata = require("./assets/hours_test_template.json");
+let jsondataNoFormat = require("./assets/hours_test_template_noTZformat.json");
 
 //get needed data for day object init
 const { Day: days, Holidays: holidays } = jsondata;
+const { Day: daysNF, Holidays: holidaysNF } = jsondataNoFormat;
 
 //UNSHIFTED
 let dateTestTwo = new Date();
@@ -84,49 +86,15 @@ export const businessHoursTestObj = generateShiftedTestObjects(
   20
 );
 
-//export const buisnessHoursTestObj = [
-//  {
-//    description: "Baisc Test Shifted",
-//    dateObj: new Date(
-//      dateTestOne.toLocaleString("en-US", {
-//        timeZone: "Africa/Bissau"
-//      })
-//    ),
-//    currentDayInfo: props[0],
-//    schedule: props,
-//    shifted: true,
-//    indexCD: 0,
-//    holidayName: "",
-//    isHoliday: props[0].isHoliday,
-//    isOpen: day.isOpen(timeZoneConvert(dateTestOne))
-//  },
-//  {
-//    description: "Baisc Test Shifted",
-//    dateObj: new Date(
-//      dateTestOneI.toLocaleString("en-US", {
-//        timeZone: "Africa/Bissau"
-//      })
-//    ),
-//    currentDayInfo: propsI[0],
-//    schedule: propsI,
-//    shifted: true,
-//    indexCD: 0,
-//    holidayName: "",
-//    isHoliday: propsI[0].isHoliday,
-//    isOpen: dayI.isOpen(timeZoneConvert(dateTestOneI))
-//  }
-//];
-
 //UNSHIFTED FUNCTIONS
-function createDayObjects(day, date) {
+function createDayObjects(day) {
   return {
     Name: day.getDayName(),
     altName: day.getDayAltName(),
     HolidayName: day.getHolidayName(),
     isHoliday: day.isHoliday(),
     isClosed: day.getHours().length === 0 ? true : false,
-    isCurrentDay:
-      date.getDate() === day.getDateObject().getDate() ? true : false,
+    isCurrentDay: false,
     Hours: day.getHours(),
     dateObj: day.getDateObject()
   };
@@ -138,13 +106,14 @@ function getPropertiesUnshifted(date, jsondata, currentDay) {
   let day;
   for (let i = -currentDay; i < 0; i++) {
     day = Day.init(i, days, date, holidays);
-    properties.push(createDayObjects(day, date));
+    properties.push(createDayObjects(day));
   }
 
   for (let i = 0; i < 7 - currentDay; i++) {
     day = Day.init(i, days, date, holidays);
-    properties.push(createDayObjects(day, date));
+    properties.push(createDayObjects(day));
   }
+  properties[currentDay].isCurrentDay = true;
   return properties;
 }
 
@@ -161,22 +130,46 @@ let propsUS = getPropertiesUnshifted(
   jsondata,
   currentDayUS
 );
-console.log(timeZoneConvert(dateTestTwo).getDay());
 
-export const buisnessHoursTestUnshiftedObj = [
-  {
+//UNSHIFTED FUNCTION test object generation
+function getTestObjectUS(day, props, date, currentDay) {
+  return {
     description: "Baisc Test Unshifted",
     dateObj: new Date(
-      dateTestTwo.toLocaleString("en-US", {
+      date.toLocaleString("en-US", {
         timeZone: "Africa/Bissau"
       })
     ),
-    currentDayInfo: propsUS[currentDayUS],
-    schedule: propsUS,
+    currentDayInfo: props[currentDay],
+    schedule: props,
     shifted: false,
-    indexCD: currentDayUS,
-    holidayName: "",
-    isHoliday: propsUS[currentDayUS].isHoliday,
-    isOpen: dayUS.isOpen(timeZoneConvert(dateTestTwo))
+    indexCD: currentDay,
+    holidayName: props[currentDay].HolidayName,
+    isHoliday: props[currentDay].isHoliday,
+    isOpen: day.isOpen(timeZoneConvert(date))
+  };
+}
+
+//generates test object array for shifted businessHour object
+function generateUnshiftedTestObjects(initialDate, numberOfDays) {
+  let objects = [];
+
+  for (let i = 0; i < numberOfDays; i++) {
+    let date = shiftDay(new Date(initialDate), i);
+    let currentDay = timeZoneConvert(date).getDay();
+    objects.push(
+      getTestObjectUS(
+        Day.init(currentDay, daysNF, timeZoneConvert(date), holidaysNF),
+        getPropertiesUnshifted(timeZoneConvert(date), jsondata, currentDay),
+        date,
+        currentDay
+      )
+    );
   }
-];
+  return objects;
+}
+
+export const businessHoursTestUnshiftedObj = generateUnshiftedTestObjects(
+  setDate(2020, 11, 20, 20),
+  20
+);

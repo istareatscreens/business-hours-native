@@ -35,7 +35,7 @@ Configuration is achieved through a JSON file, a template file can be found [HER
 - Closed business days can be specified by providing an empty array [] for the index hours, or no hours index
 - Multiple open periods must be specified in their own objects, where index "from" specifies the time of opening and index "to" specifies the time of closing
 - Time zone options are located here [HERE](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), lookup country codes are found [HERE](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
-- locale formating for the output of the function getCurrentLocalBusinessTime() can be found [HERE].
+- locale formating for the output of the function getCurrentLocalBusinessTime() can be found [HERE](https://stackoverflow.com/questions/2388115/get-locale-short-date-format-using-javascript).
 - For possible increased browser support specify an empty string for the Format option
 
 ```
@@ -138,7 +138,7 @@ bH.getCurrentDayInfo();
 Note method is only available on businessHoursUnshifted object as businessHours object current day index is always 0 
 
 Returns the index number (0-6) corresponding to the current day in the array returned from the
-getCurrentDayInfo() method. Note this method is only useful when shifted is specified as false
+getCurrentDayInfo() method. 
 
 ```javascript
 bH.getCurrentDayIndexNo();

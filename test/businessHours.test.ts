@@ -3,11 +3,11 @@ import sinon from "sinon";
 import "mocha";
 import { businessHours, businessHoursUnshifted } from "../src/index";
 let jsondata = require("./assets/hours_test_template.json");
-let jsondataNoFormat = require("./assets/hours_test_template.json");
+let jsondataNoFormat = require("./assets/hours_test_template_noTZformat.json");
 
 import {
   businessHoursTestObj,
-  buisnessHoursTestUnshiftedObj
+  businessHoursTestUnshiftedObj
 } from "./testObjbH";
 
 import BusinessHours from "../src/businessHours";
@@ -101,7 +101,7 @@ describe("#businessHours", function() {
   //Unshifted
   let secondRun = true;
   let bHS;
-  buisnessHoursTestUnshiftedObj.forEach(
+  businessHoursTestUnshiftedObj.forEach(
     ({
       description,
       dateObj,
@@ -119,7 +119,7 @@ describe("#businessHours", function() {
 
         if (secondRun) {
           clock = sinon.useFakeTimers(dateObj.getTime());
-          bHS = businessHoursUnshifted.init(jsondata);
+          bHS = businessHoursUnshifted.init(jsondataNoFormat);
           clock.restore();
           secondRun = false;
         }
@@ -129,13 +129,13 @@ describe("#businessHours", function() {
         });
 
         it("Should return initialized businessHours object", () => {
-          expect(businessHoursUnshifted.init(jsondata)).to.instanceof(
+          expect(businessHoursUnshifted.init(jsondataNoFormat)).to.instanceof(
             businessHoursUnshifted
           );
         });
 
         it("Should return initialized businessHours object", () => {
-          expect(businessHoursUnshifted.init(jsondata)).to.instanceof(
+          expect(businessHoursUnshifted.init(jsondataNoFormat)).to.instanceof(
             businessHoursUnshifted
           );
         });
