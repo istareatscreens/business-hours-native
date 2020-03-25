@@ -1,9 +1,17 @@
 import Day from "../src/day";
 let jsondata = require("./assets/hours_test_template.json");
 
+//SHIFTED
 let dateTestOne = new Date();
+let dateTestOneI = shiftDay(1);
+//UNSHIFTED
 let dateTestTwo = new Date();
 const { Day: days, Holidays: holidays } = jsondata;
+
+//modify day in date object
+function shiftDay(offset) {
+  return new Date(new Date().setDate(new Date().getDate() + offset));
+}
 
 function timeZoneConvert(date) {
   return new Date(
@@ -13,22 +21,20 @@ function timeZoneConvert(date) {
   );
 }
 
-//SHIFTED FUNCTIONS
-function getProperties(dates, jsondata) {
+//SHIFTED FUNCTION property generation
+function getProperties(date, jsondata) {
   const { Day: days, Holidays: holidays } = jsondata;
   let properties = [];
   for (let i = 0; i < 7; i++) {
-    let day = Day.init(i, days, timeZoneConvert(dateTestOne), holidays);
+    let day = Day.init(i, days, timeZoneConvert(date), holidays);
     properties.push({
       Name: day.getDayName(),
       altName: day.getDayAltName(),
       HolidayName: day.getHolidayName(),
       isHoliday: day.isHoliday(),
       isClosed: day.getHours().length === 0 ? true : false,
-      isCurrentDay:
-        timeZoneConvert(dateTestOne).getDate() === day.getDateObject().getDate()
-          ? true
-          : false,
+      //current day unshifted always 0
+      isCurrentDay: i === 0 ? true : false,
       Hours: day.getHours(),
       dateObj: day.getDateObject()
     });
@@ -39,6 +45,9 @@ function getProperties(dates, jsondata) {
 //SHIFTED VARIABLES
 let day = Day.init(0, days, dateTestOne, holidays);
 let props = getProperties(dateTestOne, jsondata);
+//SHIFTED VARIABLES + 1 DAY
+let dayI = Day.init(0, days, dateTestOneI, holidays);
+let propsI = getProperties(dateTestOneI, jsondata);
 
 export const buisnessHoursTestObj = [
   {
@@ -55,6 +64,21 @@ export const buisnessHoursTestObj = [
     holidayName: "",
     isHoliday: props[0].isHoliday,
     isOpen: day.isOpen(timeZoneConvert(dateTestOne))
+  },
+  {
+    description: "Baisc Test Shifted",
+    dateObj: new Date(
+      dateTestOneI.toLocaleString("en-US", {
+        timeZone: "Africa/Bissau"
+      })
+    ),
+    currentDayInfo: propsI[0],
+    schedule: propsI,
+    shifted: true,
+    indexCD: 0,
+    holidayName: "",
+    isHoliday: propsI[0].isHoliday,
+    isOpen: dayI.isOpen(timeZoneConvert(dateTestOneI))
   }
 ];
 
