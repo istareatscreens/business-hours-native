@@ -6,7 +6,7 @@ let jsondata = require("./assets/hours_test_template.json");
 let jsondataNoFormat = require("./assets/hours_test_template.json");
 
 import {
-  buisnessHoursTestObj,
+  businessHoursTestObj,
   buisnessHoursTestUnshiftedObj
 } from "./testObjbH";
 
@@ -17,7 +17,7 @@ describe("#businessHours", function() {
   let firstRun = true;
   let bH;
   //Testing shifting = true
-  buisnessHoursTestObj.forEach(
+  businessHoursTestObj.forEach(
     ({
       description,
       dateObj,

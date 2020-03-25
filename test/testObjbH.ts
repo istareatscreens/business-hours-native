@@ -1,16 +1,19 @@
 import Day from "../src/day";
 let jsondata = require("./assets/hours_test_template.json");
 
-//SHIFTED
-let dateTestOne = new Date();
-let dateTestOneI = shiftDay(1);
-//UNSHIFTED
-let dateTestTwo = new Date();
+//get needed data for day object init
 const { Day: days, Holidays: holidays } = jsondata;
 
+//UNSHIFTED
+let dateTestTwo = new Date();
+
 //modify day in date object
-function shiftDay(offset) {
-  return new Date(new Date().setDate(new Date().getDate() + offset));
+function shiftDay(date, offset) {
+  return new Date(date.setDate(date.getDate() + offset));
+}
+
+function setDate(year, month, day, hours) {
+  return new Date(year, month, day, hours);
 }
 
 function timeZoneConvert(date) {
@@ -41,19 +44,12 @@ function getProperties(date, jsondata) {
   }
   return properties;
 }
-
-//SHIFTED VARIABLES
-let day = Day.init(0, days, dateTestOne, holidays);
-let props = getProperties(dateTestOne, jsondata);
-//SHIFTED VARIABLES + 1 DAY
-let dayI = Day.init(0, days, dateTestOneI, holidays);
-let propsI = getProperties(dateTestOneI, jsondata);
-
-export const buisnessHoursTestObj = [
-  {
+//SHIFTED FUNCTION test object generation
+function getTestObject(day, props, date) {
+  return {
     description: "Baisc Test Shifted",
     dateObj: new Date(
-      dateTestOne.toLocaleString("en-US", {
+      date.toLocaleString("en-US", {
         timeZone: "Africa/Bissau"
       })
     ),
@@ -61,26 +57,65 @@ export const buisnessHoursTestObj = [
     schedule: props,
     shifted: true,
     indexCD: 0,
-    holidayName: "",
+    holidayName: props[0].HolidayName,
     isHoliday: props[0].isHoliday,
-    isOpen: day.isOpen(timeZoneConvert(dateTestOne))
-  },
-  {
-    description: "Baisc Test Shifted",
-    dateObj: new Date(
-      dateTestOneI.toLocaleString("en-US", {
-        timeZone: "Africa/Bissau"
-      })
-    ),
-    currentDayInfo: propsI[0],
-    schedule: propsI,
-    shifted: true,
-    indexCD: 0,
-    holidayName: "",
-    isHoliday: propsI[0].isHoliday,
-    isOpen: dayI.isOpen(timeZoneConvert(dateTestOneI))
+    isOpen: day.isOpen(timeZoneConvert(date))
+  };
+}
+
+//generates test object array for shifted businessHour object
+function generateShiftedTestObjects(initialDate, numberOfDays) {
+  let objects = [];
+  for (let i = 0; i < numberOfDays; i++) {
+    let date = shiftDay(new Date(initialDate), i);
+    objects.push(
+      getTestObject(
+        Day.init(0, days, date, holidays),
+        getProperties(date, jsondata),
+        date
+      )
+    );
   }
-];
+  return objects;
+}
+
+export const businessHoursTestObj = generateShiftedTestObjects(
+  setDate(2020, 11, 20, 20),
+  20
+);
+
+//export const buisnessHoursTestObj = [
+//  {
+//    description: "Baisc Test Shifted",
+//    dateObj: new Date(
+//      dateTestOne.toLocaleString("en-US", {
+//        timeZone: "Africa/Bissau"
+//      })
+//    ),
+//    currentDayInfo: props[0],
+//    schedule: props,
+//    shifted: true,
+//    indexCD: 0,
+//    holidayName: "",
+//    isHoliday: props[0].isHoliday,
+//    isOpen: day.isOpen(timeZoneConvert(dateTestOne))
+//  },
+//  {
+//    description: "Baisc Test Shifted",
+//    dateObj: new Date(
+//      dateTestOneI.toLocaleString("en-US", {
+//        timeZone: "Africa/Bissau"
+//      })
+//    ),
+//    currentDayInfo: propsI[0],
+//    schedule: propsI,
+//    shifted: true,
+//    indexCD: 0,
+//    holidayName: "",
+//    isHoliday: propsI[0].isHoliday,
+//    isOpen: dayI.isOpen(timeZoneConvert(dateTestOneI))
+//  }
+//];
 
 //UNSHIFTED FUNCTIONS
 function createDayObjects(day, date) {
