@@ -104,6 +104,7 @@ describe("#businessHours", function() {
   businessHoursTestUnshiftedObj.forEach(
     ({
       description,
+      currentLocalBusinessTime,
       dateObj,
       currentDayInfo,
       schedule,
@@ -149,20 +150,9 @@ describe("#businessHours", function() {
         });
 
         it("Should return current local business time", function() {
-          const date = new Date(bHS.getCurrentLocalBusinessTime());
-          const testDate = new Date(dateObj);
-
-          const getDateParams = date =>
-            date.getFullYear +
-            ", " +
-            date.getMonth() +
-            ", " +
-            date.getDate() +
-            ", " +
-            date.getHours() +
-            ", " +
-            date.getMinutes();
-          expect(getDateParams(date)).to.equal(getDateParams(testDate));
+          expect(bHS.getCurrentLocalBusinessTime()).to.equal(
+            currentLocalBusinessTime
+          );
         });
 
         it("Should return get current day info", function() {

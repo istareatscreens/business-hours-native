@@ -117,37 +117,30 @@ function getPropertiesUnshifted(date, jsondata, currentDay) {
   return properties;
 }
 
-//UNSHIFTED VARIABLES
-let currentDayUS = timeZoneConvert(dateTestTwo).getDay();
-let dayUS = Day.init(
-  currentDayUS,
-  days,
-  timeZoneConvert(dateTestTwo),
-  holidays
-);
-let propsUS = getPropertiesUnshifted(
-  timeZoneConvert(dateTestTwo),
-  jsondata,
-  currentDayUS
-);
-
 //UNSHIFTED FUNCTION test object generation
 function getTestObjectUS(day, props, date, currentDay) {
   return {
     description: "Baisc Test Unshifted",
-    dateObj: new Date(
-      date.toLocaleString("en-US", {
-        timeZone: "Africa/Bissau"
-      })
-    ),
+    dateObj: date,
+    currentLocalBusinessTime: new Date(date).toLocaleString(undefined, {
+      timeZone: "Africa/Bissau"
+    }),
     currentDayInfo: props[currentDay],
     schedule: props,
     shifted: false,
     indexCD: currentDay,
     holidayName: props[currentDay].HolidayName,
     isHoliday: props[currentDay].isHoliday,
-    isOpen: day.isOpen(timeZoneConvert(date))
+    isOpen: day.isOpen(timeZoneConvertUS(date))
   };
+}
+
+function timeZoneConvertUS(date) {
+  return new Date(
+    new Date(date).toLocaleString(undefined, {
+      timeZone: "Africa/Bissau"
+    })
+  );
 }
 
 //generates test object array for shifted businessHour object
@@ -156,11 +149,20 @@ function generateUnshiftedTestObjects(initialDate, numberOfDays) {
 
   for (let i = 0; i < numberOfDays; i++) {
     let date = shiftDay(new Date(initialDate), i);
-    let currentDay = timeZoneConvert(date).getDay();
+    let currentDay = timeZoneConvert(new Date(date)).getDay();
     objects.push(
       getTestObjectUS(
-        Day.init(currentDay, daysNF, timeZoneConvert(date), holidaysNF),
-        getPropertiesUnshifted(timeZoneConvert(date), jsondata, currentDay),
+        Day.init(
+          currentDay,
+          daysNF,
+          timeZoneConvert(new Date(date)),
+          holidaysNF
+        ),
+        getPropertiesUnshifted(
+          timeZoneConvert(new Date(date)),
+          jsondataNoFormat,
+          currentDay
+        ),
         date,
         currentDay
       )
@@ -170,6 +172,6 @@ function generateUnshiftedTestObjects(initialDate, numberOfDays) {
 }
 
 export const businessHoursTestUnshiftedObj = generateUnshiftedTestObjects(
-  setDate(2020, 11, 20, 20),
+  setDate(2020, 11, 20, 1),
   20
 );
