@@ -33,11 +33,14 @@ describe("#businessHours", function() {
           clock = sinon.useFakeTimers(date.getTime());
         });
 
+        let refreshValue = true;
+        //deal with initial refresh returning false
         if (firstRun) {
           clock = sinon.useFakeTimers(date.getTime());
           bH = businessHours.init(jsondata);
           clock.restore();
           firstRun = false;
+          refreshValue = false;
         }
 
         afterEach(() => {
@@ -53,7 +56,7 @@ describe("#businessHours", function() {
         });
 
         it("Should refresh Object", function() {
-          expect(bH.refresh()).to.be.undefined;
+          expect(bH.refresh()).to.be.equal(refreshValue);
         });
 
         it("Should return current local business time", function() {
@@ -108,11 +111,14 @@ describe("#businessHours", function() {
           clock = sinon.useFakeTimers(dateObj.getTime());
         });
 
+        let refreshValue = true;
+
         if (secondRun) {
           clock = sinon.useFakeTimers(dateObj.getTime());
           bHS = businessHoursUnshifted.init(jsondataNoFormat);
           clock.restore();
           secondRun = false;
+          refreshValue = false;
         }
 
         afterEach(() => {
@@ -132,7 +138,11 @@ describe("#businessHours", function() {
         });
 
         it("Should refresh Object", function() {
-          expect(bHS.refresh()).to.be.undefined;
+          expect(bHS.refresh()).to.be.equal(refreshValue);
+        });
+
+        it("Should refresh Object and return false", function() {
+          expect(bHS.refresh()).to.be.false;
         });
 
         it("Should refresh date", function() {

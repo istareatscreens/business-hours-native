@@ -77,14 +77,15 @@ bH.getCurrentLocalBusinessTime();
 //returns string in specified format
 ```
 
-### `refresh(): void`
+### `refresh(): boolean`
 
 Refreshes objects time, and scheduling. Allows for dynamic scheduling and open status.
 All method calls after will return up to date open status and scheduling
+Value of true will be returned when a change occurs in the date, month or year
 
 ```javascript
 bH.refresh();
-//All method calls after will return current time and date information
+//All method calls after will return current time and date information will return true if date, month or year changes
 ```
 
 ### `getCurrentDayInfo(): object`

@@ -47,7 +47,7 @@ export default abstract class BusinessHours {
     });
   }
 
-  public refresh(): void {
+  public refresh(): boolean {
     this.currentDate = this.getCurrentLocalBusinessTime();
     const currentDateObj = new Date(this.currentDate);
     if (
@@ -59,7 +59,9 @@ export default abstract class BusinessHours {
         this.schedule[this.currentDay].getDateObject().getFullYear()
     ) {
       this.adjustSchedule();
+      return true;
     }
+    return false;
   }
 
   public getCurrentDayInfo(): DayInfo {
