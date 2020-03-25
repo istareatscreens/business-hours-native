@@ -20,7 +20,8 @@ describe("#businessHours", function() {
   businessHoursTestObj.forEach(
     ({
       description,
-      dateObj,
+      currentLocalBusinessTime,
+      date,
       currentDayInfo,
       schedule,
       holidayName,
@@ -29,11 +30,11 @@ describe("#businessHours", function() {
     }) =>
       describe("Dynamic With testobject having: " + description, () => {
         beforeEach(() => {
-          clock = sinon.useFakeTimers(dateObj.getTime());
+          clock = sinon.useFakeTimers(date.getTime());
         });
 
         if (firstRun) {
-          clock = sinon.useFakeTimers(dateObj.getTime());
+          clock = sinon.useFakeTimers(date.getTime());
           bH = businessHours.init(jsondata);
           clock.restore();
           firstRun = false;
@@ -56,20 +57,9 @@ describe("#businessHours", function() {
         });
 
         it("Should return current local business time", function() {
-          const date = new Date(bH.getCurrentLocalBusinessTime());
-          const testDate = new Date(dateObj);
-
-          const getDateParams = date =>
-            date.getFullYear +
-            ", " +
-            date.getMonth() +
-            ", " +
-            date.getDate() +
-            ", " +
-            date.getHours() +
-            ", " +
-            date.getMinutes();
-          expect(getDateParams(date)).to.equal(getDateParams(testDate));
+          expect(bH.getCurrentLocalBusinessTime()).to.equal(
+            currentLocalBusinessTime
+          );
         });
 
         it("Should return get current day info", function() {

@@ -6,9 +6,6 @@ let jsondataNoFormat = require("./assets/hours_test_template_noTZformat.json");
 const { Day: days, Holidays: holidays } = jsondata;
 const { Day: daysNF, Holidays: holidaysNF } = jsondataNoFormat;
 
-//UNSHIFTED
-let dateTestTwo = new Date();
-
 //modify day in date object
 function shiftDay(date, offset) {
   return new Date(date.setDate(date.getDate() + offset));
@@ -50,11 +47,10 @@ function getProperties(date, jsondata) {
 function getTestObject(day, props, date) {
   return {
     description: "Baisc Test Shifted",
-    dateObj: new Date(
-      date.toLocaleString("en-US", {
-        timeZone: "Africa/Bissau"
-      })
-    ),
+    date: timeZoneConvert(new Date(date)),
+    currentLocalBusinessTime: new Date(date).toLocaleString("en-US", {
+      timeZone: "Africa/Bissau"
+    }),
     currentDayInfo: props[0],
     schedule: props,
     shifted: true,
@@ -72,7 +68,7 @@ function generateShiftedTestObjects(initialDate, numberOfDays) {
     let date = shiftDay(new Date(initialDate), i);
     objects.push(
       getTestObject(
-        Day.init(0, days, date, holidays),
+        Day.init(0, days, timeZoneConvert(date), holidays),
         getProperties(date, jsondata),
         date
       )
