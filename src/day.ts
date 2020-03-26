@@ -1,4 +1,4 @@
-import parseTime from "./parseTime.ts";
+import parseTime from "./parseTime";
 export default class Day implements DayObject {
   private dayName: WeekdayName;
   private holidayName: string = "";
