@@ -177,7 +177,7 @@ bH.isOpen();
 
 ```
 
-##Helper functions
+## Helper functions
 
 ### `twelveHourTimeConvert(hoursArr: Object[]): Object[]`
 
