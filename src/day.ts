@@ -1,3 +1,4 @@
+import parseTime from "./parseTime.ts";
 export default class Day implements DayObject {
   private dayName: WeekdayName;
   private holidayName: string = "";
@@ -98,15 +99,9 @@ export default class Day implements DayObject {
 
   private getSpecificTime(time: string, date: Date): number {
     return new Date(date.getTime()).setHours(
-      this.parseTime(time),
-      this.parseTime(time, false)
+      parseTime(time),
+      parseTime(time, false)
     );
-  }
-
-  private parseTime(time: string, hours: boolean = true): number {
-    return hours
-      ? Number(time.match(/([0-9]|[1-9][0-9])(?=:)/s)![0])
-      : Number(time.match(/((?<=:)([1-9][0-9]))|([1-9]+)(?!.*\d)|(00)/s)![0]);
   }
 
   public getHours(): HoursRangeArr {

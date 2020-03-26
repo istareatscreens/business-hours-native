@@ -173,5 +173,22 @@ For example if the business is open from 3:00 to 5:00 on the current day and the
 
 ```javascript
 bH.isOpen();
-// return true
+// returns true
+
+```
+
+##Helper functions
+
+### `twelveHourTimeConvert(hoursArr: Object[]): Object[]`
+
+Converts time in arrays of {to: string, from: string} objects from 24hr time (default) to 12hr time (AM/PM)
+
+```javascript
+import { twelveHourTimeConvert as convert } from"business-hours-native" 
+
+let currentDayHours = convert(daybH.getCurrentDayInfo().Hours)
+
+// returns [{from: "10:00 AM", "7:00 PM"},
+// {from: "8:00PM", to "9:00PM"}]
+
 ```
