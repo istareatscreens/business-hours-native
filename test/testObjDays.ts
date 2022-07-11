@@ -1,6 +1,6 @@
 import day from "../src/day";
 
-export const dayTestObject = jsonTemplate => [
+export const dayTestObject = (jsonTemplate) => [
   {
     description: "1. fixed day, no holiday month object, not holiday",
     testObject: day.init(
@@ -17,7 +17,7 @@ export const dayTestObject = jsonTemplate => [
     holidayName: "",
     dayaltName: jsonTemplate.Day["Thursday"].Name,
     openStatus: true,
-    openDateObj: new Date(2020, 1, 20, 11, 20, 20)
+    openDateObj: new Date(2020, 1, 20, 11, 20, 20),
   },
   {
     description:
@@ -36,7 +36,7 @@ export const dayTestObject = jsonTemplate => [
     holidayName: "",
     dayaltName: jsonTemplate.Day["Sunday"].Name,
     openStatus: false,
-    openDateObj: new Date(2020, 2, 8, 12, 20, 20)
+    openDateObj: new Date(2020, 2, 8, 12, 20, 20),
   },
   {
     description:
@@ -55,7 +55,7 @@ export const dayTestObject = jsonTemplate => [
     holidayName: "",
     dayaltName: jsonTemplate.Day["Saturday"].Name,
     openStatus: false,
-    openDateObj: new Date(2020, 2, 7, 12, 20, 20)
+    openDateObj: new Date(2020, 2, 7, 12, 20, 20),
   },
   {
     description: "4. fixed day, single holiday month object, is holiday",
@@ -73,7 +73,7 @@ export const dayTestObject = jsonTemplate => [
     holidayName: "Christmas",
     dayaltName: jsonTemplate.Day["Friday"].Name,
     openStatus: true,
-    openDateObj: new Date(2020, 11, 25, 4, 30, 20)
+    openDateObj: new Date(2020, 11, 25, 4, 30, 20),
   },
   {
     description:
@@ -92,7 +92,7 @@ export const dayTestObject = jsonTemplate => [
     holidayName: "Easter",
     dayaltName: jsonTemplate.Day["Sunday"].Name,
     openStatus: false,
-    openDateObj: new Date(2020, 3, 12, 20, 20, 20)
+    openDateObj: new Date(2020, 3, 12, 20, 20, 20),
   },
   {
     description:
@@ -111,7 +111,7 @@ export const dayTestObject = jsonTemplate => [
     holidayName: "",
     dayaltName: jsonTemplate.Day["Tuesday"].Name,
     openStatus: false,
-    openDateObj: new Date(2020, 3, 21, 9, 10, 10)
+    openDateObj: new Date(2020, 3, 21, 9, 10, 10),
   },
   {
     description:
@@ -130,7 +130,7 @@ export const dayTestObject = jsonTemplate => [
     holidayName: "",
     dayaltName: jsonTemplate.Day["Tuesday"].Name,
     openStatus: false,
-    openDateObj: new Date(2020, 3, 21, 15, 10, 10)
+    openDateObj: new Date(2020, 3, 21, 15, 10, 10),
   },
   {
     description:
@@ -149,7 +149,7 @@ export const dayTestObject = jsonTemplate => [
     holidayName: "",
     dayaltName: jsonTemplate.Day["Tuesday"].Name,
     openStatus: true,
-    openDateObj: new Date(2020, 3, 21, 11, 10, 10)
+    openDateObj: new Date(2020, 3, 21, 11, 10, 10),
   },
   {
     description:
@@ -168,7 +168,7 @@ export const dayTestObject = jsonTemplate => [
     holidayName: "Labour Day",
     dayaltName: jsonTemplate.Day["Monday"].Name,
     openStatus: true,
-    openDateObj: new Date(2020, 8, 7, 12, 10, 10)
+    openDateObj: new Date(2020, 8, 7, 12, 10, 10),
   },
   {
     description: "10. shifted -1 day, no holiday month object, not holiday",
@@ -186,7 +186,7 @@ export const dayTestObject = jsonTemplate => [
     holidayName: "",
     dayaltName: jsonTemplate.Day["Wednesday"].Name,
     openStatus: true,
-    openDateObj: new Date(2020, 1, 19, 20, 20, 20)
+    openDateObj: new Date(2020, 1, 19, 20, 20, 20),
   },
   {
     description: "11. shifted +4 day, no holiday month object, not holiday",
@@ -204,7 +204,7 @@ export const dayTestObject = jsonTemplate => [
     holidayName: "",
     dayaltName: jsonTemplate.Day["Monday"].Name,
     openStatus: true,
-    openDateObj: new Date(2020, 1, 24, 20, 20, 20)
+    openDateObj: new Date(2020, 1, 24, 20, 20, 20),
   },
   {
     description: "11. checking open status at open time, but incorrect year",
@@ -222,7 +222,7 @@ export const dayTestObject = jsonTemplate => [
     holidayName: "",
     dayaltName: jsonTemplate.Day["Monday"].Name,
     openStatus: false,
-    openDateObj: new Date(2021, 1, 24, 20, 20, 20)
+    openDateObj: new Date(2021, 1, 24, 20, 20, 20),
   },
   {
     description: "12. checking open status at open time, but incorrect date",
@@ -240,7 +240,7 @@ export const dayTestObject = jsonTemplate => [
     holidayName: "",
     dayaltName: jsonTemplate.Day["Monday"].Name,
     openStatus: false,
-    openDateObj: new Date(2020, 1, 25, 20, 20, 20)
+    openDateObj: new Date(2020, 1, 25, 20, 20, 20),
   },
   {
     description: "13. checking open status at open time, but incorrect date",
@@ -258,15 +258,6 @@ export const dayTestObject = jsonTemplate => [
     holidayName: "",
     dayaltName: jsonTemplate.Day["Monday"].Name,
     openStatus: false,
-    openDateObj: new Date(2020, 0, 24, 20, 20, 20)
-  }
+    openDateObj: new Date(2020, 0, 24, 20, 20, 20),
+  },
 ];
-
-const hello = () => {
-  return {
-    Options: {
-      timezone: "America/New_York",
-      Format: ""
-    }
-  };
-};

@@ -1,4 +1,5 @@
 import Day from "./day";
+import { DataObject, DayInfo, DayObject, OptionsData } from "./typings";
 
 export default abstract class BusinessHours {
   protected data: DataObject;
@@ -34,7 +35,7 @@ export default abstract class BusinessHours {
           ? true
           : false,
       Hours: day.getHours(),
-      dateObj: day.getDateObject()
+      dateObj: day.getDateObject(),
     };
   }
 
@@ -43,7 +44,7 @@ export default abstract class BusinessHours {
   public getCurrentLocalBusinessTime(): string {
     const { Format, timeZone } = this.options;
     return new Date().toLocaleString(Format === "" ? undefined : Format, {
-      timeZone: timeZone
+      timeZone: timeZone,
     });
   }
 
@@ -69,7 +70,7 @@ export default abstract class BusinessHours {
   }
 
   public getSchedule(): DayInfo[] {
-    return this.schedule.map(day => {
+    return this.schedule.map((day) => {
       return this.generateDayInfoObject(day);
     });
   }

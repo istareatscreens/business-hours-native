@@ -1,4 +1,5 @@
 import BusinessHours from "./businessHours";
+import { DataObject, DayObject } from "./typings";
 
 export default class BusinessHoursUnshifted extends BusinessHours {
   private constructor(data: DataObject) {
@@ -10,7 +11,7 @@ export default class BusinessHoursUnshifted extends BusinessHours {
   }
 
   protected createDayObjects(): DayObject[] {
-    let schedule: DayObject[] = [];
+    const schedule: DayObject[] = [];
     for (let i = -this.currentDay; i < 0; i++)
       schedule.push(this.createDayObject(i));
 

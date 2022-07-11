@@ -1,4 +1,5 @@
 import parseTime from "./parseTime";
+import { HoursRange, HoursRangeArr } from "./typings";
 export default function twelveHourTimeConvert(
   hoursArr: HoursRangeArr
 ): HoursRangeArr {
@@ -8,7 +9,7 @@ export default function twelveHourTimeConvert(
 }
 
 function convert(time: string): string {
-  let hrs: number = parseTime(time);
+  const hrs: number = parseTime(time);
   let mins: string | number = parseTime(time, false);
   if (mins < 10) {
     mins = "0" + mins;

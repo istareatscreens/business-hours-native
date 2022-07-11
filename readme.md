@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/istareatscreens/business-hours-native.svg?branch=master)](https://travis-ci.com/istareatscreens/business-hours-native)[![codecov](https://codecov.io/gh/istareatscreens/business-hours-native/branch/master/graph/badge.svg)](https://codecov.io/gh/istareatscreens/business-hours-native)
+[![Build Status]()](https://app.travis-ci.com/istareatscreens/business-hours-native.svg?branch=master)[![codecov](https://codecov.io/gh/istareatscreens/business-hours-native/branch/master/graph/badge.svg)](https://codecov.io/gh/istareatscreens/business-hours-native)
 
 # business-hours-native
 
@@ -51,7 +51,7 @@ Initialization of the businessHours or businessHoursUnshifted object is conducte
 
 businessHours object provides a shifted schedule. Therefore for all returned arrays index 0 is the current day
 
-businessHoursUnshifted object provides a schedule where the first day is the most recent Sunday (index 0) and the last day is Saturday. The array index of the current day is provided by the method getCurrentDayIndexNo() 
+businessHoursUnshifted object provides a schedule where the first day is the most recent Sunday (index 0) and the last day is Saturday. The array index of the current day is provided by the method getCurrentDayIndexNo()
 
 ### `businessHours.init(JSON: object, shifted: boolean): Date`
 
@@ -61,7 +61,7 @@ import jsonHoursConfig from "jsonHoursConfig.json";
 
 const bH = businessHours.init(jsonHoursConfig);
 //returns businessHours object with shifted schedule (index 0 = current day)
-const bHUS = businessHoursUnshifted.init(jsonHoursConfig)
+const bHUS = businessHoursUnshifted.init(jsonHoursConfig);
 //returns businessHoursUnshifted object with unshifted schedule (index 0 = Sunday, index 6 = Saturday)
 ```
 
@@ -136,10 +136,10 @@ bH.getCurrentDayInfo();
 
 ### `getCurrentDayIndexNo(): number`
 
-Note method is only available on businessHoursUnshifted object as businessHours object current day index is always 0 
+Note method is only available on businessHoursUnshifted object as businessHours object current day index is always 0
 
 Returns the index number (0-6) corresponding to the current day in the array returned from the
-getCurrentDayInfo() method. 
+getCurrentDayInfo() method.
 
 ```javascript
 bH.getCurrentDayIndexNo();
@@ -174,7 +174,6 @@ For example if the business is open from 3:00 to 5:00 on the current day and the
 ```javascript
 bH.isOpen();
 // returns true
-
 ```
 
 ## Helper functions
@@ -184,11 +183,10 @@ bH.isOpen();
 Converts time in arrays of {to: string, from: string} objects from 24hr time (default) to 12hr time (AM/PM)
 
 ```javascript
-import { twelveHourTimeConvert as convert } from"business-hours-native" 
+import { twelveHourTimeConvert as convert } from "business-hours-native";
 
-let currentDayHours = convert(daybH.getCurrentDayInfo().Hours)
+let currentDayHours = convert(daybH.getCurrentDayInfo().Hours);
 
 // returns [{from: "10:00 AM", "7:00 PM"},
 // {from: "8:00PM", to "9:00PM"}]
-
 ```

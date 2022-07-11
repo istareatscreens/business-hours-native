@@ -1,4 +1,15 @@
 import parseTime from "./parseTime";
+import {
+  DayData,
+  DayObject,
+  HolidayData,
+  HolidayMonthsData,
+  HoursRange,
+  HoursRangeArr,
+  MonthNumber,
+  WeekdayData,
+  WeekdayName,
+} from "./typings";
 export default class Day implements DayObject {
   private dayName: WeekdayName;
   private holidayName: string = "";
@@ -23,7 +34,7 @@ export default class Day implements DayObject {
         "Wednesday",
         "Thursday",
         "Friday",
-        "Saturday"
+        "Saturday",
       ][this.date.getDay()]
     ); //this.setDayName();
     this.data = this.setData(data[<WeekdayName>`${this.dayName}`], holidayData);
@@ -45,7 +56,7 @@ export default class Day implements DayObject {
     const holidayHours: HoursRangeArr = this.checkIfHoliday(holidayData);
     return {
       Name: data.Name,
-      Hours: this.isAHoliday ? holidayHours : this.deepCopyHours(data.Hours)
+      Hours: this.isAHoliday ? holidayHours : this.deepCopyHours(data.Hours),
     };
   }
 

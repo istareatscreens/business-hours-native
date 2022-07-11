@@ -2,17 +2,17 @@ import { expect } from "chai";
 import sinon from "sinon";
 import "mocha";
 import { businessHours, businessHoursUnshifted } from "../src/index";
-let jsondata = require("./assets/hours_test_template.json");
-let jsondataNoFormat = require("./assets/hours_test_template_noTZformat.json");
+const jsondata = require("./assets/hours_test_template.json");
+const jsondataNoFormat = require("./assets/hours_test_template_noTZformat.json");
 
 import {
   businessHoursTestObj,
-  businessHoursTestUnshiftedObj
+  businessHoursTestUnshiftedObj,
 } from "./testObjbH";
 
 import BusinessHours from "../src/businessHours";
 
-describe("#businessHours", function() {
+describe("#businessHours", function () {
   let clock;
   let firstRun = true;
   let bH;
@@ -26,7 +26,7 @@ describe("#businessHours", function() {
       schedule,
       holidayName,
       isHoliday,
-      isOpen
+      isOpen,
     }) =>
       describe("Dynamic With testobject having: " + description, () => {
         beforeEach(() => {
@@ -55,37 +55,37 @@ describe("#businessHours", function() {
           expect(businessHours.init(jsondata)).to.instanceof(BusinessHours);
         });
 
-        it("Should refresh Object", function() {
+        it("Should refresh Object", function () {
           expect(bH.refresh()).to.be.equal(refreshValue);
         });
 
-        it("Should return current local business time", function() {
+        it("Should return current local business time", function () {
           expect(bH.getCurrentLocalBusinessTime()).to.equal(
             currentLocalBusinessTime
           );
         });
 
-        it("Should return get current day info", function() {
+        it("Should return get current day info", function () {
           expect(bH.getCurrentDayInfo()).deep.eq(currentDayInfo);
         });
 
-        it("Should return full schedule", function() {
+        it("Should return full schedule", function () {
           expect(bH.getSchedule()).deep.eq(schedule);
         });
 
-        it("Should return holiday name", function() {
+        it("Should return holiday name", function () {
           expect(bH.getHolidayName()).to.be.equal(holidayName);
         });
 
-        it("Should return if the current day is a holiday", function() {
+        it("Should return if the current day is a holiday", function () {
           expect(bH.isHoliday()).to.be.equal(isHoliday);
         });
 
-        it("Should refresh date", function() {
+        it("Should refresh date", function () {
           expect(bH.getCurrentLocalBusinessTime()).to.exist;
         });
 
-        it("Should return if is Open", function() {
+        it("Should return if is Open", function () {
           expect(bH.isOpen()).to.be.equal(isOpen);
         });
       })
@@ -104,7 +104,7 @@ describe("#businessHours", function() {
       indexCD,
       holidayName,
       isHoliday,
-      isOpen
+      isOpen,
     }) =>
       describe("Dynamic With testobject having: " + description, () => {
         beforeEach(() => {
@@ -137,45 +137,45 @@ describe("#businessHours", function() {
           );
         });
 
-        it("Should refresh Object", function() {
+        it("Should refresh Object", function () {
           expect(bHS.refresh()).to.be.equal(refreshValue);
         });
 
-        it("Should refresh Object and return false", function() {
+        it("Should refresh Object and return false", function () {
           expect(bHS.refresh()).to.be.false;
         });
 
-        it("Should refresh date", function() {
+        it("Should refresh date", function () {
           expect(bHS.getCurrentLocalBusinessTime()).to.exist;
         });
 
-        it("Should return current local business time", function() {
+        it("Should return current local business time", function () {
           expect(bHS.getCurrentLocalBusinessTime()).to.equal(
             currentLocalBusinessTime
           );
         });
 
-        it("Should return get current day info", function() {
+        it("Should return get current day info", function () {
           expect(bHS.getCurrentDayInfo()).deep.eq(currentDayInfo);
         });
 
-        it("Should return full schedule", function() {
+        it("Should return full schedule", function () {
           expect(bHS.getSchedule()).deep.eq(schedule);
         });
 
-        it("Should return current day index number ", function() {
+        it("Should return current day index number ", function () {
           expect(bHS.getCurrentDayIndexNo()).to.be.equal(indexCD);
         });
 
-        it("Should return holiday name", function() {
+        it("Should return holiday name", function () {
           expect(bHS.getHolidayName()).to.be.equal(holidayName);
         });
 
-        it("Should return if the current day is a holiday", function() {
+        it("Should return if the current day is a holiday", function () {
           expect(bHS.isHoliday()).to.be.equal(isHoliday);
         });
 
-        it("Should return if is Open", function() {
+        it("Should return if is Open", function () {
           expect(bHS.isOpen()).to.be.equal(isOpen);
         });
       })
