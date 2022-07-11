@@ -1,4 +1,4 @@
-[![Build Status]()](https://app.travis-ci.com/istareatscreens/business-hours-native.svg?branch=master)[![codecov](https://codecov.io/gh/istareatscreens/business-hours-native/branch/master/graph/badge.svg)](https://codecov.io/gh/istareatscreens/business-hours-native)
+[![Build Status](https://app.travis-ci.com/istareatscreens/business-hours-native.svg?branch=master)](https://travis-ci.com/istareatscreens/business-hours-native)[![codecov](https://codecov.io/gh/istareatscreens/business-hours-native/branch/master/graph/badge.svg)](https://codecov.io/gh/istareatscreens/business-hours-native)
 
 # business-hours-native
 
